@@ -141,9 +141,9 @@ const vectorPaths = [
 export const LandingPage = (): JSX.Element => {
   return (
     <section className="bg-white">
-      <div className="mx-auto flex min-h-screen w-full min-w-[1440px] flex-col bg-white">
+      <div className="mx-auto flex min-h-screen w-full min-w-0 flex-col bg-white">
         <div className="relative w-full">
-          <div className="relative mx-auto h-[760px] w-full max-w-[1440px] overflow-hidden">
+          <div className="relative mx-auto h-[760px] w-full max-w-none overflow-hidden">
             <HeroProductDisplaySection />
             <HeroMessagingSection />
             {vectorPaths.slice(5).map((vector, index) => (
@@ -193,7 +193,7 @@ export const LandingPage = (): JSX.Element => {
         </div>
         <ProductValueSection />
         <PasskeySecuritySection />
-        <section className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-white px-40 pb-24 pt-20">
+        <section className="relative mx-auto w-full max-w-none overflow-hidden bg-white px-40 pb-24 pt-20">
           <header className="inline-flex flex-col items-start justify-center gap-4">
             <div className="inline-flex flex-col items-start">
               <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-[40px] font-bold leading-[normal] tracking-[0] text-[#163d6c]">
@@ -264,16 +264,16 @@ export const LandingPage = (): JSX.Element => {
             <MarketInsightsSection />
           </div>
         </section>
-        <section className="mx-auto w-full max-w-[1440px] px-8 pb-14 pt-8">
+        <section className="mx-auto w-full max-w-none px-8 pb-14 pt-8">
           <TokenRolloutSection />
         </section>
-        <section className="mx-auto flex w-full max-w-[1440px] flex-col gap-10 px-8 pb-16 pt-2">
+        <section className="mx-auto flex w-full max-w-none flex-col gap-10 px-8 pb-16 pt-2">
           <div className="w-fit">
             <SelfCustodyIntroSection />
           </div>
           <SelfCustodyFeatureCardsSection />
         </section>
-        <section className="mx-auto w-full max-w-[1440px] px-16 pb-16 pt-8">
+        <section className="mx-auto w-full max-w-none px-16 pb-16 pt-8">
           <header className="mb-10 inline-flex flex-col items-start">
             <h2 className="mt-[-1.00px] w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[40px] font-bold leading-[normal] tracking-[0] text-[#163d6c]">
               Self-custody means

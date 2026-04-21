@@ -20,7 +20,7 @@ const navigationItems = [
 export const HeroProductDisplaySection = (): JSX.Element => {
   return (
     <header className="relative z-10 w-full border-b border-[#0000001f] bg-white">
-      <div className="mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:px-16 xl:px-40">
+      <div className="mx-auto flex h-20 w-full max-w-none items-center justify-between px-4 sm:px-6 lg:px-16 xl:px-40">
         <a
           href="/"
           className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3d6c] focus-visible:ring-offset-2 rounded-sm"

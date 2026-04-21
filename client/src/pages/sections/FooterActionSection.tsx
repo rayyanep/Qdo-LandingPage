@@ -13,7 +13,7 @@ const companyLinks = ["About", "Contact", "Terms", "Privacy"];
 export const FooterActionSection = (): JSX.Element => {
   return (
     <footer className="relative w-full bg-[#061237]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-6 py-16 sm:px-10 lg:gap-20 lg:px-20 lg:py-[100px] xl:px-40">
+      <div className="mx-auto flex w-full max-w-none flex-col gap-12 px-6 py-16 sm:px-10 lg:gap-20 lg:px-20 lg:py-[100px] xl:px-40">
         <section className="flex w-full flex-col gap-10 lg:gap-[54px]">
           <div className="flex w-full flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-20">
             <header className="flex shrink-0 flex-col items-start">

@@ -22,7 +22,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
 
   return (
     <section className="w-full bg-[#061237] px-6 py-20 md:px-10 lg:px-16 xl:px-40 xl:py-[120px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-6">
+      <div className="mx-auto flex w-full max-w-none flex-col items-start gap-6">
         <header className="flex w-full flex-col items-start gap-[54px]">
           <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
             <div className="flex flex-col items-start">
