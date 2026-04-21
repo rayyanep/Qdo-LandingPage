@@ -16,80 +16,138 @@ const statCards = [
   {
     value: "0",
     label: "Seed Phrases",
+    desktopPosition: "xl:absolute xl:left-[74px] xl:top-[174px]",
     wrapperClass:
-      "absolute left-[74px] top-[174px] rounded-3xl border border-solid border-[#0000001f] bg-white",
+      "rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[40px] font-semibold text-[#163d6c]",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-[#163d6c]",
     labelClass:
-      "[font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal text-[#00000099]",
-    labelWidth: "w-[97px]",
+      "[font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal text-[#00000099]",
   },
   {
     value: "3",
     label: "Chains Supported",
+    desktopPosition: "xl:absolute xl:left-[587px] xl:top-[255px]",
     wrapperClass:
-      "absolute left-[587px] top-[255px] rounded-3xl border border-solid border-[#0000001f] bg-white",
+      "rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[40px] font-semibold text-[#163d6c]",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-[#163d6c]",
     labelClass:
-      "[font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal text-[#00000099]",
-    labelWidth: "w-[97px]",
+      "[font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal text-[#00000099]",
   },
   {
     value: "5 min",
     label: "Prediction Markets",
-    wrapperClass: "absolute left-[170px] top-[517px] rounded-3xl bg-[#659acd]",
+    desktopPosition: "xl:absolute xl:left-[170px] xl:top-[517px]",
+    wrapperClass: "rounded-3xl bg-[#659acd]",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[40px] font-semibold text-white",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-white",
     labelClass:
-      "[font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal text-white",
-    labelWidth: "w-[92px]",
+      "[font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal text-white",
   },
 ];
 
 export const LandingPage = (): JSX.Element => {
   return (
     <section className="bg-white">
-      <div className="mx-auto flex min-h-screen w-full min-w-0 flex-col bg-white">
+      <div className="mx-auto flex min-h-screen w-full min-w-0 flex-col overflow-x-hidden bg-white">
+        <HeroProductDisplaySection />
         <div className="relative w-full">
-          <div className="relative mx-auto h-[760px] w-full max-w-none overflow-hidden">
-            <HeroProductDisplaySection />
-            <HeroMessagingSection />
+          <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-10 px-4 py-10 sm:px-6 xl:grid-cols-[minmax(0,720px)_minmax(0,1fr)] xl:items-center xl:gap-16 xl:px-16 xl:py-16">
+            <div className="order-2 xl:order-none">
+              <div className="relative mx-auto w-full max-w-[442px] xl:max-w-none xl:h-[600px]">
+                <img
+                  className="mx-auto block h-auto w-full max-w-[442px] xl:absolute xl:left-1/2 xl:top-1/2 xl:h-[534px] xl:w-[442px] xl:-translate-x-1/2 xl:-translate-y-1/2"
+                  alt="Iphone"
+                  src="/figmaAssets/iphone-15.png"
+                />
 
-            {statCards.map((card) => (
-              <Card
-                key={card.label}
-                className={`${card.wrapperClass} shadow-none`}
-              >
-                <CardContent className="flex min-w-[150px] flex-col items-center gap-1 px-8 pb-6 pt-5">
-                  <div
-                    className={`relative self-stretch text-center tracking-[0] leading-[normal] ${card.valueClass}`}
-                  >
-                    {card.value === "5 min" ? (
-                      <>
-                        <span className="[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[44px] font-semibold tracking-[0] text-white">
-                          5{" "}
-                        </span>
-                        <span className="text-2xl">min</span>
-                      </>
-                    ) : (
-                      card.value
-                    )}
-                  </div>
-                  <div
-                    className={`relative text-center tracking-[0] leading-tight ${card.labelClass}`}
-                  >
-                    {card.label}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                <Card
+                  className={`hidden xl:flex absolute left-0 top-[40px] ${statCards[0].wrapperClass} shadow-none`}
+                >
+                  <CardContent className="flex min-w-[150px] flex-col items-center gap-1 px-8 pb-6 pt-5">
+                    <div
+                      className={`relative self-stretch text-center leading-[normal] tracking-[0] ${statCards[0].valueClass}`}
+                    >
+                      {statCards[0].value}
+                    </div>
+                    <div
+                      className={`relative text-center leading-tight tracking-[0] ${statCards[0].labelClass}`}
+                    >
+                      {statCards[0].label}
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card
+                  className={`hidden xl:flex absolute right-0 top-[140px] ${statCards[1].wrapperClass} shadow-none`}
+                >
+                  <CardContent className="flex min-w-[150px] flex-col items-center gap-1 px-8 pb-6 pt-5">
+                    <div
+                      className={`relative self-stretch text-center leading-[normal] tracking-[0] ${statCards[1].valueClass}`}
+                    >
+                      {statCards[1].value}
+                    </div>
+                    <div
+                      className={`relative text-center leading-tight tracking-[0] ${statCards[1].labelClass}`}
+                    >
+                      {statCards[1].label}
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card
+                  className={`hidden xl:flex absolute bottom-[10px] left-[40px] ${statCards[2].wrapperClass} shadow-none`}
+                >
+                  <CardContent className="flex min-w-[150px] flex-col items-center gap-1 px-8 pb-6 pt-5">
+                    <div
+                      className={`relative self-stretch text-center leading-[normal] tracking-[0] ${statCards[2].valueClass}`}
+                    >
+                      <span className="[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[44px] font-semibold tracking-[0] text-white">
+                        5{" "}
+                      </span>
+                      <span className="text-2xl">min</span>
+                    </div>
+                    <div
+                      className={`relative text-center leading-tight tracking-[0] ${statCards[2].labelClass}`}
+                    >
+                      {statCards[2].label}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
 
-            <img
-              className="absolute left-[219px] top-[146px] h-[534px] w-[442px]"
-              alt="Iphone"
-              src="/figmaAssets/iphone-15.png"
-            />
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:hidden">
+                {statCards.map((card) => (
+                  <Card
+                    key={card.label}
+                    className={`${card.wrapperClass} shadow-none`}
+                  >
+                    <CardContent className="flex flex-col items-center gap-1 px-4 pb-4 pt-3 sm:px-6 sm:pb-5 sm:pt-4">
+                      <div
+                        className={`relative self-stretch text-center leading-[normal] tracking-[0] ${card.valueClass}`}
+                      >
+                        {card.value === "5 min" ? (
+                          <>
+                            <span className={card.valueClass}>5 </span>
+                            <span className="text-xl sm:text-2xl">min</span>
+                          </>
+                        ) : (
+                          card.value
+                        )}
+                      </div>
+                      <div
+                        className={`relative text-center leading-tight tracking-[0] ${card.labelClass}`}
+                      >
+                        {card.label}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div className="order-1 xl:order-none">
+              <HeroMessagingSection />
+            </div>
           </div>
         </div>
         <ProductValueSection />
@@ -160,31 +218,31 @@ export const LandingPage = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="relative mx-auto w-full max-w-none overflow-hidden bg-white px-40 pb-24 pt-20">
-          <div className="grid grid-cols-[298px_1fr] items-start gap-[116px]">
+        <section className="relative mx-auto w-full max-w-none overflow-hidden bg-white px-4 pb-16 pt-12 sm:px-6 md:px-10 lg:px-16 xl:px-40 xl:pb-24 xl:pt-20">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[298px_1fr] lg:gap-[116px]">
             <LivePriceSection />
             <MarketInsightsSection />
           </div>
         </section>
-        <section className="mx-auto w-full max-w-none px-8 pb-14 pt-8">
+        <section className="mx-auto w-full max-w-none px-4 pb-14 pt-8 sm:px-6 md:px-8">
           <TokenRolloutSection />
         </section>
-        <section className="mx-auto flex w-full max-w-none flex-col gap-10 px-8 pb-16 pt-2">
+        <section className="mx-auto flex w-full max-w-none flex-col gap-10 px-4 pb-16 pt-2 sm:px-6 md:px-8">
           <div className="w-fit">
             <SelfCustodyIntroSection />
           </div>
           <SelfCustodyFeatureCardsSection />
         </section>
-        <section className="mx-auto w-full max-w-none px-16 pb-16 pt-8">
+        <section className="mx-auto w-full max-w-none px-4 pb-16 pt-8 sm:px-6 md:px-10 lg:px-16">
           <header className="mb-10 inline-flex flex-col items-start">
-            <h2 className="mt-[-1.00px] w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[40px] font-bold leading-[normal] tracking-[0] text-[#163d6c]">
+            <h2 className="mt-[-1.00px] w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[28px] font-bold leading-[normal] tracking-[0] text-[#163d6c] sm:text-[34px] md:text-[40px]">
               Self-custody means
             </h2>
-            <p className="-mt-2 w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[40px] font-bold leading-[normal] tracking-[0] text-[#659acd]">
+            <p className="-mt-2 w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[28px] font-bold leading-[normal] tracking-[0] text-[#659acd] sm:text-[34px] md:text-[40px]">
               you own everything
             </p>
           </header>
-          <div className="grid grid-cols-[1fr_1fr] items-start gap-12">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-12">
             <CustodyTierSection />
             <TierCalloutSection />
           </div>
