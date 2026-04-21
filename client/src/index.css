@@ -345,10 +345,10 @@
   letter-spacing: -0.02em;
 }
 
-.onboarding-section .step-1 { left: 7%; top: 50%; width: 300px; }
-.onboarding-section .step-2 { left: 33%; top: 65%; width: 365px; }
-.onboarding-section .step-3 { left: 62%; top: 31%; width: 330px; text-align: center; }
-.onboarding-section .step-4 { right: 6.95%; left: auto; top: 60%; width: 300px; }
+.onboarding-section .step-1 { left: calc(6.95% - 39px); top: 50%; width: 300px; }
+.onboarding-section .step-2 { left: 33%; top: calc(62.1% - 29px); width: 365px; }
+.onboarding-section .step-3 { left: calc(67.5% - 165px); top: 31%; width: 330px; text-align: center; }
+.onboarding-section .step-4 { right: 6.95%; left: auto; top: calc(73.4% - 29px); width: 300px; }
 
 .onboarding-section .marker {
   position: absolute;
