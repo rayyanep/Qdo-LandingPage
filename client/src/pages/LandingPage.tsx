@@ -75,10 +75,10 @@ const statCards = [
 ];
 
 const onboardingWaypoints = [
-  { dot: { left: "12%", top: "78%" }, text: { left: "7%", top: "55%" }, width: "210px" },
-  { dot: { left: "31%", top: "52%" }, text: { left: "33%", top: "60%" }, width: "220px" },
-  { dot: { left: "60%", top: "12%" }, text: { left: "61%", top: "20%" }, width: "210px" },
-  { dot: { left: "87%", top: "57%" }, text: { left: "76%", top: "67%" }, width: "210px" },
+  { dot: { left: "13%", top: "77%" }, text: { left: "8%", top: "55%" }, width: "210px" },
+  { dot: { left: "32%", top: "53%" }, text: { left: "35%", top: "55%" }, width: "230px" },
+  { dot: { left: "60%", top: "27%" }, text: { left: "61%", top: "33%" }, width: "210px" },
+  { dot: { left: "87%", top: "64%" }, text: { left: "76%", top: "62%" }, width: "210px" },
 ];
 
 export const LandingPage = (): JSX.Element => {
@@ -144,7 +144,7 @@ export const LandingPage = (): JSX.Element => {
             </p>
           </header>
 
-          <div className="relative mt-12 h-[520px] w-screen -translate-x-1/2 left-1/2">
+          <div className="relative -mt-16 h-[520px] w-screen -translate-x-1/2 left-1/2">
             <img
               className="pointer-events-none absolute left-0 top-0 h-full w-full"
               alt="Onboarding road"
@@ -164,9 +164,11 @@ export const LandingPage = (): JSX.Element => {
                 className="absolute -translate-x-1/2 -translate-y-1/2"
                 style={{ left: point.dot.left, top: point.dot.top }}
               >
-                <div className="flex h-[60px] w-[60px] items-center justify-center rounded-full border-[6px] border-white bg-white shadow-md">
-                  <div className="flex h-full w-full items-center justify-center rounded-full border-[5px] border-[#659acd] bg-white">
-                    <div className="h-3 w-3 rounded-full bg-[#1a3d6c]" />
+                <div className="flex h-[64px] w-[64px] items-center justify-center rounded-full bg-white shadow-md">
+                  <div className="flex h-[52px] w-[52px] items-center justify-center rounded-full bg-[#659acd]">
+                    <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-white">
+                      <div className="h-[18px] w-[18px] rounded-full bg-[#1a3d6c]" />
+                    </div>
                   </div>
                 </div>
               </div>
