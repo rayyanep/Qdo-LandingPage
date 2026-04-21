@@ -347,8 +347,8 @@
 
 .onboarding-section .step-1 { left: 7%; top: 50%; width: 300px; }
 .onboarding-section .step-2 { left: 33%; top: 65%; width: 365px; }
-.onboarding-section .step-3 { left: 47%; top: 36%; width: 330px; text-align: center; }
-.onboarding-section .step-4 { left: 73%; top: 28%; width: 300px; }
+.onboarding-section .step-3 { left: 62%; top: 31%; width: 330px; text-align: center; }
+.onboarding-section .step-4 { right: 6.95%; left: auto; top: 60%; width: 300px; }
 
 .onboarding-section .marker {
   position: absolute;
@@ -374,8 +374,8 @@
 
 .onboarding-section .m1 { left: 6.95%; top: 67.2%; }
 .onboarding-section .m2 { left: 29.7%; top: 62.1%; }
-.onboarding-section .m3 { left: 52.55%; top: 30.86%; }
-.onboarding-section .m4 { left: 86%; top: 39.75%; }
+.onboarding-section .m3 { left: 67.5%; top: 25.86%; }
+.onboarding-section .m4 { left: 93.05%; top: 73.4%; }
 
 .onboarding-section .bottom-curve {
   position: absolute;
