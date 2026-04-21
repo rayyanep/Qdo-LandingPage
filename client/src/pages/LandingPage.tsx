@@ -145,12 +145,6 @@ export const LandingPage = (): JSX.Element => {
           </header>
 
           <div className="relative -mt-16 h-[520px] w-screen -translate-x-1/2 left-1/2">
-            <img
-              className="pointer-events-none absolute left-0 top-0 h-full w-full"
-              alt="Onboarding road"
-              src="/figmaAssets/vector-109.svg"
-              style={{ objectFit: "fill" }}
-            />
             <svg
               className="pointer-events-none absolute left-0 top-0 h-full w-full"
               viewBox="0 0 1610 662"
