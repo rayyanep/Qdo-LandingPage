@@ -345,10 +345,10 @@
   letter-spacing: -0.02em;
 }
 
-.onboarding-section .step-1 { left: 224px; top: 838px; width: 300px; }
-.onboarding-section .step-2 { left: 868px; top: 800px; width: 365px; }
-.onboarding-section .step-3 { left: 1238px; top: 498px; width: 330px; text-align: center; }
-.onboarding-section .step-4 { left: 1445px; top: 934px; width: 300px; }
+.onboarding-section .step-1 { left: 7%; top: 50%; width: 300px; }
+.onboarding-section .step-2 { left: 33%; top: 65%; width: 365px; }
+.onboarding-section .step-3 { left: 47%; top: 36%; width: 330px; text-align: center; }
+.onboarding-section .step-4 { left: 73%; top: 28%; width: 300px; }
 
 .onboarding-section .marker {
   position: absolute;
@@ -360,6 +360,7 @@
   box-shadow: 0 0 0 10px rgba(227, 229, 234, 0.95);
   display: grid;
   place-items: center;
+  transform: translate(-50%, -50%);
 }
 
 .onboarding-section .marker::before {
@@ -371,10 +372,10 @@
   display: block;
 }
 
-.onboarding-section .m1 { left: 229px; top: 1018px; }
-.onboarding-section .m2 { left: 746px; top: 804px; }
-.onboarding-section .m3 { left: 1318px; top: 390px; }
-.onboarding-section .m4 { left: 1773px; top: 940px; }
+.onboarding-section .m1 { left: 6.95%; top: 67.2%; }
+.onboarding-section .m2 { left: 29.7%; top: 62.1%; }
+.onboarding-section .m3 { left: 52.55%; top: 30.86%; }
+.onboarding-section .m4 { left: 86%; top: 39.75%; }
 
 .onboarding-section .bottom-curve {
   position: absolute;
@@ -397,14 +398,10 @@
   .onboarding-section .headline p { font-size: 22px; max-width: 480px; }
   .onboarding-section .step h3 { font-size: 24px; }
   .onboarding-section .step p { font-size: 18px; }
-  .onboarding-section .step-1 { left: 120px; top: 760px; width: 270px; }
-  .onboarding-section .step-2 { left: 670px; top: 735px; width: 300px; }
-  .onboarding-section .step-3 { left: 980px; top: 450px; width: 280px; }
-  .onboarding-section .step-4 { left: 1190px; top: 855px; width: 260px; }
-  .onboarding-section .m1 { left: 125px; top: 930px; }
-  .onboarding-section .m2 { left: 585px; top: 745px; }
-  .onboarding-section .m3 { left: 1065px; top: 355px; }
-  .onboarding-section .m4 { left: 1460px; top: 865px; }
+  .onboarding-section .step-1 { width: 270px; }
+  .onboarding-section .step-2 { width: 300px; }
+  .onboarding-section .step-3 { width: 280px; }
+  .onboarding-section .step-4 { width: 260px; }
 }
 
 @media (max-width: 1280px) {
@@ -417,16 +414,12 @@
   .onboarding-section .headline p { font-size: 19px; max-width: 410px; }
   .onboarding-section .step h3 { font-size: 21px; }
   .onboarding-section .step p { font-size: 16px; }
-  .onboarding-section .step-1 { left: 60px; top: 610px; width: 235px; }
-  .onboarding-section .step-2 { left: 455px; top: 635px; width: 255px; }
-  .onboarding-section .step-3 { left: 720px; top: 360px; width: 245px; }
-  .onboarding-section .step-4 { left: 915px; top: 740px; width: 235px; }
+  .onboarding-section .step-1 { width: 235px; }
+  .onboarding-section .step-2 { width: 255px; }
+  .onboarding-section .step-3 { width: 245px; }
+  .onboarding-section .step-4 { width: 235px; }
   .onboarding-section .marker { width: 64px; height: 64px; }
   .onboarding-section .marker::before { width: 48px; height: 48px; background: radial-gradient(circle at center, var(--white) 0 8px, var(--ring-navy) 9px 21px, var(--ring-blue) 22px 100%); }
-  .onboarding-section .m1 { left: 95px; top: 740px; }
-  .onboarding-section .m2 { left: 395px; top: 620px; }
-  .onboarding-section .m3 { left: 798px; top: 286px; }
-  .onboarding-section .m4 { left: 1065px; top: 735px; }
 }
 
 @media (max-width: 980px) {
@@ -447,7 +440,7 @@
   .onboarding-section .headline h1 { font-size: 38px; }
   .onboarding-section .headline p { font-size: 18px; max-width: 100%; }
   .onboarding-section .road-svg { display: none; }
-  .onboarding-section .marker { margin: 0 0 14px; box-shadow: none; }
+  .onboarding-section .marker { margin: 0 0 14px; box-shadow: none; transform: none; }
   .onboarding-section .steps-mobile { display: grid; gap: 28px; }
   .onboarding-section .step { width: 100%; max-width: 100%; padding: 24px; background: rgba(255,255,255,0.45); border-radius: 24px; }
   .onboarding-section .step-3 { text-align: left; }
