@@ -22,16 +22,14 @@ const actions = [
 
 export const HeroMessagingSection = (): JSX.Element => {
   return (
-    <section className="relative w-full">
+    <section className="relative w-full pt-[180px]">
       <div className="ml-auto flex w-full max-w-[455px] flex-col items-start gap-8 md:gap-10 lg:gap-12">
         <header className="flex w-full flex-col items-start gap-4">
-          <div className="flex max-w-[342px] flex-col items-start">
-            {headingLines.map((line, index) => (
+          <div className="flex max-w-[342px] flex-col items-start gap-1">
+            {headingLines.map((line) => (
               <h1
                 key={line.text}
-                className={`${line.color} ${
-                  index === 0 ? "mt-[-1.00px]" : "-mt-2"
-                } w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[42px] font-bold leading-[0.98] tracking-[0] sm:text-[48px] lg:text-[54px]`}
+                className={`${line.color} w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[42px] font-bold leading-[1.15] tracking-[0] sm:text-[48px] lg:text-[54px]`}
               >
                 {line.text}
               </h1>
