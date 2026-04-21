@@ -158,15 +158,15 @@ export const LandingPage = (): JSX.Element => {
             {statCards.map((card) => (
               <Card
                 key={card.label}
-                className={`${card.wrapperClass} border-0 shadow-none`}
+                className={`${card.wrapperClass} shadow-none`}
               >
-                <CardContent className="flex flex-col items-center px-4 pb-4 pt-2.5">
+                <CardContent className="flex min-w-[150px] flex-col items-center gap-1 px-8 pb-6 pt-5">
                   <div
                     className={`relative self-stretch text-center tracking-[0] leading-[normal] ${card.valueClass}`}
                   >
                     {card.value === "5 min" ? (
                       <>
-                        <span className="[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[40px] font-semibold tracking-[0] text-white">
+                        <span className="[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[44px] font-semibold tracking-[0] text-white">
                           5{" "}
                         </span>
                         <span className="text-2xl">min</span>
@@ -176,7 +176,7 @@ export const LandingPage = (): JSX.Element => {
                     )}
                   </div>
                   <div
-                    className={`relative -mt-2 text-center tracking-[0] leading-[normal] ${card.labelWidth} ${card.labelClass}`}
+                    className={`relative text-center tracking-[0] leading-tight ${card.labelClass}`}
                   >
                     {card.label}
                   </div>
