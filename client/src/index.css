@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:600,500,400,700");
+
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -6,8 +9,6 @@
     all: unset;
   }
 }
-
-@import url("https://fonts.googleapis.com/css?family=Poppins:600,500,400,700");
 
 :root {
   --black-and-whiteblack: rgba(29, 29, 27, 1);
@@ -169,10 +170,6 @@
     transform: translateY(calc(-100% - var(--gap)));
   }
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   :root {
