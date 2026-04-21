@@ -151,12 +151,21 @@ export const LandingPage = (): JSX.Element => {
               src="/figmaAssets/vector-109.svg"
               style={{ objectFit: "fill" }}
             />
-            <img
+            <svg
               className="pointer-events-none absolute left-0 top-0 h-full w-full"
-              alt=""
-              src="/figmaAssets/vector-110.svg"
-              style={{ objectFit: "fill" }}
-            />
+              viewBox="0 0 1610 662"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M3.45252 213.163C100.841 379.257 487.627 593.478 687.34 341.736C887.053 89.9929 929.81 30.3925 1039.04 9.54738C1148.27 -11.2978 1374.03 15.2506 1403.25 288.205C1432.46 561.16 1582.51 653.528 1609.36 657.864"
+                stroke="#D4D7DE"
+                strokeWidth={4}
+                strokeDasharray="24 24"
+              />
+            </svg>
 
             {onboardingWaypoints.map((point, index) => (
               <div
