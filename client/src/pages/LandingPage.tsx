@@ -12,33 +12,6 @@ import { SelfCustodyIntroSection } from "./sections/SelfCustodyIntroSection";
 import { TierCalloutSection } from "./sections/TierCalloutSection";
 import { TokenRolloutSection } from "./sections/TokenRolloutSection";
 
-const onboardingSteps = [
-  {
-    title: "Open the App",
-    description:
-      "Launch Qdo on any device. No app store required — works on web, iOS, and Android.",
-    alignment: "items-start text-left",
-  },
-  {
-    title: "Scan Your Fingerprint",
-    description:
-      "Authenticate with Face ID, fingerprint, or device PIN. Your passkey creates a secure wallet instantly.",
-    alignment: "items-start text-left",
-  },
-  {
-    title: "Fund Your Wallet",
-    description:
-      "Buy crypto with your card or bank transfer. Funds arrive directly in your self-custody wallet.",
-    alignment: "items-center text-center",
-  },
-  {
-    title: "Swap, Trade & Earn",
-    description:
-      "Swap tokens, trade prediction markets, and earn yield — all from a single, beautiful interface.",
-    alignment: "items-start text-left",
-  },
-];
-
 const statCards = [
   {
     value: "0",
@@ -72,13 +45,6 @@ const statCards = [
       "[font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal text-white",
     labelWidth: "w-[92px]",
   },
-];
-
-const onboardingWaypoints = [
-  { dot: { left: "15%", top: "60%" }, text: { left: "8%", top: "70%" }, width: "210px" },
-  { dot: { left: "38%", top: "58%" }, text: { left: "40%", top: "68%" }, width: "230px" },
-  { dot: { left: "64%", top: "3%" }, text: { left: "65%", top: "12%" }, width: "210px" },
-  { dot: { left: "87%", top: "44%" }, text: { left: "75%", top: "55%" }, width: "210px" },
 ];
 
 export const LandingPage = (): JSX.Element => {
@@ -128,79 +94,74 @@ export const LandingPage = (): JSX.Element => {
         </div>
         <ProductValueSection />
         <PasskeySecuritySection />
-        <section className="relative mx-auto w-full max-w-none overflow-hidden bg-white px-40 pb-24 pt-20">
-          <header className="inline-flex flex-col items-start justify-center gap-4">
-            <div className="inline-flex flex-col items-start">
-              <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-[40px] font-bold leading-[normal] tracking-[0] text-[#163d6c]">
+        <section className="onboarding-section">
+          <div className="container">
+            <div className="headline">
+              <h1>
                 From zero to crypto
-              </h2>
-              <p className="-mt-2 [font-family:'Poppins_Latin-Bold',Helvetica] text-[40px] font-bold leading-[normal] tracking-[0] text-[#659acd]">
-                in under 60 seconds
+                <span className="light">in under 60 seconds</span>
+              </h1>
+              <p>
+                No downloads, no recovery phrases, no crypto knowledge required.
+                Just your fingerprint and you&#39;re in.
               </p>
             </div>
-            <p className="w-[412px] [font-family:'Poppins_Latin-Regular',Helvetica] text-lg font-normal leading-[normal] tracking-[0] text-[#000000cc]">
-              No downloads, no recovery phrases, no crypto knowledge required.
-              Just your fingerprint and you&#39;re in.
-            </p>
-          </header>
 
-          <div className="relative -mt-16 h-[520px] w-screen -translate-x-1/2 left-1/2">
             <svg
-              className="pointer-events-none absolute left-0 top-0 h-full w-full"
-              viewBox="0 0 1610 662"
+              className="road-svg"
+              viewBox="0 0 2000 1552"
               preserveAspectRatio="none"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
             >
               <path
-                d="M3.45252 213.163C100.841 379.257 487.627 593.478 687.34 341.736C887.053 89.9929 929.81 30.3925 1039.04 9.54738C1148.27 -11.2978 1374.03 15.2506 1403.25 288.205C1432.46 561.16 1582.51 653.528 1609.36 657.864"
-                stroke="#D4D7DE"
-                strokeWidth={4}
-                strokeDasharray="24 24"
+                d="M -120 870 C 50 1010, 180 1100, 360 1065 C 560 1025, 650 920, 760 810 C 900 670, 1010 430, 1210 410 C 1440 385, 1700 390, 1760 760 C 1795 970, 1840 1170, 2025 1415"
+                fill="none"
+                stroke="#e3e5ea"
+                strokeWidth={78}
+                strokeLinecap="round"
+              />
+              <path
+                d="M -120 870 C 50 1010, 180 1100, 360 1065 C 560 1025, 650 920, 760 810 C 900 670, 1010 430, 1210 410 C 1440 385, 1700 390, 1760 760 C 1795 970, 1840 1170, 2025 1415"
+                fill="none"
+                stroke="rgba(255,255,255,0.72)"
+                strokeWidth={14}
+                strokeLinecap="round"
+                strokeDasharray="36 42"
               />
             </svg>
 
-            {onboardingWaypoints.map((point, index) => (
-              <div
-                key={`waypoint-${index}`}
-                className="absolute -translate-x-1/2 -translate-y-1/2"
-                style={{ left: point.dot.left, top: point.dot.top }}
-              >
-                <div className="flex h-[64px] w-[64px] items-center justify-center rounded-full bg-white shadow-md">
-                  <div className="flex h-[52px] w-[52px] items-center justify-center rounded-full bg-[#659acd]">
-                    <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-white">
-                      <div className="h-[18px] w-[18px] rounded-full bg-[#1a3d6c]" />
-                    </div>
-                  </div>
-                </div>
+            <div className="steps-mobile">
+              <div className="marker m1" />
+              <div className="step step-1">
+                <h3>Open the App</h3>
+                <p>Launch Qdo on any device. No app store required — works on web, iOS, and Android.</p>
               </div>
-            ))}
 
-            {onboardingSteps.map((step, index) => {
-              const point = onboardingWaypoints[index];
-              return (
-                <div
-                  key={step.title}
-                  className="absolute flex flex-col gap-1.5"
-                  style={{
-                    left: point.text.left,
-                    top: point.text.top,
-                    width: point.width,
-                  }}
-                >
-                  <h3 className="[font-family:'Poppins_Latin-Bold',Helvetica] text-xl font-bold leading-[normal] tracking-[0] text-[#1a3d6c]">
-                    {step.title}
-                  </h3>
-                  <p className="[font-family:'Poppins_Latin-Regular',Helvetica] text-sm font-normal leading-[1.5] tracking-[0] text-[#0000008a]">
-                    {step.description}
-                  </p>
-                </div>
-              );
-            })}
+              <div className="marker m2" />
+              <div className="step step-2">
+                <h3>Scan Your Fingerprint</h3>
+                <p>Authenticate with Face ID, fingerprint, or device PIN. Your passkey creates a secure wallet instantly.</p>
+              </div>
+
+              <div className="marker m3" />
+              <div className="step step-3">
+                <h3>Fund Your Wallet</h3>
+                <p>Buy crypto with your card or bank transfer. Funds arrive directly in your self-custody wallet.</p>
+              </div>
+
+              <div className="marker m4" />
+              <div className="step step-4">
+                <h3>Swap, Trade &amp; Earn</h3>
+                <p>Swap tokens, trade prediction markets, and earn yield — all from a single, beautiful interface.</p>
+              </div>
+            </div>
+
+            <div className="bottom-curve" />
           </div>
+        </section>
 
-          <div className="mt-16 grid grid-cols-[298px_1fr] items-start gap-[116px]">
+        <section className="relative mx-auto w-full max-w-none overflow-hidden bg-white px-40 pb-24 pt-20">
+          <div className="grid grid-cols-[298px_1fr] items-start gap-[116px]">
             <LivePriceSection />
             <MarketInsightsSection />
           </div>
