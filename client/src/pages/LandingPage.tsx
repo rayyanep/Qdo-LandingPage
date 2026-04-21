@@ -75,10 +75,10 @@ const statCards = [
 ];
 
 const onboardingWaypoints = [
-  { left: "8.5%", top: "72%", textAlign: "left" as const, textOffset: { left: "10%", top: "55%" }, width: "200px" },
-  { left: "33%", top: "55%", textAlign: "left" as const, textOffset: { left: "34.5%", top: "60%" }, width: "210px" },
-  { left: "58%", top: "20%", textAlign: "left" as const, textOffset: { left: "59.5%", top: "27%" }, width: "200px" },
-  { left: "85%", top: "55%", textAlign: "left" as const, textOffset: { left: "75%", top: "65%" }, width: "200px" },
+  { dot: { left: "12%", top: "78%" }, text: { left: "7%", top: "55%" }, width: "210px" },
+  { dot: { left: "31%", top: "52%" }, text: { left: "33%", top: "60%" }, width: "220px" },
+  { dot: { left: "60%", top: "12%" }, text: { left: "61%", top: "20%" }, width: "210px" },
+  { dot: { left: "87%", top: "57%" }, text: { left: "76%", top: "67%" }, width: "210px" },
 ];
 
 export const LandingPage = (): JSX.Element => {
@@ -144,23 +144,25 @@ export const LandingPage = (): JSX.Element => {
             </p>
           </header>
 
-          <div className="relative mt-12 h-[560px] w-full">
+          <div className="relative mt-12 h-[520px] w-screen -translate-x-1/2 left-1/2">
             <img
-              className="pointer-events-none absolute left-0 top-0 h-full w-full object-contain"
+              className="pointer-events-none absolute left-0 top-0 h-full w-full"
               alt="Onboarding road"
               src="/figmaAssets/vector-109.svg"
+              style={{ objectFit: "fill" }}
             />
             <img
-              className="pointer-events-none absolute left-0 top-0 h-full w-full object-contain"
+              className="pointer-events-none absolute left-0 top-0 h-full w-full"
               alt=""
               src="/figmaAssets/vector-110.svg"
+              style={{ objectFit: "fill" }}
             />
 
             {onboardingWaypoints.map((point, index) => (
               <div
                 key={`waypoint-${index}`}
                 className="absolute -translate-x-1/2 -translate-y-1/2"
-                style={{ left: point.left, top: point.top }}
+                style={{ left: point.dot.left, top: point.dot.top }}
               >
                 <div className="flex h-[60px] w-[60px] items-center justify-center rounded-full border-[6px] border-white bg-white shadow-md">
                   <div className="flex h-full w-full items-center justify-center rounded-full border-[5px] border-[#659acd] bg-white">
@@ -177,8 +179,8 @@ export const LandingPage = (): JSX.Element => {
                   key={step.title}
                   className="absolute flex flex-col gap-1.5"
                   style={{
-                    left: point.textOffset.left,
-                    top: point.textOffset.top,
+                    left: point.text.left,
+                    top: point.text.top,
                     width: point.width,
                   }}
                 >
