@@ -75,10 +75,10 @@ const statCards = [
 ];
 
 const onboardingWaypoints = [
-  { dot: { left: "13%", top: "77%" }, text: { left: "8%", top: "55%" }, width: "210px" },
-  { dot: { left: "32%", top: "53%" }, text: { left: "35%", top: "55%" }, width: "230px" },
-  { dot: { left: "60%", top: "27%" }, text: { left: "61%", top: "33%" }, width: "210px" },
-  { dot: { left: "87%", top: "64%" }, text: { left: "76%", top: "62%" }, width: "210px" },
+  { dot: { left: "15%", top: "60%" }, text: { left: "8%", top: "70%" }, width: "210px" },
+  { dot: { left: "38%", top: "58%" }, text: { left: "40%", top: "68%" }, width: "230px" },
+  { dot: { left: "64%", top: "3%" }, text: { left: "65%", top: "12%" }, width: "210px" },
+  { dot: { left: "87%", top: "44%" }, text: { left: "75%", top: "55%" }, width: "210px" },
 ];
 
 export const LandingPage = (): JSX.Element => {
