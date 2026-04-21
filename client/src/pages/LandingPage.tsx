@@ -74,68 +74,11 @@ const statCards = [
   },
 ];
 
-const connectorRings = [
-  "absolute left-[145px] top-[2593px] h-[86px] w-[86px] rounded-[70px] border-8 border-solid border-white",
-  "absolute left-[516px] top-[2443px] h-[86px] w-[86px] rounded-[70px] border-8 border-solid border-white",
-  "absolute left-[913px] top-[2154px] h-[86px] w-[86px] rounded-[70px] border-8 border-solid border-white",
-  "absolute left-[1214px] top-[2538px] h-[86px] w-[86px] rounded-[70px] border-8 border-solid border-white",
-];
-
-const connectorMiddleRings = [
-  "absolute left-[161px] top-[2609px] h-[54px] w-[54px] rounded-[32px] border-8 border-solid border-[#659acd]",
-  "absolute left-[532px] top-[2459px] h-[54px] w-[54px] rounded-[32px] border-8 border-solid border-[#659acd]",
-  "absolute left-[929px] top-[2170px] h-[54px] w-[54px] rounded-[32px] border-8 border-solid border-[#659acd]",
-  "absolute left-[1230px] top-[2554px] h-[54px] w-[54px] rounded-[32px] border-8 border-solid border-[#659acd]",
-];
-
-const connectorInnerRings = [
-  "absolute left-[172px] top-[2620px] h-8 w-8 rounded-[32px] border-8 border-solid border-[#1a3d6c]",
-  "absolute left-[543px] top-[2470px] h-8 w-8 rounded-[32px] border-8 border-solid border-[#1a3d6c]",
-  "absolute left-[940px] top-[2181px] h-8 w-8 rounded-[32px] border-8 border-solid border-[#1a3d6c]",
-  "absolute left-[1241px] top-[2565px] h-8 w-8 rounded-[32px] border-8 border-solid border-[#1a3d6c]",
-];
-
-const vectorPaths = [
-  {
-    className: "absolute left-[-160px] top-[2194px] h-[654px] w-[1605px]",
-    src: "/figmaAssets/vector-109.svg",
-    alt: "Vector",
-  },
-  {
-    className: "absolute left-[-160px] top-[2194px] h-[654px] w-[1605px]",
-    src: "/figmaAssets/vector-110.svg",
-    alt: "Vector",
-  },
-  {
-    className: "absolute left-[7.08%] top-[42.45%] h-[7.38%] w-[35.83%]",
-    src: "/figmaAssets/vector.svg",
-    alt: "Vector",
-  },
-  {
-    className: "absolute left-[14.17%] top-[43.91%] h-[4.45%] w-[21.60%]",
-    src: "/figmaAssets/vector.svg",
-    alt: "Vector",
-  },
-  {
-    className: "absolute left-[21.31%] top-[45.38%] h-0 w-[7.36%]",
-    src: "/figmaAssets/vector.svg",
-    alt: "Vector",
-  },
-  {
-    className: "absolute left-[6.74%] top-0 h-[7.66%] w-[38.68%]",
-    src: "/figmaAssets/vector.svg",
-    alt: "Vector",
-  },
-  {
-    className: "absolute left-[14.37%] top-[3.45%] h-[4.62%] w-[23.33%]",
-    src: "/figmaAssets/vector.svg",
-    alt: "Vector",
-  },
-  {
-    className: "absolute left-[22.08%] top-[4.98%] h-0 w-[7.99%]",
-    src: "/figmaAssets/vector.svg",
-    alt: "Vector",
-  },
+const onboardingWaypoints = [
+  { left: "8.5%", top: "72%", textAlign: "left" as const, textOffset: { left: "10%", top: "55%" }, width: "200px" },
+  { left: "33%", top: "55%", textAlign: "left" as const, textOffset: { left: "34.5%", top: "60%" }, width: "210px" },
+  { left: "58%", top: "20%", textAlign: "left" as const, textOffset: { left: "59.5%", top: "27%" }, width: "200px" },
+  { left: "85%", top: "55%", textAlign: "left" as const, textOffset: { left: "75%", top: "65%" }, width: "200px" },
 ];
 
 export const LandingPage = (): JSX.Element => {
@@ -146,14 +89,6 @@ export const LandingPage = (): JSX.Element => {
           <div className="relative mx-auto h-[760px] w-full max-w-none overflow-hidden">
             <HeroProductDisplaySection />
             <HeroMessagingSection />
-            {vectorPaths.slice(5).map((vector, index) => (
-              <img
-                key={`hero-vector-${index}`}
-                className={vector.className}
-                alt={vector.alt}
-                src={vector.src}
-              />
-            ))}
 
             {statCards.map((card) => (
               <Card
@@ -208,58 +143,57 @@ export const LandingPage = (): JSX.Element => {
               Just your fingerprint and you&#39;re in.
             </p>
           </header>
-          {vectorPaths.slice(0, 5).map((vector, index) => (
+
+          <div className="relative mt-12 h-[560px] w-full">
             <img
-              key={`onboarding-vector-${index}`}
-              className={vector.className}
-              alt={vector.alt}
-              src={vector.src}
+              className="pointer-events-none absolute left-0 top-0 h-full w-full object-contain"
+              alt="Onboarding road"
+              src="/figmaAssets/vector-109.svg"
             />
-          ))}
+            <img
+              className="pointer-events-none absolute left-0 top-0 h-full w-full object-contain"
+              alt=""
+              src="/figmaAssets/vector-110.svg"
+            />
 
-          {connectorRings.map((className, index) => (
-            <div key={`connector-ring-${index}`} className={className} />
-          ))}
-          {connectorMiddleRings.map((className, index) => (
-            <div key={`connector-middle-${index}`} className={className} />
-          ))}
-          {connectorInnerRings.map((className, index) => (
-            <div key={`connector-inner-${index}`} className={className} />
-          ))}
+            {onboardingWaypoints.map((point, index) => (
+              <div
+                key={`waypoint-${index}`}
+                className="absolute -translate-x-1/2 -translate-y-1/2"
+                style={{ left: point.left, top: point.top }}
+              >
+                <div className="flex h-[60px] w-[60px] items-center justify-center rounded-full border-[6px] border-white bg-white shadow-md">
+                  <div className="flex h-full w-full items-center justify-center rounded-full border-[5px] border-[#659acd] bg-white">
+                    <div className="h-3 w-3 rounded-full bg-[#1a3d6c]" />
+                  </div>
+                </div>
+              </div>
+            ))}
 
-          <div className="absolute left-[161px] top-[2486px] flex w-[212px] flex-col items-start gap-1.5">
-            <h3 className="mt-[-1.00px] w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-xl font-bold leading-[normal] tracking-[0] text-[#1a3d6c]">
-              {onboardingSteps[0].title}
-            </h3>
-            <p className="self-stretch [font-family:'Poppins_Latin-Regular',Helvetica] text-sm font-normal leading-[normal] tracking-[0] text-[#0000008a]">
-              {onboardingSteps[0].description}
-            </p>
+            {onboardingSteps.map((step, index) => {
+              const point = onboardingWaypoints[index];
+              return (
+                <div
+                  key={step.title}
+                  className="absolute flex flex-col gap-1.5"
+                  style={{
+                    left: point.textOffset.left,
+                    top: point.textOffset.top,
+                    width: point.width,
+                  }}
+                >
+                  <h3 className="[font-family:'Poppins_Latin-Bold',Helvetica] text-xl font-bold leading-[normal] tracking-[0] text-[#1a3d6c]">
+                    {step.title}
+                  </h3>
+                  <p className="[font-family:'Poppins_Latin-Regular',Helvetica] text-sm font-normal leading-[1.5] tracking-[0] text-[#0000008a]">
+                    {step.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
-          <div className="absolute left-[610px] top-[2458px] inline-flex flex-col items-start gap-1.5">
-            <h3 className="mt-[-1.00px] w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-xl font-bold leading-[normal] tracking-[0] text-[#1a3d6c]">
-              {onboardingSteps[1].title}
-            </h3>
-            <p className="self-stretch [font-family:'Poppins_Latin-Regular',Helvetica] text-sm font-normal leading-[normal] tracking-[0] text-[#0000008a]">
-              {onboardingSteps[1].description}
-            </p>
-          </div>
-          <div className="absolute left-[860px] top-[2248px] flex w-[193px] flex-col items-center gap-1.5">
-            <h3 className="mt-[-1.00px] w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-xl font-bold leading-[normal] tracking-[0] text-[#1a3d6c]">
-              {onboardingSteps[2].title}
-            </h3>
-            <p className="self-stretch text-center [font-family:'Poppins_Latin-Regular',Helvetica] text-sm font-normal leading-[normal] tracking-[0] text-[#0000008a]">
-              {onboardingSteps[2].description}
-            </p>
-          </div>
-          <div className="absolute left-[1013px] top-[2554px] flex w-[193px] flex-col items-start gap-1.5">
-            <h3 className="mt-[-1.00px] mr-[-5.00px] w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-xl font-bold leading-[normal] tracking-[0] text-[#1a3d6c]">
-              {onboardingSteps[3].title}
-            </h3>
-            <p className="self-stretch [font-family:'Poppins_Latin-Regular',Helvetica] text-sm font-normal leading-[normal] tracking-[0] text-[#0000008a]">
-              {onboardingSteps[3].description}
-            </p>
-          </div>
-          <div className="mt-[360px] grid grid-cols-[298px_1fr] items-start gap-[116px]">
+
+          <div className="mt-16 grid grid-cols-[298px_1fr] items-start gap-[116px]">
             <LivePriceSection />
             <MarketInsightsSection />
           </div>
