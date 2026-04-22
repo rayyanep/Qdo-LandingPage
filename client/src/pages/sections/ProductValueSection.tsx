@@ -8,7 +8,7 @@ const chains = [
     src: "/figmaAssets/eth--ethereum-.svg",
     imageClassName: "h-[38px] w-[38px]",
     textClassName:
-      "w-[92px] [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#00000099]",
+      "w-fit [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#00000099]",
   },
   {
     name: "BNB Smart Chain",
