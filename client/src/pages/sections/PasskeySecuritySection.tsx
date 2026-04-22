@@ -4,6 +4,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import iPhoneSwapImage from "@assets/iPhone_13_Pro_1776824127185.png";
 import multiChainImage from "@assets/Layer_1_1776824309628.png";
 import earnYieldArrow from "@assets/Vector_112_1776824503736.png";
+import iconUSDT from "@assets/image_4_1776824613430.png";
+import iconUSDC from "@assets/image_3_(1)_1776824613430.png";
+import iconETH from "@assets/ETH_(Ethereum)_1776824613430.png";
+import iconBNB from "@assets/image_1_(1)_1776824613430.png";
+import iconPOL from "@assets/image_2_(1)_1776824613430.png";
+import iconWBTC from "@assets/Frame_91_1776824613431.png";
+import iconWETH from "@assets/image_6_1776824613431.png";
+import iconDAI from "@assets/image_7_1776824613431.png";
 
 type FeatureKey =
   | "Passkey Onboarding"
@@ -314,32 +322,35 @@ export const PasskeySecuritySection = (): JSX.Element => {
                         "linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
                     }}
                   >
-                    <ul className="flex max-h-[340px] flex-col gap-3 overflow-hidden py-6 pr-1">
+                    <ul className="flex max-h-[420px] flex-col overflow-hidden py-6">
                       {[
-                        { sym: "USDT", name: "Tether — Stablecoin", color: "#26a17b" },
-                        { sym: "USDC", name: "Circle — Stablecoin", color: "#2775ca" },
-                        { sym: "ETH", name: "Ethereum", color: "#627eea" },
-                        { sym: "BNB", name: "BNB Smart Chain", color: "#f3ba2f" },
-                        { sym: "POL", name: "Polygon", color: "#8247e5" },
-                        { sym: "WBTC", name: "Wrapped Bitcoin", color: "#f7931a" },
-                        { sym: "WETH", name: "Wrapped Ether", color: "#3c3c3d" },
-                        { sym: "DAI", name: "Dai Stablecoin", color: "#f5ac37" },
-                      ].map((token) => (
+                        { sym: "USDT", name: "Tether — Stablecoin", icon: iconUSDT },
+                        { sym: "USDC", name: "Circle — Stablecoin", icon: iconUSDC },
+                        { sym: "ETH", name: "Ethereum", icon: iconETH },
+                        { sym: "BNB", name: "BNB Smart Chain", icon: iconBNB },
+                        { sym: "POL", name: "Polygon", icon: iconPOL },
+                        { sym: "WBTC", name: "Wrapped Bitcoin", icon: iconWBTC },
+                        { sym: "WETH", name: "Wrapped Ether", icon: iconWETH },
+                        { sym: "DAI", name: "Dai Stablecoin", icon: iconDAI },
+                      ].map((token, idx, arr) => (
                         <li
                           key={token.sym}
-                          className="flex items-center gap-4 rounded-2xl bg-white/[0.04] px-4 py-3"
+                          className={`flex items-center gap-4 px-2 py-4 ${
+                            idx < arr.length - 1
+                              ? "border-b border-white/10"
+                              : ""
+                          }`}
                         >
-                          <div
-                            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white"
-                            style={{ backgroundColor: token.color }}
-                          >
-                            {token.sym}
-                          </div>
+                          <img
+                            src={token.icon}
+                            alt={token.sym}
+                            className="h-10 w-10 shrink-0 rounded-full object-contain"
+                          />
                           <div className="flex flex-col">
-                            <span className="[font-family:'Poppins_Latin-Bold',Helvetica] text-sm font-bold leading-tight tracking-[0] text-white">
+                            <span className="[font-family:'Poppins_Latin-Bold',Helvetica] text-base font-bold leading-tight tracking-[0] text-white">
                               {token.sym}
                             </span>
-                            <span className="[font-family:'Poppins_Latin-Regular',Helvetica] text-xs font-normal leading-tight tracking-[0] text-[#ffffffaa]">
+                            <span className="[font-family:'Poppins_Latin-Regular',Helvetica] text-sm font-normal leading-tight tracking-[0] text-[#ffffffaa]">
                               {token.name}
                             </span>
                           </div>
