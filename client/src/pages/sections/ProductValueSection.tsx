@@ -57,11 +57,11 @@ export const ProductValueSection = (): JSX.Element => {
               orientation="horizontal"
               className="block h-px w-full bg-[#659acd] md:hidden"
             />
-            <div className="flex max-w-[485px] flex-col items-start gap-0.5">
+            <div className="flex flex-col items-start gap-0.5">
               <h2 className="self-stretch [font-family:'Poppins_Latin-SemiBold',Helvetica] text-base font-semibold leading-[normal] tracking-[0] text-[#1a3d6c]">
                 Smart defaults:
               </h2>
-              <p className="self-stretch [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#00000099]">
+              <p className="self-stretch whitespace-nowrap [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#00000099]">
                 Polygon for everyday · BSC for MENA/Asia · ETH for high-value
               </p>
             </div>
