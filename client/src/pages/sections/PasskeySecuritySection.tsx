@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import iPhoneSwapImage from "@assets/iPhone_13_Pro_1776824127185.png";
 import multiChainImage from "@assets/Layer_1_1776824309628.png";
+import earnYieldArrow from "@assets/Vector_112_1776824503736.png";
 
 type FeatureKey =
   | "Passkey Onboarding"
@@ -80,11 +81,11 @@ const featureContent: Record<
   "Earn Yield": {
     title: "Earn Yield",
     description:
-      "Put idle stablecoins to work. Earn competitive on-chain yield through vetted protocols with one tap — withdraw anytime, no lockups, full transparency.",
-    illustration: "/figmaAssets/group-1.png",
+      "Lock collateral in longer-dated prediction positions and earn yield while you wait. Your capital works for you even when markets are quiet.",
+    illustration: "",
     illustrationAlt: "Earn yield illustration",
-    rightImage: "/figmaAssets/image-7.png",
-    rightAlt: "Earn yield preview",
+    rightImage: earnYieldArrow,
+    rightAlt: "Yield growth chart",
   },
 };
 
@@ -147,7 +148,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
           <CardContent className="p-0">
             <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,530px)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:px-16 lg:py-[60px]">
               <div className="flex flex-col items-start">
-                {activeFeature === "Buy & Sell Crypto" || activeFeature === "Multi-Chain, One Wallet" || activeFeature === "Gasless Transactions" ? null : activeFeature === "Instant Token Swaps" ? (
+                {activeFeature === "Buy & Sell Crypto" || activeFeature === "Multi-Chain, One Wallet" || activeFeature === "Gasless Transactions" || activeFeature === "Earn Yield" ? null : activeFeature === "Instant Token Swaps" ? (
                   <div
                     className="mb-6 flex h-[100px] w-[116px] flex-col items-center justify-center gap-2 text-[#f5a623]"
                     aria-label={content.illustrationAlt}
@@ -213,6 +214,11 @@ export const PasskeySecuritySection = (): JSX.Element => {
                     ERC-4337
                   </div>
                 )}
+                {activeFeature === "Earn Yield" && (
+                  <div className="mt-8 inline-flex h-auto items-center justify-center rounded-3xl bg-[#a87a3d] px-5 py-3 [font-family:'Poppins',Helvetica] text-sm font-semibold leading-[22px] tracking-[0] text-white">
+                    Phase 2
+                  </div>
+                )}
               </div>
               <div
                 className={`flex items-center justify-center lg:justify-start ${
@@ -272,6 +278,32 @@ export const PasskeySecuritySection = (): JSX.Element => {
                     alt={content.rightAlt}
                     className="h-full max-h-none w-full self-stretch object-cover object-left lg:rounded-r-3xl"
                   />
+                ) : activeFeature === "Earn Yield" ? (
+                  <div className="relative flex aspect-square w-full max-w-[480px] items-center justify-center">
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[24px] border-solid border-white/5" />
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[20px] border-solid border-white/10" />
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[240px] w-[240px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[18px] border-solid border-white/[0.07]" />
+                    <span className="pointer-events-none absolute left-1/2 top-[6%] -translate-x-1/2 [font-family:'Poppins_Latin-Regular',Helvetica] text-3xl font-light leading-none tracking-[0] text-[#ffffffaa]">
+                      −
+                    </span>
+                    <span className="pointer-events-none absolute right-[18%] top-[14%] [font-family:'Poppins_Latin-Regular',Helvetica] text-2xl font-light leading-none tracking-[0] text-[#ffffffaa]">
+                      $
+                    </span>
+                    <span className="pointer-events-none absolute left-[18%] top-[32%] flex items-center gap-1 [font-family:'Poppins_Latin-Medium',Helvetica] text-base font-medium leading-none tracking-[0] text-[#ffffffcc]">
+                      <span aria-hidden="true">↑</span> up
+                    </span>
+                    <span className="pointer-events-none absolute right-[10%] bottom-[32%] flex items-center gap-1 [font-family:'Poppins_Latin-Medium',Helvetica] text-base font-medium leading-none tracking-[0] text-[#ffffffcc]">
+                      <span aria-hidden="true">↓</span> down
+                    </span>
+                    <span className="pointer-events-none absolute bottom-[14%] left-1/2 -translate-x-1/2 [font-family:'Poppins_Latin-Regular',Helvetica] text-2xl font-light leading-none tracking-[0] text-[#ffffffaa]">
+                      +
+                    </span>
+                    <img
+                      src={content.rightImage}
+                      alt={content.rightAlt}
+                      className="relative z-10 w-[58%] max-w-[280px] object-contain"
+                    />
+                  </div>
                 ) : activeFeature === "Gasless Transactions" ? (
                   <div
                     className="relative w-full max-w-[460px] overflow-hidden lg:max-w-[520px]"
