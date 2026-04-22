@@ -17,10 +17,10 @@ export const FooterActionSection = (): JSX.Element => {
         <section className="flex w-full flex-col gap-10 lg:gap-[54px]">
           <div className="flex w-full flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-20">
             <header className="flex shrink-0 flex-col items-start">
-              <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-4xl font-bold leading-[1.1] tracking-[0] text-white sm:text-5xl">
+              <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-4xl font-bold leading-[1.5] tracking-[0] text-white sm:text-5xl">
                 Ready to own
               </h2>
-              <p className="-mt-1 sm:-mt-2 [font-family:'Poppins_Latin-Bold',Helvetica] text-4xl font-bold leading-[1.1] tracking-[0] text-[#659acd] sm:text-5xl">
+              <p className="[font-family:'Poppins_Latin-Bold',Helvetica] text-4xl font-bold leading-[1.5] tracking-[0] text-[#659acd] sm:text-5xl">
                 your crypto?
               </p>
             </header>
