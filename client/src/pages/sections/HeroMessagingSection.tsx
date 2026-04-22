@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const headingLines = [
@@ -51,7 +51,7 @@ export const HeroMessagingSection = (): JSX.Element => {
               <Button
                 key={action.label}
                 type="button"
-                className={`h-auto min-h-[54px] flex-1 rounded-2xl px-4 py-4 [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] tracking-[0] ${
+                className={`h-auto min-h-[54px] w-full rounded-2xl px-5 py-4 sm:w-[210px] [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] tracking-[0] ${
                   isPrimary
                     ? "bg-[#1a3d6c] text-white hover:bg-[#16355d]"
                     : "border border-[#1a3d6c] bg-white text-[#00000099] hover:bg-[#f8fbff]"
@@ -62,8 +62,8 @@ export const HeroMessagingSection = (): JSX.Element => {
                   {action.label}
                 </span>
                 {action.hasIcon ? (
-                  <ArrowUpRightIcon
-                    className="h-8 w-8 shrink-0"
+                  <ArrowRightIcon
+                    className="ml-2 h-16 w-16 shrink-0"
                     aria-hidden="true"
                   />
                 ) : null}
