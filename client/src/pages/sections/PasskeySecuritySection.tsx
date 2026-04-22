@@ -146,7 +146,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
           <CardContent className="p-0">
             <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,530px)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:px-16 lg:py-[60px]">
               <div className="flex flex-col items-start">
-                {activeFeature === "Instant Token Swaps" ? (
+                {activeFeature === "Buy & Sell Crypto" ? null : activeFeature === "Instant Token Swaps" ? (
                   <div
                     className="mb-6 flex h-[100px] w-[116px] flex-col items-center justify-center gap-2 text-[#f5a623]"
                     aria-label={content.illustrationAlt}
@@ -197,9 +197,25 @@ export const PasskeySecuritySection = (): JSX.Element => {
                 <p className="mt-4 max-w-[530px] [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#ffffffcc] md:text-lg">
                   {content.description}
                 </p>
+                {activeFeature === "Buy & Sell Crypto" && (
+                  <div className="mt-8 inline-flex h-auto items-center justify-center rounded-3xl bg-[#659acd] px-5 py-3 [font-family:'Poppins',Helvetica] text-sm font-semibold leading-[22px] tracking-[0] text-white">
+                    On/Off Ramp
+                  </div>
+                )}
               </div>
               <div className="flex items-center justify-center lg:justify-start">
-                {activeFeature === "Passkey Onboarding" ? (
+                {activeFeature === "Buy & Sell Crypto" ? (
+                  <div className="relative flex aspect-square w-full max-w-[480px] items-center justify-center">
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[24px] border-solid border-white/5" />
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[20px] border-solid border-white/10" />
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[240px] w-[240px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[18px] border-solid border-white/[0.07]" />
+                    <div className="relative z-10 flex h-[140px] w-[140px] items-center justify-center rounded-full bg-[#f5a623]">
+                      <span className="[font-family:'Poppins_Latin-Regular',Helvetica] text-[72px] font-light leading-none tracking-[0] text-white">
+                        $
+                      </span>
+                    </div>
+                  </div>
+                ) : activeFeature === "Passkey Onboarding" ? (
                   <div className="grid grid-cols-[50px_auto] items-start gap-x-5 gap-y-10">
                     <div className="relative row-span-3 flex min-h-[280px] w-[50px] items-start justify-center">
                       <div className="absolute left-1/2 top-0 h-[280px] w-[50px] -translate-x-1/2 rounded-[32px] border-8 border-solid border-[#659acd]" />
