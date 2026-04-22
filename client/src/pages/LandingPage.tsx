@@ -237,7 +237,9 @@ export const LandingPage = (): JSX.Element => {
         <section className="relative mx-auto w-full max-w-none overflow-hidden bg-white px-4 pb-16 pt-12 sm:px-6 md:px-10 lg:px-16 xl:px-40 xl:pb-24 xl:pt-20">
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[298px_1fr] lg:gap-[116px]">
             <LivePriceSection />
-            <MarketInsightsSection />
+            <div className="lg:pl-[30px]">
+              <MarketInsightsSection />
+            </div>
           </div>
         </section>
         <section className="mx-auto w-full max-w-none px-4 pb-14 pt-8 sm:px-6 md:px-8">
