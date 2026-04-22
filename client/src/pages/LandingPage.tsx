@@ -18,7 +18,7 @@ const statCards = [
     label: "Seed Phrases",
     desktopPosition: "xl:absolute xl:left-[74px] xl:top-[174px]",
     wrapperClass:
-      "rounded-3xl border border-solid border-[#0000001f] bg-white",
+      "aspect-square rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
       "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-[#163d6c]",
     labelClass:
@@ -29,7 +29,7 @@ const statCards = [
     label: "Chains Supported",
     desktopPosition: "xl:absolute xl:left-[587px] xl:top-[255px]",
     wrapperClass:
-      "rounded-3xl border border-solid border-[#0000001f] bg-white",
+      "aspect-square rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
       "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-[#163d6c]",
     labelClass:
@@ -39,7 +39,7 @@ const statCards = [
     value: "5 min",
     label: "Prediction Markets",
     desktopPosition: "xl:absolute xl:left-[170px] xl:top-[517px]",
-    wrapperClass: "rounded-3xl bg-[#659acd]",
+    wrapperClass: "aspect-square rounded-3xl bg-[#659acd]",
     valueClass:
       "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-white",
     labelClass:
