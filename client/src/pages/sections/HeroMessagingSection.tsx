@@ -25,13 +25,16 @@ export const HeroMessagingSection = (): JSX.Element => {
     <section className="relative w-full xl:pt-[180px]">
       <div className="flex w-full max-w-[455px] flex-col items-start gap-8 md:gap-10 xl:ml-auto xl:max-w-none xl:gap-12">
         <header className="flex w-full flex-col items-start gap-4">
-          <h1 className="flex w-full flex-wrap items-baseline gap-x-2 [font-family:'Poppins_Latin-Bold',Helvetica] text-[28px] font-bold leading-[1.15] tracking-[0] sm:text-[32px] xl:flex-nowrap xl:whitespace-nowrap xl:text-[26px]">
+          <div className="flex max-w-[342px] flex-col items-start gap-1">
             {headingLines.map((line) => (
-              <span key={line.text} className={`${line.color} w-fit`}>
+              <h1
+                key={line.text}
+                className={`${line.color} w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[42px] font-bold leading-[1.15] tracking-[0] sm:text-[48px] xl:text-[54px]`}
+              >
                 {line.text}
-              </span>
+              </h1>
             ))}
-          </h1>
+          </div>
           <p className="max-w-[360px] [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[1.5] tracking-[0] text-[#00000099] sm:text-lg">
             Sign in with a passkey, swap tokens, buy &amp; sell crypto, and
             trade prediction markets. All in one place.
