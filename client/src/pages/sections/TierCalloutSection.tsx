@@ -49,7 +49,7 @@ export const TierCalloutSection = (): JSX.Element => {
               <img
                 src="/figmaAssets/button-1.svg"
                 alt="Wallet"
-                className="h-[70px] w-[70px]"
+                className="h-[105px] w-[105px]"
               />
             </div>
 
