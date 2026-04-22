@@ -152,13 +152,20 @@ export const PasskeySecuritySection = (): JSX.Element => {
             })}
           </nav>
         </header>
-        <Card className="w-full overflow-hidden rounded-3xl border-0 bg-[#ffffff14] shadow-none">
-          <CardContent className="p-0">
-            <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[45%_55%] lg:items-center lg:gap-0 lg:px-16 lg:py-[60px] xl:px-20 xl:py-[80px] 2xl:px-[100px] 2xl:py-[100px]">
-              <div className="flex flex-col items-start">
+        <Card className="w-full overflow-hidden rounded-2xl border-0 bg-[#ffffff14] shadow-none lg:h-[400px]">
+          <CardContent className="h-full p-0">
+            <div className="grid h-full min-h-[350px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[45%_55%] lg:items-stretch lg:gap-0 lg:p-10">
+              <div
+                className={`flex h-full flex-col items-start ${
+                  activeFeature === "Passkey Onboarding" ||
+                  activeFeature === "Instant Token Swaps"
+                    ? "lg:justify-between"
+                    : "lg:justify-center"
+                }`}
+              >
                 {activeFeature === "Buy & Sell Crypto" || activeFeature === "Multi-Chain, One Wallet" || activeFeature === "Gasless Transactions" || activeFeature === "Earn Yield" ? null : activeFeature === "Instant Token Swaps" ? (
                   <div
-                    className="mb-6 flex h-[100px] w-[116px] flex-col items-center justify-center gap-2 text-[#f5a623]"
+                    className="mb-6 flex h-[80px] w-[80px] flex-col items-center justify-center gap-2 text-[#f5a623]"
                     aria-label={content.illustrationAlt}
                   >
                     <svg
@@ -196,15 +203,16 @@ export const PasskeySecuritySection = (): JSX.Element => {
                   </div>
                 ) : (
                   <img
-                    className="mb-6 h-[100px] w-[116px] object-contain"
+                    className="mb-6 h-[80px] w-[80px] object-contain"
                     alt={content.illustrationAlt}
                     src={content.illustration}
                   />
                 )}
-                <h3 className="[font-family:'Poppins_Latin-Bold',Helvetica] text-2xl font-bold leading-[normal] tracking-[0] text-white">
+                <div className="flex flex-col items-start">
+                <h3 className="[font-family:'Poppins_Latin-Bold',Helvetica] text-[22px] font-bold leading-[normal] tracking-[0] text-white">
                   {content.title}
                 </h3>
-                <p className="mt-4 max-w-[530px] [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#ffffffcc] md:text-lg">
+                <p className="mt-4 max-w-[530px] [font-family:'Poppins_Latin-Regular',Helvetica] text-[15px] font-normal leading-[1.7] tracking-[0] text-[#ffffffcc]">
                   {content.description}
                 </p>
                 {activeFeature === "Buy & Sell Crypto" && (
@@ -227,6 +235,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
                     Phase 2
                   </div>
                 )}
+                </div>
               </div>
               <div
                 className={`flex items-center justify-center lg:justify-start ${
@@ -247,38 +256,34 @@ export const PasskeySecuritySection = (): JSX.Element => {
                     </div>
                   </div>
                 ) : activeFeature === "Passkey Onboarding" ? (
-                  <div className="grid grid-cols-[50px_auto] items-start gap-x-5 gap-y-10">
-                    <div className="relative row-span-3 flex min-h-[280px] w-[50px] items-start justify-center">
-                      <div className="absolute left-1/2 top-0 h-[280px] w-[50px] -translate-x-1/2 rounded-[32px] border-8 border-solid border-[#659acd]" />
-                      {onboardingSteps.map((step, index) => {
-                        const positions = [
-                          "top-0",
-                          "top-[115px]",
-                          "top-[230px]",
-                        ];
-
-                        return (
-                          <div
+                  <div className="relative flex h-full w-full max-w-[360px] items-stretch lg:min-h-[280px]">
+                    <div className="relative w-[40px] shrink-0">
+                      <div className="absolute left-1/2 top-[20px] h-[calc(100%-40px)] w-[2px] -translate-x-1/2 bg-[#659acd]" />
+                      <ul className="relative z-10 flex h-full flex-col items-center justify-evenly">
+                        {onboardingSteps.map((step) => (
+                          <li
                             key={step.number}
-                            className={`absolute left-1/2 flex h-[50px] w-[50px] -translate-x-1/2 items-center justify-center rounded-[32px] border-8 border-solid border-white bg-transparent ${positions[index]}`}
+                            className="flex h-[40px] w-[40px] items-center justify-center rounded-full border-2 border-solid border-white bg-[#061237]"
                           >
-                            <span className="[font-family:'Poppins_Latin-Regular',Helvetica] text-xl font-normal leading-[normal] tracking-[0] text-[#ffffffcc]">
+                            <span className="[font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-none tracking-[0] text-white">
                               {step.number}
                             </span>
-                          </div>
-                        );
-                      })}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    {onboardingSteps.map((step) => (
-                      <div
-                        key={step.label}
-                        className="flex min-h-[50px] items-center"
-                      >
-                        <p className="[font-family:'Poppins_Latin-Medium',Helvetica] text-xl font-medium leading-[normal] tracking-[0] text-[#ffffffcc]">
-                          {step.label}
-                        </p>
-                      </div>
-                    ))}
+                    <ul className="ml-5 flex h-full flex-1 flex-col justify-evenly">
+                      {onboardingSteps.map((step) => (
+                        <li
+                          key={step.label}
+                          className="flex h-[40px] items-center"
+                        >
+                          <p className="[font-family:'Poppins_Latin-Medium',Helvetica] text-[18px] font-medium leading-none tracking-[0] text-white">
+                            {step.label}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ) : activeFeature === "Multi-Chain, One Wallet" ? (
                   <img
