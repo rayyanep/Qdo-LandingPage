@@ -30,7 +30,7 @@ export const TierCalloutSection = (): JSX.Element => {
             <Button
               type="button"
               variant="secondary"
-              className="absolute left-[105px] bottom-[42px] h-auto w-fit rotate-[20deg] origin-bottom-left rounded-3xl border-0 bg-white px-5 py-3 text-center [font-family:'Poppins',Helvetica] text-base font-semibold leading-[22px] tracking-[0] text-[#cb7e1f] shadow-sm hover:bg-white/90"
+              className="absolute left-[105px] bottom-[42px] h-auto w-fit rotate-[40deg] origin-bottom-left rounded-3xl border-0 bg-white px-5 py-3 text-center [font-family:'Poppins',Helvetica] text-base font-semibold leading-[22px] tracking-[0] text-[#cb7e1f] shadow-sm hover:bg-white/90"
             >
               Gamified Rewards
             </Button>
