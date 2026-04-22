@@ -14,7 +14,7 @@ export const TierCalloutSection = (): JSX.Element => {
           <div className="relative mt-auto h-[280px] w-full">
             {/* Dollar icon top-right */}
             <div className="absolute right-[10px] top-[100px] flex h-[71px] w-[71px] rotate-[30deg] items-center justify-center rounded-full bg-white shadow-sm">
-              <span className="[font-family:'Poppins',Helvetica] text-3xl font-bold text-[#cb7e1f]">$</span>
+              <span className="[font-family:'Poppins',Helvetica] text-3xl font-light text-[#cb7e1f]">$</span>
             </div>
 
             {/* Anti-Fraud Engine - top, slight tilt left */}
