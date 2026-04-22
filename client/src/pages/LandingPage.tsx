@@ -95,7 +95,7 @@ export const LandingPage = (): JSX.Element => {
                   </CardContent>
                 </Card>
                 <Card
-                  className={`hidden xl:flex absolute right-[15px] top-[140px] xl:w-[132px] xl:h-[132px] ${statCards[1].wrapperClass} shadow-none`}
+                  className={`hidden xl:flex absolute right-[30px] top-[140px] xl:w-[132px] xl:h-[132px] ${statCards[1].wrapperClass} shadow-none`}
                 >
                   <CardContent className="flex h-full w-full min-w-[120px] flex-col items-center justify-center gap-2 px-3 py-2">
                     <div
@@ -111,7 +111,7 @@ export const LandingPage = (): JSX.Element => {
                   </CardContent>
                 </Card>
                 <Card
-                  className={`hidden xl:flex absolute bottom-[10px] left-[55px] xl:w-[132px] xl:h-[132px] ${statCards[2].wrapperClass} shadow-none`}
+                  className={`hidden xl:flex absolute bottom-[10px] left-[70px] xl:w-[132px] xl:h-[132px] ${statCards[2].wrapperClass} shadow-none`}
                 >
                   <CardContent className="flex h-full w-full min-w-[120px] flex-col items-center justify-center gap-2 px-3 py-2">
                     <div
