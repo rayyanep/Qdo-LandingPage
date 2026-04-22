@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import iPhoneSwapImage from "@assets/iPhone_13_Pro_1776824127185.png";
+import multiChainImage from "@assets/Layer_1_1776824309628.png";
 
 type FeatureKey =
   | "Passkey Onboarding"
@@ -61,11 +62,11 @@ const featureContent: Record<
   "Multi-Chain, One Wallet": {
     title: "Multi-Chain, One Wallet",
     description:
-      "One wallet, every chain. Manage Ethereum, Polygon, BNB Smart Chain and more from a single passkey-secured account — switch networks instantly with no extra setup.",
-    illustration: "/figmaAssets/eth--ethereum-.svg",
+      "Ethereum, BSC, and Polygon — unified under a single interface. Smart chain defaults route your transactions to the most cost-effective network automatically.",
+    illustration: "",
     illustrationAlt: "Multi-chain illustration",
-    rightImage: "/figmaAssets/image-5.png",
-    rightAlt: "Multi-chain interface preview",
+    rightImage: multiChainImage,
+    rightAlt: "Connected chains illustration",
   },
   "Gasless Transactions": {
     title: "Gasless Transactions",
@@ -146,7 +147,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
           <CardContent className="p-0">
             <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,530px)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:px-16 lg:py-[60px]">
               <div className="flex flex-col items-start">
-                {activeFeature === "Buy & Sell Crypto" ? null : activeFeature === "Instant Token Swaps" ? (
+                {activeFeature === "Buy & Sell Crypto" || activeFeature === "Multi-Chain, One Wallet" ? null : activeFeature === "Instant Token Swaps" ? (
                   <div
                     className="mb-6 flex h-[100px] w-[116px] flex-col items-center justify-center gap-2 text-[#f5a623]"
                     aria-label={content.illustrationAlt}
@@ -200,6 +201,11 @@ export const PasskeySecuritySection = (): JSX.Element => {
                 {activeFeature === "Buy & Sell Crypto" && (
                   <div className="mt-8 inline-flex h-auto items-center justify-center rounded-3xl bg-[#659acd] px-5 py-3 [font-family:'Poppins',Helvetica] text-sm font-semibold leading-[22px] tracking-[0] text-white">
                     On/Off Ramp
+                  </div>
+                )}
+                {activeFeature === "Multi-Chain, One Wallet" && (
+                  <div className="mt-8 inline-flex h-auto items-center justify-center rounded-3xl bg-[#a87a3d] px-5 py-3 [font-family:'Poppins',Helvetica] text-sm font-semibold leading-[22px] tracking-[0] text-white">
+                    3 Chains
                   </div>
                 )}
               </div>
