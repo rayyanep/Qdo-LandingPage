@@ -236,7 +236,9 @@ export const PasskeySecuritySection = (): JSX.Element => {
                     ? "-mx-6 -mb-8 -mt-8 self-stretch md:-mx-10 md:-mb-10 md:-mt-10 lg:-my-[60px] lg:-mr-16 lg:ml-0 lg:justify-end"
                     : activeFeature === "Instant Token Swaps"
                       ? "lg:pl-[15%] 2xl:-mb-10 2xl:self-stretch 2xl:pt-[15px]"
-                      : "lg:pl-[15%]"
+                      : activeFeature === "Buy & Sell Crypto"
+                        ? "h-full lg:items-center lg:justify-center lg:pl-0"
+                        : "lg:pl-[15%]"
                 }`}
               >
                 {activeFeature === "Buy & Sell Crypto" ? (
