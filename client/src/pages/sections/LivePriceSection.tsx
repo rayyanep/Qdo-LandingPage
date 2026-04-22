@@ -31,7 +31,23 @@ const metadata = ["Settlement: USDC", "Oracle: Chainlink"];
 export const LivePriceSection = (): JSX.Element => {
   return (
     <section className="relative w-full max-w-[455px]">
-      <div className="flex flex-col items-start gap-12">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-[230px] -translate-x-1/2 -translate-y-1/2 aspect-square w-[140%] max-w-[640px] rounded-full border-[30px] border-solid border-[#f5f6fa] bg-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-[230px] -translate-x-1/2 -translate-y-1/2 aspect-square w-[120%] max-w-[555px] rounded-full border-[20px] border-solid border-white/60 bg-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-[230px] -translate-x-1/2 -translate-y-1/2 aspect-square w-[100%] max-w-[470px] rounded-full border-[50px] border-solid border-[#eef0f5] bg-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-[230px] -translate-x-1/2 -translate-y-1/2 aspect-square w-[60%] max-w-[260px] rounded-full border-[50px] border-solid border-white/70 bg-transparent"
+      />
+      <div className="relative flex flex-col items-start gap-12">
         <div className="flex w-full flex-col items-start gap-8">
           <header className="flex items-center gap-[22px]">
             <img
