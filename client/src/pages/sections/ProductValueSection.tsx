@@ -35,7 +35,7 @@ export const ProductValueSection = (): JSX.Element => {
         <CardContent className="p-0">
           <div className="flex w-full flex-col gap-6 md:flex-row md:items-center md:gap-[59px]">
             <ul
-              className="flex flex-nowrap items-center gap-5 sm:gap-7 whitespace-nowrap"
+              className="flex flex-wrap items-center gap-x-5 gap-y-3 sm:flex-nowrap sm:gap-7 sm:whitespace-nowrap"
               aria-label="Supported blockchains"
             >
               {chains.map((chain) => (
@@ -61,7 +61,7 @@ export const ProductValueSection = (): JSX.Element => {
               <h2 className="self-stretch [font-family:'Poppins_Latin-SemiBold',Helvetica] text-base font-semibold leading-[normal] tracking-[0] text-[#1a3d6c]">
                 Smart defaults:
               </h2>
-              <p className="self-stretch whitespace-nowrap [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#00000099]">
+              <p className="self-stretch sm:whitespace-nowrap [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#00000099]">
                 Polygon for everyday · BSC for MENA/Asia · ETH for high-value
               </p>
             </div>
