@@ -32,7 +32,7 @@ export const CustodyTierSection = (): JSX.Element => {
               </h3>
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#659acd]">
-                  <span className="self-stretch [font-family:'Poppins',Helvetica] text-center text-xl font-semibold leading-[22px] tracking-[0] text-white">
+                  <span className="[font-family:'Poppins',Helvetica] text-center text-[30px] font-semibold leading-none tracking-[0] text-white">
                     {item.number}
                   </span>
                 </div>
