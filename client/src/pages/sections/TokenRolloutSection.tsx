@@ -144,7 +144,7 @@ export const TokenRolloutSection = (): JSX.Element => {
                 key={phase.title}
                 className="rounded-3xl border-0 bg-[#ffffff14] shadow-none"
               >
-                <CardContent className="flex h-[400px] flex-col overflow-hidden rounded-3xl p-6">
+                <CardContent className="flex h-[520px] flex-col overflow-hidden rounded-3xl p-6">
                   <div className="mb-6">
                     <div
                       className={`inline-flex items-center justify-center rounded-3xl px-3 py-1 ${phase.badgeClassName}`}
