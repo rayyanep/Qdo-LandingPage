@@ -53,7 +53,7 @@ export const LandingPage = (): JSX.Element => {
       <div className="mx-auto flex min-h-screen w-full min-w-0 flex-col overflow-x-hidden bg-white">
         <HeroProductDisplaySection />
         <div className="relative w-full">
-          <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-10 px-4 py-10 sm:px-6 xl:grid-cols-[minmax(0,720px)_minmax(0,1fr)] xl:items-center xl:gap-16 xl:px-16 xl:py-16">
+          <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-10 px-4 py-10 sm:px-6 xl:grid-cols-[minmax(0,560px)_minmax(0,1fr)] xl:items-center xl:gap-10 xl:px-10 xl:py-16">
             <div className="order-2 xl:order-none">
               <div className="relative mx-auto w-full max-w-[497px] xl:max-w-none xl:h-[660px]">
                 <div
@@ -79,7 +79,7 @@ export const LandingPage = (): JSX.Element => {
                 />
 
                 <Card
-                  className={`hidden xl:flex absolute top-[40px] xl:right-[calc(50%+258px)] xl:w-[132px] xl:h-[132px] ${statCards[0].wrapperClass} shadow-none`}
+                  className={`hidden xl:flex absolute left-0 top-[40px] xl:w-[132px] xl:h-[132px] ${statCards[0].wrapperClass} shadow-none`}
                 >
                   <CardContent className="flex h-full w-full min-w-[120px] flex-col items-center justify-center gap-2 px-3 py-2">
                     <div
