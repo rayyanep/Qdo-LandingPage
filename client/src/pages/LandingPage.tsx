@@ -137,7 +137,7 @@ export const LandingPage = (): JSX.Element => {
                     key={card.label}
                     className={`${card.wrapperClass} shadow-none`}
                   >
-                    <CardContent className="flex flex-col items-center gap-1 px-2 pb-3 pt-2 sm:px-4 sm:pb-4 sm:pt-3">
+                    <CardContent className="flex h-full min-h-[96px] flex-col items-center justify-center gap-1 px-2 py-3 sm:min-h-[120px] sm:px-4 sm:py-4">
                       <div
                         className={`relative self-stretch text-center text-[22px] sm:text-[28px] leading-none tracking-[0] ${card.valueClass}`}
                       >
