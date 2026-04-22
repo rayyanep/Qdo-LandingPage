@@ -29,7 +29,7 @@ export const HeroMessagingSection = (): JSX.Element => {
             {headingLines.map((line) => (
               <h1
                 key={line.text}
-                className={`${line.color} w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[42px] font-bold leading-[1.15] tracking-[0] sm:text-[48px] xl:text-[54px]`}
+                className={`${line.color} w-fit whitespace-nowrap [font-family:'Poppins_Latin-Bold',Helvetica] text-[42px] font-bold leading-[1.15] tracking-[0] sm:text-[48px] xl:text-[54px]`}
               >
                 {line.text}
               </h1>
