@@ -451,6 +451,7 @@ body * {
   .onboarding-section .bottom-curve {
     position: relative;
     left: auto; top: auto; right: auto; bottom: auto;
+    transform: none;
   }
   .onboarding-section .headline { max-width: 100%; margin-bottom: 40px; }
   .onboarding-section .headline h1 { font-size: 38px; }
