@@ -57,7 +57,7 @@ export const TierCalloutSection = (): JSX.Element => {
             <Button
               type="button"
               variant="secondary"
-              className="absolute bottom-[10px] left-[-10px] h-auto w-fit rounded-3xl border-0 bg-[#1a3d6c] px-5 py-3 text-center [font-family:'Poppins',Helvetica] text-base font-semibold leading-[22px] tracking-[0] text-white shadow-sm hover:bg-[#1a3d6c]/90"
+              className="absolute bottom-[-32px] left-[-10px] h-auto w-fit rounded-3xl border-0 bg-[#1a3d6c] px-5 py-3 text-center [font-family:'Poppins',Helvetica] text-base font-semibold leading-[22px] tracking-[0] text-white shadow-sm hover:bg-[#1a3d6c]/90"
             >
               On-Chain Tracking
             </Button>
