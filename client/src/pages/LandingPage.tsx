@@ -58,19 +58,19 @@ export const LandingPage = (): JSX.Element => {
               <div className="relative mx-auto w-full max-w-[442px] xl:max-w-none xl:h-[600px]">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[110%] max-w-[640px] rounded-full border-2 border-solid border-[#c9d2e2] bg-[#f3f5fa]/60 xl:w-[640px]"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[110%] max-w-[640px] rounded-full border-[30px] border-solid border-[#eef0f5] bg-transparent xl:w-[640px]"
                 />
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[95%] max-w-[555px] rounded-full border-2 border-solid border-white/70 bg-white/30 xl:w-[555px]"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[95%] max-w-[555px] rounded-full border-[30px] border-solid border-white/60 bg-transparent xl:w-[555px]"
                 />
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[80%] max-w-[470px] rounded-full border-2 border-solid border-[#b9c4d8] bg-[#eaeef6]/70 xl:w-[470px]"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[80%] max-w-[470px] rounded-full border-[30px] border-solid border-[#eef0f5] bg-transparent xl:w-[470px]"
                 />
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[45%] max-w-[260px] rounded-full border-2 border-solid border-white/80 bg-white/40 xl:w-[260px]"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[45%] max-w-[260px] rounded-full border-[30px] border-solid border-white/70 bg-transparent xl:w-[260px]"
                 />
                 <img
                   className="relative mx-auto block h-auto w-full max-w-[442px] xl:absolute xl:left-1/2 xl:top-1/2 xl:h-[534px] xl:w-[442px] xl:-translate-x-1/2 xl:-translate-y-1/2"
