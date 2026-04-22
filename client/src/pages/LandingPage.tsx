@@ -15,14 +15,14 @@ import { TokenRolloutSection } from "./sections/TokenRolloutSection";
 const statCards = [
   {
     value: "0",
-    label: "Seed Phrases",
+    label: "Seed\nPhrases",
     desktopPosition: "xl:absolute xl:left-[74px] xl:top-[174px]",
     wrapperClass:
       "aspect-square rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
       "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-[#163d6c]",
     labelClass:
-      "[font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal text-[#00000099]",
+      "whitespace-pre-line [font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal text-[#00000099]",
   },
   {
     value: "3",
