@@ -45,11 +45,11 @@ export const TierCalloutSection = (): JSX.Element => {
             </Button>
 
             {/* Wallet icon - centered above On-Chain Tracking */}
-            <div className="absolute bottom-[14px] left-[33px] flex h-[90px] w-[90px] items-center justify-center rounded-full bg-[#659acd] shadow-sm">
+            <div className="absolute bottom-[14px] left-[48px] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#659acd] shadow-sm">
               <img
                 src="/figmaAssets/button-1.svg"
                 alt="Wallet"
-                className="h-[57px] w-[57px]"
+                className="h-[70px] w-[70px]"
               />
             </div>
 
