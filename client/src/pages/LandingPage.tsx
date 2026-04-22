@@ -253,10 +253,10 @@ export const LandingPage = (): JSX.Element => {
         </section>
         <section className="mx-auto w-full max-w-none px-4 pb-16 pt-8 sm:px-6 md:px-10 lg:px-16">
           <header className="mb-10 inline-flex flex-col items-start">
-            <h2 className="mt-[-1.00px] w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[28px] font-bold leading-[1.5] tracking-[0] text-[#163d6c] sm:text-[34px] md:text-[40px]">
+            <h2 className="w-fit [font-family:'Poppins_Latin-SemiBold',Helvetica] text-[38px] font-semibold leading-[1.08] tracking-[-0.03em] text-[#163d6c] sm:text-[42px] md:text-[52px] xl:text-[58px]">
               Self-custody means
             </h2>
-            <p className="w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[28px] font-bold leading-[1.5] tracking-[0] text-[#659acd] sm:text-[34px] md:text-[40px]">
+            <p className="mt-[10px] w-fit [font-family:'Poppins_Latin-SemiBold',Helvetica] text-[38px] font-semibold leading-[1.08] tracking-[-0.03em] text-[#659acd] sm:text-[42px] md:text-[52px] xl:text-[58px]">
               you own everything
             </p>
           </header>
