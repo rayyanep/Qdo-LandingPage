@@ -140,7 +140,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
                   type="button"
                   variant="ghost"
                   onClick={() => setActiveFeature(feature)}
-                  className={`h-auto min-w-0 shrink whitespace-nowrap rounded-[50px] px-[30px] py-3 [font-family:'Poppins',Helvetica] text-center text-[14px] font-semibold leading-[22px] tracking-[0] ${
+                  className={`h-auto min-w-0 shrink whitespace-nowrap rounded-[50px] px-[40px] py-3 [font-family:'Poppins',Helvetica] text-center text-[14px] font-semibold leading-[22px] tracking-[0] ${
                     isActive
                       ? "bg-white text-[#1B2B4B] hover:bg-white/95"
                       : "bg-[#659acd]/80 text-white hover:bg-[#659acd]"
