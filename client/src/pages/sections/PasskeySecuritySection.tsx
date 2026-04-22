@@ -129,7 +129,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
           </div>
           <nav
             aria-label="Wallet features"
-            className="flex w-full flex-wrap items-center justify-center gap-x-4 gap-y-3 md:gap-x-5 lg:justify-between lg:gap-x-3 xl:gap-x-4 2xl:gap-x-6"
+            className="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-3 md:gap-x-4 lg:flex-nowrap lg:justify-between"
           >
             {featureTabs.map((feature) => {
               const isActive = feature === activeFeature;
@@ -140,7 +140,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
                   type="button"
                   variant="ghost"
                   onClick={() => setActiveFeature(feature)}
-                  className={`h-auto flex-grow whitespace-nowrap rounded-[50px] px-6 py-4 [font-family:'Poppins',Helvetica] text-center text-sm font-semibold leading-[22px] tracking-[0] xl:px-8 xl:py-[18px] xl:text-base 2xl:px-10 2xl:py-6 2xl:text-lg ${
+                  className={`h-auto min-w-0 shrink whitespace-nowrap rounded-[50px] px-5 py-3 [font-family:'Poppins',Helvetica] text-center text-[14px] font-semibold leading-[22px] tracking-[0] ${
                     isActive
                       ? "bg-white text-[#1B2B4B] hover:bg-white/95"
                       : "bg-[#659acd]/80 text-white hover:bg-[#659acd]"
@@ -154,7 +154,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
         </header>
         <Card className="w-full overflow-hidden rounded-3xl border-0 bg-[#ffffff14] shadow-none">
           <CardContent className="p-0">
-            <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,530px)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:px-16 lg:py-[60px] xl:gap-20 xl:px-20 xl:py-[80px] 2xl:gap-24 2xl:px-[100px] 2xl:py-[100px]">
+            <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[45%_55%] lg:items-center lg:gap-0 lg:px-16 lg:py-[60px] xl:px-20 xl:py-[80px] 2xl:px-[100px] 2xl:py-[100px]">
               <div className="flex flex-col items-start">
                 {activeFeature === "Buy & Sell Crypto" || activeFeature === "Multi-Chain, One Wallet" || activeFeature === "Gasless Transactions" || activeFeature === "Earn Yield" ? null : activeFeature === "Instant Token Swaps" ? (
                   <div
@@ -232,7 +232,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
                 className={`flex items-center justify-center lg:justify-start ${
                   activeFeature === "Multi-Chain, One Wallet"
                     ? "-mx-6 -mb-8 -mt-8 self-stretch md:-mx-10 md:-mb-10 md:-mt-10 lg:-my-[60px] lg:-mr-16 lg:ml-0 lg:justify-end"
-                    : ""
+                    : "lg:pl-[15%]"
                 }`}
               >
                 {activeFeature === "Buy & Sell Crypto" ? (
