@@ -62,11 +62,11 @@ export const LandingPage = (): JSX.Element => {
                 />
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[95%] max-w-[555px] rounded-full border-[30px] border-solid border-white/60 bg-transparent xl:w-[555px]"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[95%] max-w-[555px] rounded-full border-[20px] border-solid border-white/60 bg-transparent xl:w-[555px]"
                 />
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[80%] max-w-[470px] rounded-full border-[30px] border-solid border-[#eef0f5] bg-transparent xl:w-[470px]"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[80%] max-w-[470px] rounded-full border-[50px] border-solid border-[#eef0f5] bg-transparent xl:w-[470px]"
                 />
                 <div
                   aria-hidden="true"
