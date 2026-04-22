@@ -81,7 +81,7 @@ export const LandingPage = (): JSX.Element => {
                 <Card
                   className={`hidden xl:flex absolute left-0 top-[40px] xl:w-[180px] xl:h-[180px] ${statCards[0].wrapperClass} shadow-none`}
                 >
-                  <CardContent className="flex h-full min-w-[120px] flex-col items-center justify-center gap-1 px-5 py-4">
+                  <CardContent className="flex h-full min-w-[120px] flex-col items-center justify-center gap-0 px-3 py-2">
                     <div
                       className={`relative self-stretch text-center leading-[normal] tracking-[0] ${statCards[0].valueClass}`}
                     >
@@ -97,7 +97,7 @@ export const LandingPage = (): JSX.Element => {
                 <Card
                   className={`hidden xl:flex absolute right-0 top-[140px] xl:w-[180px] xl:h-[180px] ${statCards[1].wrapperClass} shadow-none`}
                 >
-                  <CardContent className="flex h-full min-w-[120px] flex-col items-center justify-center gap-1 px-5 py-4">
+                  <CardContent className="flex h-full min-w-[120px] flex-col items-center justify-center gap-0 px-3 py-2">
                     <div
                       className={`relative self-stretch text-center leading-[normal] tracking-[0] ${statCards[1].valueClass}`}
                     >
@@ -113,7 +113,7 @@ export const LandingPage = (): JSX.Element => {
                 <Card
                   className={`hidden xl:flex absolute bottom-[10px] left-[40px] xl:w-[180px] xl:h-[180px] ${statCards[2].wrapperClass} shadow-none`}
                 >
-                  <CardContent className="flex h-full min-w-[120px] flex-col items-center justify-center gap-1 px-5 py-4">
+                  <CardContent className="flex h-full min-w-[120px] flex-col items-center justify-center gap-0 px-3 py-2">
                     <div
                       className={`relative self-stretch text-center leading-[normal] tracking-[0] ${statCards[2].valueClass}`}
                     >
