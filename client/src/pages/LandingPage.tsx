@@ -58,7 +58,7 @@ export const LandingPage = (): JSX.Element => {
               <div className="relative mx-auto w-full max-w-[442px] xl:max-w-none xl:h-[600px]">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[110%] max-w-[640px] rounded-full border-[30px] border-solid border-[#eef0f5] bg-transparent xl:w-[640px]"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[110%] max-w-[640px] rounded-full border-[30px] border-solid border-[#f5f6fa] bg-transparent xl:w-[640px]"
                 />
                 <div
                   aria-hidden="true"
