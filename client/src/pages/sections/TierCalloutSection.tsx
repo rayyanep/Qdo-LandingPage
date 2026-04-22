@@ -39,7 +39,7 @@ export const TierCalloutSection = (): JSX.Element => {
             <Button
               type="button"
               variant="secondary"
-              className="absolute right-[-30px] top-[150px] h-auto w-fit rotate-[-12deg] rounded-3xl border-0 bg-[#659acd] px-5 py-3 text-center [font-family:'Poppins',Helvetica] text-base font-semibold leading-[22px] tracking-[0] text-white shadow-sm hover:bg-[#659acd]/90"
+              className="absolute right-[-30px] top-[170px] h-auto w-fit rotate-[-12deg] rounded-3xl border-0 bg-[#659acd] px-5 py-3 text-center [font-family:'Poppins',Helvetica] text-base font-semibold leading-[22px] tracking-[0] text-white shadow-sm hover:bg-[#659acd]/90"
             >
               Real-Time Payouts
             </Button>
