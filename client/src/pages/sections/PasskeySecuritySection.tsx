@@ -2,7 +2,15 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-const featureTabs = [
+type FeatureKey =
+  | "Passkey Onboarding"
+  | "Instant Token Swaps"
+  | "Buy & Sell Crypto"
+  | "Multi-Chain, One Wallet"
+  | "Gasless Transactions"
+  | "Earn Yield";
+
+const featureTabs: FeatureKey[] = [
   "Passkey Onboarding",
   "Instant Token Swaps",
   "Buy & Sell Crypto",
@@ -11,6 +19,73 @@ const featureTabs = [
   "Earn Yield",
 ];
 
+const featureContent: Record<
+  FeatureKey,
+  {
+    title: string;
+    description: string;
+    illustration: string;
+    illustrationAlt: string;
+    rightImage: string;
+    rightAlt: string;
+  }
+> = {
+  "Passkey Onboarding": {
+    title: "Passkey Onboarding",
+    description:
+      "Create your wallet with Face ID or fingerprint — no seed phrases, no passwords. Powered by ERC-4337 account abstraction and EIP-7702, your wallet lives securely on your device with smart contract recovery built in.",
+    illustration: "/figmaAssets/group-2.png",
+    illustrationAlt: "Passkey onboarding illustration",
+    rightImage: "",
+    rightAlt: "",
+  },
+  "Instant Token Swaps": {
+    title: "Instant Token Swaps",
+    description:
+      "Swap tokens across chains in seconds with best-execution routing. Aggregated liquidity from leading DEXs gives you the best rate on every trade — no spread, no hidden fees, just transparent on-chain pricing.",
+    illustration: "/figmaAssets/group-1.png",
+    illustrationAlt: "Token swap illustration",
+    rightImage: "/figmaAssets/image-3.png",
+    rightAlt: "Swap interface preview",
+  },
+  "Buy & Sell Crypto": {
+    title: "Buy & Sell Crypto",
+    description:
+      "Top up with your card or bank in minutes. Funds land directly in your self-custody wallet with full transparency and competitive rates — no custodian holding your assets.",
+    illustration: "/figmaAssets/group-1-1.png",
+    illustrationAlt: "Buy and sell illustration",
+    rightImage: "/figmaAssets/image-4.png",
+    rightAlt: "Buy and sell interface preview",
+  },
+  "Multi-Chain, One Wallet": {
+    title: "Multi-Chain, One Wallet",
+    description:
+      "One wallet, every chain. Manage Ethereum, Polygon, BNB Smart Chain and more from a single passkey-secured account — switch networks instantly with no extra setup.",
+    illustration: "/figmaAssets/eth--ethereum-.svg",
+    illustrationAlt: "Multi-chain illustration",
+    rightImage: "/figmaAssets/image-5.png",
+    rightAlt: "Multi-chain interface preview",
+  },
+  "Gasless Transactions": {
+    title: "Gasless Transactions",
+    description:
+      "Skip the gas. Sponsored paymasters and ERC-4337 account abstraction let you pay fees in stablecoins — or have them covered entirely — so your first transaction is as easy as tapping a button.",
+    illustration: "/figmaAssets/group-2.png",
+    illustrationAlt: "Gasless transactions illustration",
+    rightImage: "/figmaAssets/image-6.png",
+    rightAlt: "Gasless transactions preview",
+  },
+  "Earn Yield": {
+    title: "Earn Yield",
+    description:
+      "Put idle stablecoins to work. Earn competitive on-chain yield through vetted protocols with one tap — withdraw anytime, no lockups, full transparency.",
+    illustration: "/figmaAssets/group-1.png",
+    illustrationAlt: "Earn yield illustration",
+    rightImage: "/figmaAssets/image-7.png",
+    rightAlt: "Earn yield preview",
+  },
+};
+
 const onboardingSteps = [
   { number: "1", label: "Tap to start" },
   { number: "2", label: "Biometric scan" },
@@ -18,7 +93,10 @@ const onboardingSteps = [
 ];
 
 export const PasskeySecuritySection = (): JSX.Element => {
-  const [activeFeature, setActiveFeature] = useState("Passkey Onboarding");
+  const [activeFeature, setActiveFeature] = useState<FeatureKey>(
+    "Passkey Onboarding",
+  );
+  const content = featureContent[activeFeature];
 
   return (
     <section className="w-full bg-[#061237] px-6 py-20 md:px-10 lg:px-16 xl:px-40 xl:py-[120px]">
@@ -68,50 +146,59 @@ export const PasskeySecuritySection = (): JSX.Element => {
             <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,530px)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:px-16 lg:py-[60px]">
               <div className="flex flex-col items-start">
                 <img
-                  className="mb-6 h-[100px] w-[116px]"
-                  alt="Passkey onboarding illustration"
-                  src="/figmaAssets/group-2.png"
+                  className="mb-6 h-[100px] w-[116px] object-contain"
+                  alt={content.illustrationAlt}
+                  src={content.illustration}
                 />
                 <h3 className="[font-family:'Poppins_Latin-Bold',Helvetica] text-2xl font-bold leading-[normal] tracking-[0] text-white">
-                  Passkey Onboarding
+                  {content.title}
                 </h3>
                 <p className="mt-4 max-w-[530px] [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#ffffffcc] md:text-lg">
-                  Create your wallet with Face ID or fingerprint — no seed
-                  phrases, no passwords. Powered by ERC-4337 account abstraction
-                  and EIP-7702, your wallet lives securely on your device with
-                  smart contract recovery built in.
+                  {content.description}
                 </p>
               </div>
               <div className="flex items-center justify-center lg:justify-start">
-                <div className="grid grid-cols-[50px_auto] items-start gap-x-5 gap-y-10">
-                  <div className="relative row-span-3 flex min-h-[280px] w-[50px] items-start justify-center">
-                    <div className="absolute left-1/2 top-0 h-[280px] w-[50px] -translate-x-1/2 rounded-[32px] border-8 border-solid border-[#659acd]" />
-                    {onboardingSteps.map((step, index) => {
-                      const positions = ["top-0", "top-[115px]", "top-[230px]"];
+                {activeFeature === "Passkey Onboarding" ? (
+                  <div className="grid grid-cols-[50px_auto] items-start gap-x-5 gap-y-10">
+                    <div className="relative row-span-3 flex min-h-[280px] w-[50px] items-start justify-center">
+                      <div className="absolute left-1/2 top-0 h-[280px] w-[50px] -translate-x-1/2 rounded-[32px] border-8 border-solid border-[#659acd]" />
+                      {onboardingSteps.map((step, index) => {
+                        const positions = [
+                          "top-0",
+                          "top-[115px]",
+                          "top-[230px]",
+                        ];
 
-                      return (
-                        <div
-                          key={step.number}
-                          className={`absolute left-1/2 flex h-[50px] w-[50px] -translate-x-1/2 items-center justify-center rounded-[32px] border-8 border-solid border-white bg-transparent ${positions[index]}`}
-                        >
-                          <span className="[font-family:'Poppins_Latin-Regular',Helvetica] text-xl font-normal leading-[normal] tracking-[0] text-[#ffffffcc]">
-                            {step.number}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  {onboardingSteps.map((step) => (
-                    <div
-                      key={step.label}
-                      className="flex min-h-[50px] items-center"
-                    >
-                      <p className="[font-family:'Poppins_Latin-Medium',Helvetica] text-xl font-medium leading-[normal] tracking-[0] text-[#ffffffcc]">
-                        {step.label}
-                      </p>
+                        return (
+                          <div
+                            key={step.number}
+                            className={`absolute left-1/2 flex h-[50px] w-[50px] -translate-x-1/2 items-center justify-center rounded-[32px] border-8 border-solid border-white bg-transparent ${positions[index]}`}
+                          >
+                            <span className="[font-family:'Poppins_Latin-Regular',Helvetica] text-xl font-normal leading-[normal] tracking-[0] text-[#ffffffcc]">
+                              {step.number}
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
-                  ))}
-                </div>
+                    {onboardingSteps.map((step) => (
+                      <div
+                        key={step.label}
+                        className="flex min-h-[50px] items-center"
+                      >
+                        <p className="[font-family:'Poppins_Latin-Medium',Helvetica] text-xl font-medium leading-[normal] tracking-[0] text-[#ffffffcc]">
+                          {step.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <img
+                    src={content.rightImage}
+                    alt={content.rightAlt}
+                    className="max-h-[320px] w-auto max-w-full object-contain"
+                  />
+                )}
               </div>
             </div>
           </CardContent>
