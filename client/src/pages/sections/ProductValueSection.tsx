@@ -35,7 +35,7 @@ export const ProductValueSection = (): JSX.Element => {
         <CardContent className="p-0">
           <div className="flex w-full flex-col gap-6 md:flex-row md:items-center md:gap-[59px]">
             <ul
-              className="flex flex-wrap items-center gap-5 sm:gap-7"
+              className="flex flex-nowrap items-center gap-5 sm:gap-7 whitespace-nowrap"
               aria-label="Supported blockchains"
             >
               {chains.map((chain) => (
