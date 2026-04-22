@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import iPhoneSwapImage from "@assets/iPhone_13_Pro_1776824127185.png";
 
 type FeatureKey =
   | "Passkey Onboarding"
@@ -42,11 +43,11 @@ const featureContent: Record<
   "Instant Token Swaps": {
     title: "Instant Token Swaps",
     description:
-      "Swap tokens across chains in seconds with best-execution routing. Aggregated liquidity from leading DEXs gives you the best rate on every trade — no spread, no hidden fees, just transparent on-chain pricing.",
-    illustration: "/figmaAssets/group-1.png",
+      "Swap any supported token with best-price routing through DEX aggregators. Cross-chain swaps across Ethereum, BSC, and Polygon — all in a single tap.",
+    illustration: "",
     illustrationAlt: "Token swap illustration",
-    rightImage: "/figmaAssets/image-3.png",
-    rightAlt: "Swap interface preview",
+    rightImage: iPhoneSwapImage,
+    rightAlt: "Swap interface preview on iPhone",
   },
   "Buy & Sell Crypto": {
     title: "Buy & Sell Crypto",
@@ -145,11 +146,51 @@ export const PasskeySecuritySection = (): JSX.Element => {
           <CardContent className="p-0">
             <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,530px)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:px-16 lg:py-[60px]">
               <div className="flex flex-col items-start">
-                <img
-                  className="mb-6 h-[100px] w-[116px] object-contain"
-                  alt={content.illustrationAlt}
-                  src={content.illustration}
-                />
+                {activeFeature === "Instant Token Swaps" ? (
+                  <div
+                    className="mb-6 flex h-[100px] w-[116px] flex-col items-center justify-center gap-2 text-[#f5a623]"
+                    aria-label={content.illustrationAlt}
+                  >
+                    <svg
+                      width="96"
+                      height="28"
+                      viewBox="0 0 96 28"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M6 14h78m0 0L70 2m14 12L70 26"
+                        stroke="currentColor"
+                        strokeWidth="6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <svg
+                      width="96"
+                      height="28"
+                      viewBox="0 0 96 28"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M90 14H12m0 0l14-12M12 14l14 12"
+                        stroke="currentColor"
+                        strokeWidth="6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                ) : (
+                  <img
+                    className="mb-6 h-[100px] w-[116px] object-contain"
+                    alt={content.illustrationAlt}
+                    src={content.illustration}
+                  />
+                )}
                 <h3 className="[font-family:'Poppins_Latin-Bold',Helvetica] text-2xl font-bold leading-[normal] tracking-[0] text-white">
                   {content.title}
                 </h3>
