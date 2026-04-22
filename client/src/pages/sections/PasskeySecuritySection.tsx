@@ -110,26 +110,26 @@ export const PasskeySecuritySection = (): JSX.Element => {
   const content = featureContent[activeFeature];
 
   return (
-    <section className="w-full bg-[#061237] px-6 py-20 md:px-10 lg:px-16 xl:px-40 xl:py-[120px]">
-      <div className="mx-auto flex w-full max-w-none flex-col items-start gap-6">
+    <section className="w-full bg-[#061237] px-6 py-20 md:px-10 lg:px-16 xl:px-24 xl:py-[120px] 2xl:py-[160px]">
+      <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start gap-6 2xl:max-w-[1600px] 2xl:gap-10">
         <header className="flex w-full flex-col items-start gap-[54px]">
           <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
             <div className="flex flex-col items-start">
-              <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-[32px] font-bold leading-[normal] tracking-[0] text-white md:text-[40px]">
+              <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-[32px] font-bold leading-[normal] tracking-[0] text-white md:text-[40px] 2xl:text-[52px]">
                 Everything you need.
               </h2>
-              <p className="-mt-2 [font-family:'Poppins_Latin-Bold',Helvetica] text-[32px] font-bold leading-[normal] tracking-[0] text-[#659acd] md:text-[40px]">
+              <p className="-mt-2 [font-family:'Poppins_Latin-Bold',Helvetica] text-[32px] font-bold leading-[normal] tracking-[0] text-[#659acd] md:text-[40px] 2xl:text-[52px]">
                 Nothing you don&#39;t.
               </p>
             </div>
-            <p className="max-w-[419px] [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#ffffffcc] md:text-lg">
+            <p className="max-w-[419px] [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#ffffffcc] md:text-lg 2xl:max-w-[520px] 2xl:text-xl">
               A complete crypto wallet experience designed for simplicity — no
               seed phrases, no confusing gas settings, no learning curve.
             </p>
           </div>
           <nav
             aria-label="Wallet features"
-            className="flex w-full flex-wrap items-center gap-[17px]"
+            className="flex w-full flex-wrap items-center justify-center gap-x-4 gap-y-3 md:gap-x-5 lg:justify-between lg:gap-x-3 xl:gap-x-4 2xl:gap-x-6"
           >
             {featureTabs.map((feature) => {
               const isActive = feature === activeFeature;
@@ -140,10 +140,10 @@ export const PasskeySecuritySection = (): JSX.Element => {
                   type="button"
                   variant="ghost"
                   onClick={() => setActiveFeature(feature)}
-                  className={`h-auto rounded-3xl px-4 py-3 [font-family:'Poppins',Helvetica] text-center text-sm font-semibold leading-[22px] tracking-[0] ${
+                  className={`h-auto flex-grow whitespace-nowrap rounded-[50px] px-6 py-4 [font-family:'Poppins',Helvetica] text-center text-sm font-semibold leading-[22px] tracking-[0] xl:px-8 xl:py-[18px] xl:text-base 2xl:px-10 2xl:py-6 2xl:text-lg ${
                     isActive
-                      ? "bg-white text-[#000000cc] hover:bg-white/95"
-                      : "bg-[#659acd] text-white hover:bg-[#659acd]/90"
+                      ? "bg-white text-[#1B2B4B] hover:bg-white/95"
+                      : "bg-[#659acd]/80 text-white hover:bg-[#659acd]"
                   }`}
                 >
                   {feature}
@@ -154,7 +154,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
         </header>
         <Card className="w-full overflow-hidden rounded-3xl border-0 bg-[#ffffff14] shadow-none">
           <CardContent className="p-0">
-            <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,530px)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:px-16 lg:py-[60px]">
+            <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,530px)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:px-16 lg:py-[60px] xl:gap-20 xl:px-20 xl:py-[80px] 2xl:gap-24 2xl:px-[100px] 2xl:py-[100px]">
               <div className="flex flex-col items-start">
                 {activeFeature === "Buy & Sell Crypto" || activeFeature === "Multi-Chain, One Wallet" || activeFeature === "Gasless Transactions" || activeFeature === "Earn Yield" ? null : activeFeature === "Instant Token Swaps" ? (
                   <div
