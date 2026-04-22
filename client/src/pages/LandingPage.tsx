@@ -20,7 +20,7 @@ const statCards = [
     wrapperClass:
       "aspect-square rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[30px] sm:text-[35px] font-semibold text-[#163d6c]",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[37px] font-semibold text-[#163d6c]",
     labelClass:
       "whitespace-pre-line [font-family:'Poppins_Latin-Regular',Helvetica] text-xs sm:text-sm font-normal text-[#00000099]",
   },
@@ -31,7 +31,7 @@ const statCards = [
     wrapperClass:
       "aspect-square rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[30px] sm:text-[35px] font-semibold text-[#163d6c]",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[37px] font-semibold text-[#163d6c]",
     labelClass:
       "[font-family:'Poppins_Latin-Regular',Helvetica] text-xs sm:text-sm font-normal text-[#00000099]",
   },
@@ -41,7 +41,7 @@ const statCards = [
     desktopPosition: "xl:absolute xl:left-[170px] xl:top-[517px]",
     wrapperClass: "aspect-square rounded-3xl bg-[#659acd]",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[30px] sm:text-[35px] font-semibold text-white",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[37px] font-semibold text-white",
     labelClass:
       "whitespace-pre-line [font-family:'Poppins_Latin-Regular',Helvetica] text-xs sm:text-sm font-normal text-white",
   },
@@ -79,7 +79,7 @@ export const LandingPage = (): JSX.Element => {
                 />
 
                 <Card
-                  className={`hidden xl:flex absolute top-[40px] xl:right-[calc(50%+258px)] xl:w-[126px] xl:h-[126px] ${statCards[0].wrapperClass} shadow-none`}
+                  className={`hidden xl:flex absolute top-[40px] xl:right-[calc(50%+258px)] xl:w-[132px] xl:h-[132px] ${statCards[0].wrapperClass} shadow-none`}
                 >
                   <CardContent className="flex h-full w-full min-w-[120px] flex-col items-center justify-center gap-2 px-3 py-2">
                     <div
@@ -95,7 +95,7 @@ export const LandingPage = (): JSX.Element => {
                   </CardContent>
                 </Card>
                 <Card
-                  className={`hidden xl:flex absolute right-0 top-[140px] xl:w-[126px] xl:h-[126px] ${statCards[1].wrapperClass} shadow-none`}
+                  className={`hidden xl:flex absolute right-0 top-[140px] xl:w-[132px] xl:h-[132px] ${statCards[1].wrapperClass} shadow-none`}
                 >
                   <CardContent className="flex h-full w-full min-w-[120px] flex-col items-center justify-center gap-2 px-3 py-2">
                     <div
@@ -111,13 +111,13 @@ export const LandingPage = (): JSX.Element => {
                   </CardContent>
                 </Card>
                 <Card
-                  className={`hidden xl:flex absolute bottom-[10px] left-[40px] xl:w-[126px] xl:h-[126px] ${statCards[2].wrapperClass} shadow-none`}
+                  className={`hidden xl:flex absolute bottom-[10px] left-[40px] xl:w-[132px] xl:h-[132px] ${statCards[2].wrapperClass} shadow-none`}
                 >
                   <CardContent className="flex h-full w-full min-w-[120px] flex-col items-center justify-center gap-2 px-3 py-2">
                     <div
                       className={`relative self-stretch text-center leading-none tracking-[0] ${statCards[2].valueClass}`}
                     >
-                      <span className="[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[38px] font-semibold tracking-[0] text-white">
+                      <span className="[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[40px] font-semibold tracking-[0] text-white">
                         5{" "}
                       </span>
                       <span className="text-2xl">min</span>
