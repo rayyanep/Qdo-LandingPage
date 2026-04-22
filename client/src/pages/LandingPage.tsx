@@ -70,7 +70,7 @@ export const LandingPage = (): JSX.Element => {
                 />
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[45%] max-w-[260px] rounded-full border-[30px] border-solid border-white/70 bg-transparent xl:w-[260px]"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[45%] max-w-[260px] rounded-full border-[50px] border-solid border-white/70 bg-transparent xl:w-[260px]"
                 />
                 <img
                   className="relative mx-auto block h-auto w-full max-w-[442px] xl:absolute xl:left-1/2 xl:top-1/2 xl:h-[534px] xl:w-[442px] xl:-translate-x-1/2 xl:-translate-y-1/2"
