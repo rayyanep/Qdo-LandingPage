@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 html {
-  font-size: 18.5px;
+  font-size: 20px;
 }
 
 @layer components {
