@@ -209,7 +209,13 @@ export const PasskeySecuritySection = (): JSX.Element => {
                   </div>
                 )}
               </div>
-              <div className="flex items-center justify-center lg:justify-start">
+              <div
+                className={`flex items-center justify-center lg:justify-start ${
+                  activeFeature === "Multi-Chain, One Wallet"
+                    ? "-mx-6 -mb-8 -mt-8 self-stretch md:-mx-10 md:-mb-10 md:-mt-10 lg:-my-[60px] lg:-mr-16 lg:ml-0 lg:justify-end"
+                    : ""
+                }`}
+              >
                 {activeFeature === "Buy & Sell Crypto" ? (
                   <div className="relative flex aspect-square w-full max-w-[480px] items-center justify-center">
                     <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[24px] border-solid border-white/5" />
@@ -255,6 +261,12 @@ export const PasskeySecuritySection = (): JSX.Element => {
                       </div>
                     ))}
                   </div>
+                ) : activeFeature === "Multi-Chain, One Wallet" ? (
+                  <img
+                    src={content.rightImage}
+                    alt={content.rightAlt}
+                    className="h-full max-h-none w-full self-stretch object-cover object-left lg:rounded-r-3xl"
+                  />
                 ) : (
                   <img
                     src={content.rightImage}
