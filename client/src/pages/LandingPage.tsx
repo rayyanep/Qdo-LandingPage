@@ -56,8 +56,16 @@ export const LandingPage = (): JSX.Element => {
           <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-10 px-4 py-10 sm:px-6 xl:grid-cols-[minmax(0,720px)_minmax(0,1fr)] xl:items-center xl:gap-16 xl:px-16 xl:py-16">
             <div className="order-2 xl:order-none">
               <div className="relative mx-auto w-full max-w-[442px] xl:max-w-none xl:h-[600px]">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[110%] max-w-[640px] rounded-full border border-solid border-[#e8edf5] bg-[#f3f5fa]/60 xl:w-[640px]"
+                />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[80%] max-w-[470px] rounded-full border border-solid border-[#dde3ee] bg-[#eaeef6]/70 xl:w-[470px]"
+                />
                 <img
-                  className="mx-auto block h-auto w-full max-w-[442px] xl:absolute xl:left-1/2 xl:top-1/2 xl:h-[534px] xl:w-[442px] xl:-translate-x-1/2 xl:-translate-y-1/2"
+                  className="relative mx-auto block h-auto w-full max-w-[442px] xl:absolute xl:left-1/2 xl:top-1/2 xl:h-[534px] xl:w-[442px] xl:-translate-x-1/2 xl:-translate-y-1/2"
                   alt="Iphone"
                   src="/figmaAssets/iphone-15.png"
                 />
