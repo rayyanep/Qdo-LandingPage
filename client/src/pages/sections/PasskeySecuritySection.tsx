@@ -242,7 +242,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
                 }`}
               >
                 {activeFeature === "Buy & Sell Crypto" ? (
-                  <div className="relative flex aspect-square w-full max-w-[720px] items-center justify-center lg:-translate-y-10">
+                  <div className="relative flex aspect-square w-full max-w-[720px] items-center justify-center lg:-translate-y-[90px]">
                     <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[660px] w-[660px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[36px] border-solid border-white/5" />
                     <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[510px] w-[510px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[30px] border-solid border-white/10" />
                     <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[27px] border-solid border-white/[0.07]" />
