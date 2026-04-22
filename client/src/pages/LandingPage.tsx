@@ -20,7 +20,7 @@ const statCards = [
     wrapperClass:
       "aspect-square rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-[#163d6c]",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[42px] sm:text-[50px] font-semibold text-[#163d6c]",
     labelClass:
       "whitespace-pre-line [font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal text-[#00000099]",
   },
@@ -31,7 +31,7 @@ const statCards = [
     wrapperClass:
       "aspect-square rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-[#163d6c]",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[42px] sm:text-[50px] font-semibold text-[#163d6c]",
     labelClass:
       "[font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal text-[#00000099]",
   },
@@ -41,7 +41,7 @@ const statCards = [
     desktopPosition: "xl:absolute xl:left-[170px] xl:top-[517px]",
     wrapperClass: "aspect-square rounded-3xl bg-[#659acd]",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-white",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[42px] sm:text-[50px] font-semibold text-white",
     labelClass:
       "whitespace-pre-line [font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal text-white",
   },
@@ -117,7 +117,7 @@ export const LandingPage = (): JSX.Element => {
                     <div
                       className={`relative self-stretch text-center leading-[normal] tracking-[0] ${statCards[2].valueClass}`}
                     >
-                      <span className="[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[44px] font-semibold tracking-[0] text-white">
+                      <span className="[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[54px] font-semibold tracking-[0] text-white">
                         5{" "}
                       </span>
                       <span className="text-2xl">min</span>
