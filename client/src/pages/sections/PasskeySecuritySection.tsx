@@ -155,14 +155,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
         <Card className="w-full overflow-hidden rounded-2xl border-0 bg-[#ffffff14] shadow-none lg:h-[400px]">
           <CardContent className="h-full p-0">
             <div className="grid h-full min-h-[350px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[45%_55%] lg:items-stretch lg:gap-0 lg:p-10">
-              <div
-                className={`flex h-full flex-col items-start ${
-                  activeFeature === "Passkey Onboarding" ||
-                  activeFeature === "Instant Token Swaps"
-                    ? "lg:justify-start"
-                    : "lg:justify-center"
-                }`}
-              >
+              <div className="flex h-full flex-col items-start lg:justify-start">
                 {activeFeature === "Buy & Sell Crypto" || activeFeature === "Multi-Chain, One Wallet" || activeFeature === "Gasless Transactions" || activeFeature === "Earn Yield" ? null : activeFeature === "Instant Token Swaps" ? (
                   <div
                     className="mb-6 flex h-[80px] w-[80px] flex-col items-center justify-center gap-2 text-[#f5a623]"
