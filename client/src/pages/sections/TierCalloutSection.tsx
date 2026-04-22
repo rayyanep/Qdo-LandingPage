@@ -44,12 +44,12 @@ export const TierCalloutSection = (): JSX.Element => {
               Real-Time Payouts
             </Button>
 
-            {/* Wallet icon - left middle */}
-            <div className="absolute left-[15px] top-[170px] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#659acd] shadow-sm">
+            {/* Wallet icon - centered above On-Chain Tracking */}
+            <div className="absolute bottom-[14px] left-[33px] flex h-[90px] w-[90px] items-center justify-center rounded-full bg-[#659acd] shadow-sm">
               <img
                 src="/figmaAssets/button-1.svg"
                 alt="Wallet"
-                className="h-8 w-8"
+                className="h-[57px] w-[57px]"
               />
             </div>
 
