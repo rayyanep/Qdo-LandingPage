@@ -157,8 +157,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
             <div className="grid h-full min-h-[350px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[45%_55%] lg:items-stretch lg:gap-0 lg:p-10">
               <div
                 className={`flex h-full flex-col items-start ${
-                  activeFeature === "Passkey Onboarding" ||
-                  activeFeature === "Instant Token Swaps"
+                  activeFeature === "Passkey Onboarding"
                     ? "lg:justify-between"
                     : "lg:justify-center"
                 }`}
