@@ -37,13 +37,13 @@ const statCards = [
   },
   {
     value: "5 min",
-    label: "Prediction Markets",
+    label: "Prediction\nMarkets",
     desktopPosition: "xl:absolute xl:left-[170px] xl:top-[517px]",
     wrapperClass: "aspect-square rounded-3xl bg-[#659acd]",
     valueClass:
       "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[40px] font-semibold text-white",
     labelClass:
-      "[font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal text-white",
+      "whitespace-pre-line [font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal text-white",
   },
 ];
 
@@ -55,7 +55,7 @@ export const LandingPage = (): JSX.Element => {
         <div className="relative w-full">
           <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-10 px-4 py-10 sm:px-6 xl:grid-cols-[minmax(0,720px)_minmax(0,1fr)] xl:items-center xl:gap-16 xl:px-16 xl:py-16">
             <div className="order-2 xl:order-none">
-              <div className="relative mx-auto w-full max-w-[442px] xl:max-w-none xl:h-[600px]">
+              <div className="relative mx-auto w-full max-w-[497px] xl:max-w-none xl:h-[660px]">
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[110%] max-w-[640px] rounded-full border-[30px] border-solid border-[#f5f6fa] bg-transparent xl:w-[640px]"
@@ -73,7 +73,7 @@ export const LandingPage = (): JSX.Element => {
                   className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[45%] max-w-[260px] rounded-full border-[50px] border-solid border-white/70 bg-transparent xl:w-[260px]"
                 />
                 <img
-                  className="relative mx-auto block h-auto w-full max-w-[442px] xl:absolute xl:left-1/2 xl:top-1/2 xl:h-[534px] xl:w-[442px] xl:-translate-x-1/2 xl:-translate-y-1/2"
+                  className="relative mx-auto block h-auto w-full max-w-[497px] xl:absolute xl:left-1/2 xl:top-1/2 xl:h-[600px] xl:w-[497px] xl:-translate-x-1/2 xl:-translate-y-1/2"
                   alt="Iphone"
                   src="/figmaAssets/iphone-15.png"
                 />
@@ -81,7 +81,7 @@ export const LandingPage = (): JSX.Element => {
                 <Card
                   className={`hidden xl:flex absolute left-0 top-[40px] ${statCards[0].wrapperClass} shadow-none`}
                 >
-                  <CardContent className="flex min-w-[150px] flex-col items-center gap-1 px-8 pb-6 pt-5">
+                  <CardContent className="flex min-w-[120px] flex-col items-center gap-1 px-5 pb-4 pt-3">
                     <div
                       className={`relative self-stretch text-center leading-[normal] tracking-[0] ${statCards[0].valueClass}`}
                     >
@@ -97,7 +97,7 @@ export const LandingPage = (): JSX.Element => {
                 <Card
                   className={`hidden xl:flex absolute right-0 top-[140px] ${statCards[1].wrapperClass} shadow-none`}
                 >
-                  <CardContent className="flex min-w-[150px] flex-col items-center gap-1 px-8 pb-6 pt-5">
+                  <CardContent className="flex min-w-[120px] flex-col items-center gap-1 px-5 pb-4 pt-3">
                     <div
                       className={`relative self-stretch text-center leading-[normal] tracking-[0] ${statCards[1].valueClass}`}
                     >
@@ -113,7 +113,7 @@ export const LandingPage = (): JSX.Element => {
                 <Card
                   className={`hidden xl:flex absolute bottom-[10px] left-[40px] ${statCards[2].wrapperClass} shadow-none`}
                 >
-                  <CardContent className="flex min-w-[150px] flex-col items-center gap-1 px-8 pb-6 pt-5">
+                  <CardContent className="flex min-w-[120px] flex-col items-center gap-1 px-5 pb-4 pt-3">
                     <div
                       className={`relative self-stretch text-center leading-[normal] tracking-[0] ${statCards[2].valueClass}`}
                     >
