@@ -289,10 +289,10 @@ export const PasskeySecuritySection = (): JSX.Element => {
                     className="h-full max-h-none w-full self-stretch object-cover object-left lg:rounded-r-3xl"
                   />
                 ) : activeFeature === "Earn Yield" ? (
-                  <div className="relative flex aspect-square w-full max-w-[480px] items-center justify-center">
-                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[24px] border-solid border-white/5" />
-                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[20px] border-solid border-white/10" />
-                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[240px] w-[240px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[18px] border-solid border-white/[0.07]" />
+                  <div className="relative flex aspect-square w-full max-w-[720px] items-center justify-center lg:-translate-y-[140px]">
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[660px] w-[660px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[36px] border-solid border-white/5" />
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[510px] w-[510px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[30px] border-solid border-white/10" />
+                    <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[27px] border-solid border-white/[0.07]" />
                     <span className="pointer-events-none absolute left-1/2 top-[6%] -translate-x-1/2 [font-family:'Poppins_Latin-Regular',Helvetica] text-3xl font-light leading-none tracking-[0] text-[#ffffffaa]">
                       −
                     </span>
