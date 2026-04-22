@@ -131,27 +131,27 @@ export const LandingPage = (): JSX.Element => {
                 </Card>
               </div>
 
-              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:hidden">
+              <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-4 xl:hidden">
                 {statCards.map((card) => (
                   <Card
                     key={card.label}
                     className={`${card.wrapperClass} shadow-none`}
                   >
-                    <CardContent className="flex flex-col items-center gap-1 px-4 pb-4 pt-3 sm:px-6 sm:pb-5 sm:pt-4">
+                    <CardContent className="flex flex-col items-center gap-1 px-2 pb-3 pt-2 sm:px-4 sm:pb-4 sm:pt-3">
                       <div
-                        className={`relative self-stretch text-center leading-none tracking-[0] ${card.valueClass}`}
+                        className={`relative self-stretch text-center text-[22px] sm:text-[28px] leading-none tracking-[0] ${card.valueClass}`}
                       >
                         {card.value === "5 min" ? (
                           <>
-                            <span className={card.valueClass}>5 </span>
-                            <span className="text-xl sm:text-2xl">min</span>
+                            <span className="text-[22px] sm:text-[28px]">5 </span>
+                            <span className="text-base sm:text-xl">min</span>
                           </>
                         ) : (
                           card.value
                         )}
                       </div>
                       <div
-                        className={`relative text-center leading-tight tracking-[0] ${card.labelClass}`}
+                        className={`relative text-[10px] sm:text-xs text-center leading-tight tracking-[0] ${card.labelClass}`}
                       >
                         {card.label}
                       </div>
