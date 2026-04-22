@@ -71,11 +71,11 @@ const featureContent: Record<
   "Gasless Transactions": {
     title: "Gasless Transactions",
     description:
-      "Skip the gas. Sponsored paymasters and ERC-4337 account abstraction let you pay fees in stablecoins — or have them covered entirely — so your first transaction is as easy as tapping a button.",
-    illustration: "/figmaAssets/group-2.png",
+      "No more fumbling with gas tokens. Qdo handles gas fees behind the scenes via account abstraction — pay fees in any token or let us sponsor them entirely.",
+    illustration: "",
     illustrationAlt: "Gasless transactions illustration",
-    rightImage: "/figmaAssets/image-6.png",
-    rightAlt: "Gasless transactions preview",
+    rightImage: "",
+    rightAlt: "Supported gas payment tokens",
   },
   "Earn Yield": {
     title: "Earn Yield",
@@ -147,7 +147,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
           <CardContent className="p-0">
             <div className="grid min-h-[400px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,530px)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:px-16 lg:py-[60px]">
               <div className="flex flex-col items-start">
-                {activeFeature === "Buy & Sell Crypto" || activeFeature === "Multi-Chain, One Wallet" ? null : activeFeature === "Instant Token Swaps" ? (
+                {activeFeature === "Buy & Sell Crypto" || activeFeature === "Multi-Chain, One Wallet" || activeFeature === "Gasless Transactions" ? null : activeFeature === "Instant Token Swaps" ? (
                   <div
                     className="mb-6 flex h-[100px] w-[116px] flex-col items-center justify-center gap-2 text-[#f5a623]"
                     aria-label={content.illustrationAlt}
@@ -206,6 +206,11 @@ export const PasskeySecuritySection = (): JSX.Element => {
                 {activeFeature === "Multi-Chain, One Wallet" && (
                   <div className="mt-8 inline-flex h-auto items-center justify-center rounded-3xl bg-[#a87a3d] px-5 py-3 [font-family:'Poppins',Helvetica] text-sm font-semibold leading-[22px] tracking-[0] text-white">
                     3 Chains
+                  </div>
+                )}
+                {activeFeature === "Gasless Transactions" && (
+                  <div className="mt-8 inline-flex h-auto items-center justify-center rounded-3xl bg-[#a87a3d] px-5 py-3 [font-family:'Poppins',Helvetica] text-sm font-semibold leading-[22px] tracking-[0] text-white">
+                    ERC-4337
                   </div>
                 )}
               </div>
@@ -267,6 +272,49 @@ export const PasskeySecuritySection = (): JSX.Element => {
                     alt={content.rightAlt}
                     className="h-full max-h-none w-full self-stretch object-cover object-left lg:rounded-r-3xl"
                   />
+                ) : activeFeature === "Gasless Transactions" ? (
+                  <div
+                    className="relative w-full max-w-[460px] overflow-hidden lg:max-w-[520px]"
+                    style={{
+                      maskImage:
+                        "linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
+                      WebkitMaskImage:
+                        "linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
+                    }}
+                  >
+                    <ul className="flex max-h-[340px] flex-col gap-3 overflow-hidden py-6 pr-1">
+                      {[
+                        { sym: "USDT", name: "Tether — Stablecoin", color: "#26a17b" },
+                        { sym: "USDC", name: "Circle — Stablecoin", color: "#2775ca" },
+                        { sym: "ETH", name: "Ethereum", color: "#627eea" },
+                        { sym: "BNB", name: "BNB Smart Chain", color: "#f3ba2f" },
+                        { sym: "POL", name: "Polygon", color: "#8247e5" },
+                        { sym: "WBTC", name: "Wrapped Bitcoin", color: "#f7931a" },
+                        { sym: "WETH", name: "Wrapped Ether", color: "#3c3c3d" },
+                        { sym: "DAI", name: "Dai Stablecoin", color: "#f5ac37" },
+                      ].map((token) => (
+                        <li
+                          key={token.sym}
+                          className="flex items-center gap-4 rounded-2xl bg-white/[0.04] px-4 py-3"
+                        >
+                          <div
+                            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white"
+                            style={{ backgroundColor: token.color }}
+                          >
+                            {token.sym}
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="[font-family:'Poppins_Latin-Bold',Helvetica] text-sm font-bold leading-tight tracking-[0] text-white">
+                              {token.sym}
+                            </span>
+                            <span className="[font-family:'Poppins_Latin-Regular',Helvetica] text-xs font-normal leading-tight tracking-[0] text-[#ffffffaa]">
+                              {token.name}
+                            </span>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ) : (
                   <img
                     src={content.rightImage}
