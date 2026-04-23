@@ -1,30 +1,30 @@
 import { Button } from "@/components/ui/button";
 
-const marketInsights = [
+const aiCapabilities = [
   {
-    label: "5-Minute Markets",
+    label: "User Onboarding",
     type: "custom",
   },
   {
-    label: "Chainlink Oracle Resolution",
+    label: "Market Analysis",
     type: "image",
     iconSrc: "/figmaAssets/arrow-up-right-6.svg",
     iconAlt: "Arrow up right",
   },
   {
-    label: "USDC Settlement",
+    label: "Smart DCA",
     type: "image",
     iconSrc: "/figmaAssets/arrow-up-right-4.svg",
     iconAlt: "Arrow up right",
   },
   {
-    label: "Gnosis Conditional Tokens",
+    label: "Portfolio Rebalancing",
     type: "image",
     iconSrc: "/figmaAssets/arrow-up-right-3.svg",
     iconAlt: "Arrow up right",
   },
   {
-    label: "Yield on Locked Collateral",
+    label: "Risk Alerts & Insights",
     type: "image",
     iconSrc: "/figmaAssets/arrow-up-right-2.svg",
     iconAlt: "Arrow up right",
@@ -38,23 +38,23 @@ export const MarketInsightsSection = (): JSX.Element => {
         <header className="flex w-full flex-col items-start justify-center gap-4">
           <div className="inline-flex flex-col items-start">
             <h2 className="mt-[-1.00px] w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[40px] font-bold leading-[normal] tracking-[0] text-[#163d6c]">
-              Will BTC go up or down?
+              Your AI co-pilot for
             </h2>
             <p className="-mt-2 w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[40px] font-bold leading-[normal] tracking-[0] text-[#659acd]">
-              5-minute markets.
+              every step in crypto.
             </p>
           </div>
           <p className="w-full [font-family:'Poppins_Latin-Regular',Helvetica] text-lg font-normal leading-[normal] tracking-[0] text-[#000000cc]">
-            Simple binary prediction markets on BTC price action. Pick a
-            direction, lock your USDC, and settle in 5 minutes. Powered by
-            Chainlink oracles.
+            From your first wallet to advanced strategies, our AI guides you,
+            analyzes the market in real time, and automates smart moves so you
+            can grow your portfolio without the guesswork.
           </p>
         </header>
         <nav
-          aria-label="Market insights features"
+          aria-label="AI flow capabilities"
           className="flex w-full flex-col items-start gap-3"
         >
-          {marketInsights.map((item) => (
+          {aiCapabilities.map((item) => (
             <Button
               key={item.label}
               type="button"
