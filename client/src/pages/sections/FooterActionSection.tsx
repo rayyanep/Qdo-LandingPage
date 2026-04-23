@@ -1,5 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Twitter, Github, Linkedin, Youtube, Send, MessageCircle } from "lucide-react";
+
+const socialLinks = [
+  { label: "X (Twitter)", href: "#", icon: Twitter },
+  { label: "Telegram", href: "#", icon: Send },
+  { label: "Discord", href: "#", icon: MessageCircle },
+  { label: "GitHub", href: "#", icon: Github },
+  { label: "LinkedIn", href: "#", icon: Linkedin },
+  { label: "YouTube", href: "#", icon: Youtube },
+];
 
 const productLinks = ["Wallet", "Swap", "Buy/Sell", "Predictions"];
 const resourceLinks = [
@@ -65,6 +75,18 @@ export const FooterActionSection = (): JSX.Element => {
               <br />
               Built for everyone.
             </p>
+            <div className="flex items-center gap-3">
+              {socialLinks.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all hover:border-[#659acd] hover:bg-[#659acd]/20 hover:text-white"
+                >
+                  <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
           <nav
             aria-label="Footer navigation"

@@ -212,7 +212,7 @@ export const LandingPage = (): JSX.Element => {
 
               <div className="marker m2" />
               <div className="step step-2">
-                <h3>Scan Your Fingerprint</h3>
+                <h3>Use your passkey</h3>
                 <p>Authenticate with Face ID, fingerprint, or device PIN. Your passkey creates a secure wallet instantly.</p>
               </div>
 

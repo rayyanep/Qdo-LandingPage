@@ -2,18 +2,18 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const tiers = [
   {
-    tier: "Tier 1",
+    tier: "For everyone",
     number: "1",
-    title: "Direct Referral",
+    title: "A wallet that everyone can use",
     description:
-      "Earn on every trade, swap, and ramp transaction your referrals make",
+      "No seed phrases, no jargon. Anyone can sign up and start using crypto in minutes.",
   },
   {
-    tier: "Tier 2",
+    tier: "As simple as email",
     number: "2",
-    title: "Sub-Affiliate",
+    title: "Creating a wallet feels like creating an email",
     description:
-      "Two-level system — earn when your referrals bring in their own users",
+      "Just your face or fingerprint — your wallet is ready, secure, and fully yours.",
   },
 ];
 
@@ -37,7 +37,7 @@ export const CustodyTierSection = (): JSX.Element => {
                   </span>
                 </div>
                 <div className="flex flex-col items-start justify-center gap-1">
-                  <h4 className="mt-[-1.00px] whitespace-nowrap [font-family:'Poppins',Helvetica] text-center text-lg font-semibold leading-[22px] tracking-[0] text-white">
+                  <h4 className="mt-[-1.00px] [font-family:'Poppins',Helvetica] text-left text-lg font-semibold leading-[22px] tracking-[0] text-white">
                     {item.title}
                   </h4>
                   <p className="[font-family:'Poppins_Latin-Regular',Helvetica] text-xs font-normal leading-[normal] tracking-[0] text-white">

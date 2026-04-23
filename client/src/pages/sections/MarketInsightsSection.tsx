@@ -5,7 +5,6 @@ import {
   Scale,
   ShieldAlert,
   Wand2,
-  ArrowRight,
 } from "lucide-react";
 
 const aiCapabilities = [
@@ -16,7 +15,6 @@ const aiCapabilities = [
     icon: Wand2,
     tone: "from-[#659acd]/20 to-[#659acd]/5",
     iconBg: "bg-[#659acd]/15 text-[#1f4a85]",
-    span: "md:col-span-2",
   },
   {
     label: "Market Analysis",
@@ -25,7 +23,6 @@ const aiCapabilities = [
     icon: LineChart,
     tone: "from-[#43beb9]/20 to-[#43beb9]/5",
     iconBg: "bg-[#43beb9]/15 text-[#0f7a76]",
-    span: "",
   },
   {
     label: "Smart DCA",
@@ -34,7 +31,6 @@ const aiCapabilities = [
     icon: Repeat,
     tone: "from-[#f5a623]/20 to-[#f5a623]/5",
     iconBg: "bg-[#f5a623]/15 text-[#a86c11]",
-    span: "",
   },
   {
     label: "Portfolio Rebalancing",
@@ -43,7 +39,6 @@ const aiCapabilities = [
     icon: Scale,
     tone: "from-[#9b6cf2]/20 to-[#9b6cf2]/5",
     iconBg: "bg-[#9b6cf2]/15 text-[#5b3aa6]",
-    span: "",
   },
   {
     label: "Risk Alerts & Insights",
@@ -52,7 +47,6 @@ const aiCapabilities = [
     icon: ShieldAlert,
     tone: "from-[#ff5a75]/20 to-[#ff5a75]/5",
     iconBg: "bg-[#ff5a75]/15 text-[#b8324a]",
-    span: "md:col-span-2",
   },
 ];
 
@@ -84,17 +78,17 @@ export const MarketInsightsSection = (): JSX.Element => {
           </p>
         </header>
 
-        <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
-          {aiCapabilities.map(({ label, description, icon: Icon, tone, iconBg, span }) => (
+        <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-fr">
+          {aiCapabilities.map(({ label, description, icon: Icon, tone, iconBg }) => (
             <article
               key={label}
-              className={`group relative overflow-hidden rounded-3xl border border-[#163d6c]/10 bg-white p-6 shadow-[0_10px_40px_-20px_rgba(22,61,108,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(22,61,108,0.35)] ${span}`}
+              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[#163d6c]/10 bg-white p-6 shadow-[0_10px_40px_-20px_rgba(22,61,108,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_rgba(22,61,108,0.35)]"
             >
               <div
                 aria-hidden="true"
                 className={`absolute inset-x-0 top-0 h-32 bg-gradient-to-b ${tone} opacity-80`}
               />
-              <div className="relative flex flex-col gap-4">
+              <div className="relative flex h-full flex-col gap-4">
                 <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${iconBg}`}>
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
@@ -105,10 +99,6 @@ export const MarketInsightsSection = (): JSX.Element => {
                   <p className="[font-family:'Poppins_Latin-Regular',Helvetica] text-[15px] font-normal leading-[1.5] text-[#000000a6]">
                     {description}
                   </p>
-                </div>
-                <div className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-[#1f4a85] opacity-70 transition-all duration-300 group-hover:gap-2.5 group-hover:opacity-100">
-                  Learn more
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </div>
               </div>
             </article>
