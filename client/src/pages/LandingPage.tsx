@@ -3,7 +3,6 @@ import { CustodyTierSection } from "./sections/CustodyTierSection";
 import { FooterActionSection } from "./sections/FooterActionSection";
 import { HeroMessagingSection } from "./sections/HeroMessagingSection";
 import { HeroProductDisplaySection } from "./sections/HeroProductDisplaySection";
-import { LivePriceSection } from "./sections/LivePriceSection";
 import { MarketInsightsSection } from "./sections/MarketInsightsSection";
 import { PasskeySecuritySection } from "./sections/PasskeySecuritySection";
 import { ProductValueSection } from "./sections/ProductValueSection";
@@ -235,11 +234,8 @@ export const LandingPage = (): JSX.Element => {
         </section>
 
         <section className="relative mx-auto w-full max-w-none overflow-hidden bg-white px-4 pb-16 pt-12 sm:px-6 md:px-10 lg:px-16 xl:px-40 xl:pb-24 xl:pt-20">
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-[116px]">
-            <LivePriceSection />
-            <div className="lg:pl-[35px]">
-              <MarketInsightsSection />
-            </div>
+          <div className="mx-auto w-full max-w-[720px]">
+            <MarketInsightsSection />
           </div>
         </section>
         <section className="mx-auto w-full max-w-none px-4 pb-14 pt-8 sm:px-6 md:px-8">
