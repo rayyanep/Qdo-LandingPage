@@ -1,53 +1,74 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Users, Mail, Sparkles } from "lucide-react";
 
 const tiers = [
   {
-    tier: "For everyone",
-    number: "1",
+    eyebrow: "For everyone",
     title: "A wallet that everyone can use",
     description:
-      "No seed phrases, no jargon. Anyone can sign up and start using crypto in minutes.",
+      "No seed phrases, no jargon. Anyone — your parents, your friends, your first-time-crypto colleague — can sign up and start using crypto in minutes.",
+    icon: Users,
+    accent: "from-[#659acd]/20 via-transparent to-transparent",
+    iconBg: "bg-[#659acd]/20 text-[#659acd]",
+    badgeBg: "bg-[#659acd]/15 text-[#9bbfe5]",
   },
   {
-    tier: "As simple as email",
-    number: "2",
+    eyebrow: "As simple as email",
     title: "Creating a wallet feels like creating an email",
     description:
-      "Just your face or fingerprint — your wallet is ready, secure, and fully yours.",
+      "Just your face or fingerprint — and your wallet is ready, secure, and fully yours. No backups to lose, no passwords to forget.",
+    icon: Mail,
+    accent: "from-[#43beb9]/20 via-transparent to-transparent",
+    iconBg: "bg-[#43beb9]/20 text-[#43beb9]",
+    badgeBg: "bg-[#43beb9]/15 text-[#7ed6d2]",
   },
 ];
 
 export const CustodyTierSection = (): JSX.Element => {
   return (
     <section className="w-full">
-      <div className="flex w-full max-w-[600px] flex-col items-start gap-3">
-        {tiers.map((item) => (
-          <Card
-            key={item.tier}
-            className="w-full rounded-3xl border-0 bg-[#1a3d6c] shadow-none"
-          >
-            <CardContent className="flex flex-col items-start justify-center gap-5 px-10 py-8">
-              <h3 className="mt-[-1.00px] [font-family:'Poppins',Helvetica] text-[28px] font-bold leading-[22px] tracking-[0] text-white">
-                {item.tier}
-              </h3>
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#659acd]">
-                  <span className="[font-family:'Poppins',Helvetica] text-center text-[30px] font-semibold leading-none tracking-[0] text-white">
-                    {item.number}
+      <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
+        {tiers.map((item) => {
+          const Icon = item.icon;
+          return (
+            <Card
+              key={item.title}
+              className="group relative w-full overflow-hidden rounded-3xl border border-white/5 bg-[#1a3d6c] shadow-[0_20px_60px_-30px_rgba(22,61,108,0.6)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_-30px_rgba(22,61,108,0.8)]"
+            >
+              <div
+                aria-hidden="true"
+                className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${item.accent}`}
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/5 blur-2xl"
+              />
+              <CardContent className="relative flex h-full flex-col items-start gap-6 p-8 sm:p-10">
+                <div className="flex items-center justify-between gap-4 self-stretch">
+                  <span
+                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 [font-family:'Poppins',Helvetica] text-xs font-semibold uppercase tracking-wider ${item.badgeBg}`}
+                  >
+                    <Sparkles className="h-3 w-3" aria-hidden="true" />
+                    {item.eyebrow}
                   </span>
+                  <div
+                    className={`flex h-14 w-14 items-center justify-center rounded-2xl ${item.iconBg}`}
+                  >
+                    <Icon className="h-7 w-7" aria-hidden="true" />
+                  </div>
                 </div>
-                <div className="flex flex-col items-start justify-center gap-1">
-                  <h4 className="mt-[-1.00px] [font-family:'Poppins',Helvetica] text-left text-lg font-semibold leading-[22px] tracking-[0] text-white">
-                    {item.title}
-                  </h4>
-                  <p className="[font-family:'Poppins_Latin-Regular',Helvetica] text-xs font-normal leading-[normal] tracking-[0] text-white">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+
+                <h3 className="[font-family:'Poppins_Latin-Bold',Helvetica] text-2xl font-bold leading-[1.2] tracking-[-0.01em] text-white sm:text-[28px]">
+                  {item.title}
+                </h3>
+
+                <p className="[font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[1.55] tracking-[0] text-white/75">
+                  {item.description}
+                </p>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </section>
   );

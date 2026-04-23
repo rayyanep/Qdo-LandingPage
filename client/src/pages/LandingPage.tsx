@@ -8,7 +8,6 @@ import { PasskeySecuritySection } from "./sections/PasskeySecuritySection";
 import { ProductValueSection } from "./sections/ProductValueSection";
 import { SelfCustodyFeatureCardsSection } from "./sections/SelfCustodyFeatureCardsSection";
 import { SelfCustodyIntroSection } from "./sections/SelfCustodyIntroSection";
-import { TierCalloutSection } from "./sections/TierCalloutSection";
 import { TokenRolloutSection } from "./sections/TokenRolloutSection";
 
 const statCards = [
@@ -254,10 +253,7 @@ export const LandingPage = (): JSX.Element => {
               you own everything
             </p>
           </header>
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-12">
-            <CustodyTierSection />
-            <TierCalloutSection />
-          </div>
+          <CustodyTierSection />
         </section>
         <FooterActionSection />
       </div>

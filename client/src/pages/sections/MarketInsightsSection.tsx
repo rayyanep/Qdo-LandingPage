@@ -5,6 +5,7 @@ import {
   Scale,
   ShieldAlert,
   Wand2,
+  ShieldCheck,
 } from "lucide-react";
 
 const aiCapabilities = [
@@ -47,6 +48,14 @@ const aiCapabilities = [
     icon: ShieldAlert,
     tone: "from-[#ff5a75]/20 to-[#ff5a75]/5",
     iconBg: "bg-[#ff5a75]/15 text-[#b8324a]",
+  },
+  {
+    label: "Fraud Prevention",
+    description:
+      "AI continuously scans transactions, contracts, and counterparties to block scams, phishing, and malicious approvals before they touch your funds.",
+    icon: ShieldCheck,
+    tone: "from-[#1f9d55]/20 to-[#1f9d55]/5",
+    iconBg: "bg-[#1f9d55]/15 text-[#0f6e3a]",
   },
 ];
 
