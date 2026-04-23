@@ -8,14 +8,14 @@ const navigationItems = [
     href: "https://qdo.xyz/#features",
   },
   {
-    label: "Predictions",
-    href: "https://qdo.xyz/#predictions",
+    label: "AI Pilot",
+    href: "https://qdo.xyz/#ai-pilot",
   },
   {
     label: "Tokens",
   },
   {
-    label: "About us",
+    label: "Contact us",
   },
 ];
 
