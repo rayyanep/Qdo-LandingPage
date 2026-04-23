@@ -234,9 +234,7 @@ export const LandingPage = (): JSX.Element => {
         </section>
 
         <section className="relative mx-auto w-full max-w-none overflow-hidden bg-white px-4 pb-16 pt-12 sm:px-6 md:px-10 lg:px-16 xl:px-40 xl:pb-24 xl:pt-20">
-          <div className="mx-auto w-full max-w-[720px]">
-            <MarketInsightsSection />
-          </div>
+          <MarketInsightsSection />
         </section>
         <section className="mx-auto w-full max-w-none px-4 pb-14 pt-8 sm:px-6 md:px-8">
           <TokenRolloutSection />
