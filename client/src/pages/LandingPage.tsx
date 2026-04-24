@@ -9,6 +9,7 @@ import { ProductValueSection } from "./sections/ProductValueSection";
 import { SelfCustodyFeatureCardsSection } from "./sections/SelfCustodyFeatureCardsSection";
 import { SelfCustodyIntroSection } from "./sections/SelfCustodyIntroSection";
 import { TokenRolloutSection } from "./sections/TokenRolloutSection";
+import heroPhoneImage from "@assets/Simulator_Screenshot_-_iPhone_17_-_2026-04-24_at_09.45.18_(1)_1777022836712.png";
 
 const statCards = [
   {
@@ -72,8 +73,8 @@ export const LandingPage = (): JSX.Element => {
                 />
                 <img
                   className="relative mx-auto block h-auto w-full max-w-[497px] xl:absolute xl:left-1/2 xl:top-1/2 xl:h-[600px] xl:w-[497px] xl:-translate-x-1/2 xl:-translate-y-1/2"
-                  alt="Iphone"
-                  src="/figmaAssets/iphone-15.png"
+                  alt="Qdo wallet on iPhone"
+                  src={heroPhoneImage}
                 />
 
                 <Card
