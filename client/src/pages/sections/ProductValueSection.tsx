@@ -62,7 +62,7 @@ export const ProductValueSection = (): JSX.Element => {
                 Smart defaults:
               </h2>
               <p className="self-stretch sm:whitespace-nowrap [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#00000099]">
-                Polygon for everyday · BSC for MENA/Asia · ETH for high-value
+                Polygon for everyday · BSC for MENA/Asia · ETH for high-value · and more chains in next phases
               </p>
             </div>
           </div>
