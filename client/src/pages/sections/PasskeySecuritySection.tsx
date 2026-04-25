@@ -110,7 +110,7 @@ export const PasskeySecuritySection = (): JSX.Element => {
   const content = featureContent[activeFeature];
 
   return (
-    <section className="w-full bg-[#061237] px-6 py-20 md:px-10 lg:px-16 xl:px-24 xl:py-[120px] 2xl:py-[160px]">
+    <section className="w-full bg-[#061237] px-4 py-16 sm:px-6 sm:py-20 md:px-10 lg:px-16 xl:px-24 xl:py-[120px] 2xl:py-[160px]">
       <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start gap-6 2xl:max-w-[1600px] 2xl:gap-10">
         <header className="flex w-full flex-col items-start gap-[54px]">
           <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
@@ -129,32 +129,34 @@ export const PasskeySecuritySection = (): JSX.Element => {
           </div>
           <nav
             aria-label="Wallet features"
-            className="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-3 md:gap-x-4 lg:flex-nowrap lg:justify-between"
+            className="-mx-4 w-[calc(100%+2rem)] overflow-x-auto sm:mx-0 sm:w-full sm:overflow-visible"
           >
-            {featureTabs.map((feature) => {
-              const isActive = feature === activeFeature;
+            <div className="flex w-max items-center gap-2 px-4 sm:w-full sm:flex-wrap sm:justify-center sm:gap-x-3 sm:gap-y-3 sm:px-0 md:gap-x-4 lg:flex-nowrap lg:justify-between">
+              {featureTabs.map((feature) => {
+                const isActive = feature === activeFeature;
 
-              return (
-                <Button
-                  key={feature}
-                  type="button"
-                  variant="ghost"
-                  onClick={() => setActiveFeature(feature)}
-                  className={`h-auto min-w-0 shrink whitespace-nowrap rounded-[50px] px-[40px] py-3 [font-family:'Poppins',Helvetica] text-center text-[14px] font-semibold leading-[22px] tracking-[0] ${
-                    isActive
-                      ? "bg-white text-[#1B2B4B] hover:bg-white/95"
-                      : "bg-[#659acd]/80 text-white hover:bg-[#659acd]"
-                  }`}
-                >
-                  {feature}
-                </Button>
-              );
-            })}
+                return (
+                  <Button
+                    key={feature}
+                    type="button"
+                    variant="ghost"
+                    onClick={() => setActiveFeature(feature)}
+                    className={`h-auto min-w-0 shrink-0 whitespace-nowrap rounded-full px-4 py-2.5 [font-family:'Poppins',Helvetica] text-center text-[13px] font-semibold leading-[20px] tracking-[0] sm:shrink sm:px-6 sm:py-3 sm:text-[14px] sm:leading-[22px] xl:px-[28px] ${
+                      isActive
+                        ? "bg-white text-[#1B2B4B] hover:bg-white/95"
+                        : "bg-[#659acd]/80 text-white hover:bg-[#659acd]"
+                    }`}
+                  >
+                    {feature}
+                  </Button>
+                );
+              })}
+            </div>
           </nav>
         </header>
         <Card className="w-full overflow-hidden rounded-2xl border-0 bg-[#ffffff14] shadow-none lg:h-[400px]">
           <CardContent className="h-full p-0">
-            <div className="grid h-full min-h-[350px] grid-cols-1 gap-8 px-6 py-8 md:px-10 md:py-10 lg:grid-cols-[45%_55%] lg:items-stretch lg:gap-0 lg:p-10">
+            <div className="grid h-full min-h-[350px] grid-cols-1 gap-8 px-5 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10 lg:grid-cols-[45%_55%] lg:items-stretch lg:gap-0 lg:p-10">
               <div className="flex h-full flex-col items-start lg:justify-start">
                 {activeFeature === "Buy & Sell Crypto" || activeFeature === "Multi-Chain, One Wallet" || activeFeature === "Gasless Transactions" || activeFeature === "Earn Yield" ? null : activeFeature === "Instant Token Swaps" ? (
                   <div

@@ -51,7 +51,7 @@ const statCards = [
     wrapperClass:
       "aspect-square rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[20px] sm:text-[22px] font-semibold text-[#163d6c]",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[22px] sm:text-[24px] font-semibold text-[#163d6c]",
     labelClass:
       "[font-family:'Poppins_Latin-Regular',Helvetica] text-xs sm:text-sm font-normal text-[#00000099]",
   },

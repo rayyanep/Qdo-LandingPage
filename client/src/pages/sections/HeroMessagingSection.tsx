@@ -27,11 +27,11 @@ export const HeroMessagingSection = (): JSX.Element => {
     <section className="relative w-full xl:pt-[180px]">
       <div className="flex w-full max-w-[455px] flex-col items-start gap-8 md:gap-10 xl:ml-auto xl:max-w-none xl:gap-12">
         <header className="flex w-full flex-col items-start gap-4">
-          <div className="flex max-w-[342px] flex-col items-start gap-1">
+          <div className="flex w-full max-w-[342px] flex-col items-start gap-1">
             {headingLines.map((line) => (
               <h1
                 key={line.text}
-                className={`${line.color} w-fit whitespace-nowrap [font-family:'Poppins_Latin-Bold',Helvetica] text-[42px] font-bold leading-[1.15] tracking-[0] sm:text-[48px] xl:text-[54px]`}
+                className={`${line.color} w-fit [font-family:'Poppins_Latin-Bold',Helvetica] text-[34px] font-bold leading-[1.15] tracking-[-0.01em] sm:whitespace-nowrap sm:text-[48px] xl:text-[54px]`}
               >
                 {line.text}
               </h1>
@@ -70,7 +70,7 @@ export const HeroMessagingSection = (): JSX.Element => {
                 </span>
                 {action.hasIcon ? (
                   <ArrowRightIcon
-                    className="ml-2 h-16 w-16 shrink-0"
+                    className="ml-2 h-5 w-5 shrink-0"
                     aria-hidden="true"
                   />
                 ) : null}

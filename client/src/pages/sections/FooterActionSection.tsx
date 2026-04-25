@@ -89,14 +89,14 @@ export const FooterActionSection = (): JSX.Element => {
       id="waitlist"
       className="relative w-full scroll-mt-24 bg-[#061237]"
     >
-      <div className="mx-auto flex w-full max-w-none flex-col gap-12 px-6 py-16 sm:px-10 lg:gap-20 lg:px-20 lg:py-[100px] xl:px-40">
+      <div className="mx-auto flex w-full max-w-none flex-col gap-12 px-4 py-16 sm:px-6 md:px-10 lg:gap-20 lg:px-20 lg:py-[100px] xl:px-40">
         <section className="flex w-full flex-col gap-10 lg:gap-[54px]">
           <div className="flex w-full flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-20">
             <header className="flex shrink-0 flex-col items-start">
-              <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-4xl font-bold leading-[1.5] tracking-[0] text-white sm:text-5xl">
+              <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-[32px] font-bold leading-[1.2] tracking-[-0.01em] text-white sm:text-4xl md:text-5xl md:leading-[1.5]">
                 Ready to own
               </h2>
-              <p className="[font-family:'Poppins_Latin-Bold',Helvetica] text-4xl font-bold leading-[1.5] tracking-[0] text-[#659acd] sm:text-5xl">
+              <p className="mt-1 [font-family:'Poppins_Latin-Bold',Helvetica] text-[32px] font-bold leading-[1.2] tracking-[-0.01em] text-[#659acd] sm:text-4xl md:text-5xl md:leading-[1.5]">
                 your crypto?
               </p>
             </header>
