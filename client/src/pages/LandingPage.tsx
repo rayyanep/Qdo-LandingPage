@@ -45,15 +45,15 @@ const statCards = [
       "whitespace-pre-line [font-family:'Poppins_Latin-Regular',Helvetica] text-xs sm:text-sm font-normal text-white",
   },
   {
-    value: "$0",
-    label: "Gasless\nTransactions",
+    value: "Gasless",
+    label: "Transactions",
     desktopPosition: "xl:absolute xl:right-[40px] xl:bottom-[60px]",
     wrapperClass:
       "aspect-square rounded-3xl border border-solid border-[#0000001f] bg-white",
     valueClass:
-      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[37px] font-semibold text-[#163d6c]",
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[20px] sm:text-[22px] font-semibold text-[#163d6c]",
     labelClass:
-      "whitespace-pre-line [font-family:'Poppins_Latin-Regular',Helvetica] text-xs sm:text-sm font-normal text-[#00000099]",
+      "[font-family:'Poppins_Latin-Regular',Helvetica] text-xs sm:text-sm font-normal text-[#00000099]",
   },
 ];
 
@@ -173,7 +173,7 @@ export const LandingPage = (): JSX.Element => {
                     >
                       <CardContent className="flex h-full min-h-[96px] flex-col items-center justify-center gap-1 px-2 py-3 sm:min-h-[120px] sm:px-4 sm:py-4">
                         <div
-                          className={`relative self-stretch text-center text-[22px] sm:text-[28px] leading-none tracking-[0] ${card.valueClass}`}
+                          className={`relative self-stretch text-center leading-none tracking-[0] ${card.valueClass}`}
                         >
                           {card.value === "AI" ? (
                             <span className="hero-ai-shimmer">{card.value}</span>
