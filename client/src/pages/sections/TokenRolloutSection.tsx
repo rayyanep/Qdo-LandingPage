@@ -139,7 +139,7 @@ export const TokenRolloutSection = (): JSX.Element => {
             </p>
           </header>
           <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
-            {rolloutPhases.map((phase) => (
+            {rolloutPhases.map((phase, phaseIndex) => (
               <Card
                 key={phase.title}
                 className="rounded-3xl border-0 bg-[#ffffff14] shadow-none"
@@ -191,6 +191,14 @@ export const TokenRolloutSection = (): JSX.Element => {
                         )}
                       </li>
                     ))}
+                    {phaseIndex > 0 && (
+                      <li className="w-full">
+                        <div className="mb-2 h-px w-full bg-[#ffffff1f]" />
+                        <p className="[font-family:'Poppins_Latin-SemiBold',Helvetica] text-sm font-semibold italic leading-[normal] tracking-[0] text-[#659acd]">
+                          And many more
+                        </p>
+                      </li>
+                    )}
                   </ul>
                 </CardContent>
               </Card>
