@@ -225,7 +225,7 @@ export const LandingPage = (): JSX.Element => {
               <div className="marker m3" />
               <div className="step step-3">
                 <h3>Fund Your Wallet</h3>
-                <p>Buy crypto with your card or bank transfer. Funds arrive directly in your self-custody wallet.</p>
+                <p>Buy crypto with your card, bank transfer or receive directly onchain. Only you have access to the assets and control the funds.</p>
               </div>
 
               <div className="marker m4" />
