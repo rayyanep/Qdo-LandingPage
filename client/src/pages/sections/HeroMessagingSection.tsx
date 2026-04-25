@@ -51,6 +51,11 @@ export const HeroMessagingSection = (): JSX.Element => {
               <Button
                 key={action.label}
                 type="button"
+                onClick={() => {
+                  document
+                    .getElementById("waitlist")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
                 className={`h-auto min-h-[54px] w-full rounded-2xl px-5 py-4 sm:w-[210px] [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] tracking-[0] ${
                   isPrimary
                     ? "bg-[#1a3d6c] text-white hover:bg-[#16355d]"

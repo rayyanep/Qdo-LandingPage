@@ -75,6 +75,11 @@ export const HeroProductDisplaySection = (): JSX.Element => {
         </nav>
         <Button
           type="button"
+          onClick={() => {
+            document
+              .getElementById("waitlist")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
           className="hidden h-auto min-w-[160px] rounded-2xl bg-[#1a3d6c] px-4 py-4 [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] text-white hover:bg-[#16345c] sm:inline-flex md:min-w-[200px]"
         >
           Get Early Access
@@ -128,7 +133,14 @@ export const HeroProductDisplaySection = (): JSX.Element => {
               <Button
                 type="button"
                 className="h-auto w-full rounded-2xl bg-[#1a3d6c] px-4 py-4 [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] text-white hover:bg-[#16345c]"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  setTimeout(() => {
+                    document
+                      .getElementById("waitlist")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }, 50);
+                }}
               >
                 Get Early Access
               </Button>

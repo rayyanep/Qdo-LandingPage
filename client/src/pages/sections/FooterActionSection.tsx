@@ -1,6 +1,18 @@
+import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { Twitter, Github, Linkedin, Youtube, Send, MessageCircle } from "lucide-react";
+import {
+  Twitter,
+  Github,
+  Linkedin,
+  Youtube,
+  Send,
+  MessageCircle,
+  ArrowRight,
+  CheckCircle2,
+  Loader2,
+} from "lucide-react";
 
 const socialLinks = [
   { label: "X (Twitter)", href: "#", icon: Twitter },
@@ -20,9 +32,51 @@ const resourceLinks = [
 ];
 const companyLinks = ["About", "Contact", "Terms", "Privacy"];
 
+type Status = "idle" | "loading" | "success" | "error";
+
 export const FooterActionSection = (): JSX.Element => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (status === "loading") return;
+
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = (await response.json()) as {
+        ok: boolean;
+        message?: string;
+      };
+
+      if (!response.ok || !data.ok) {
+        setStatus("error");
+        setMessage(data.message ?? "Something went wrong. Please try again.");
+        return;
+      }
+
+      setStatus("success");
+      setMessage(data.message ?? "You're on the list — we'll be in touch.");
+      setEmail("");
+    } catch {
+      setStatus("error");
+      setMessage("Couldn't reach the server. Please try again.");
+    }
+  };
+
   return (
-    <footer className="relative w-full bg-[#061237]">
+    <footer
+      id="waitlist"
+      className="relative w-full scroll-mt-24 bg-[#061237]"
+    >
       <div className="mx-auto flex w-full max-w-none flex-col gap-12 px-6 py-16 sm:px-10 lg:gap-20 lg:px-20 lg:py-[100px] xl:px-40">
         <section className="flex w-full flex-col gap-10 lg:gap-[54px]">
           <div className="flex w-full flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-20">
@@ -39,26 +93,73 @@ export const FooterActionSection = (): JSX.Element => {
                 Join the waitlist and be among the first to experience
                 self-custody without the complexity.
               </p>
-              <div className="flex w-full flex-col gap-4 sm:flex-row sm:gap-6">
-                <Button
-                  type="button"
-                  className="h-auto min-h-[54px] flex-1 rounded-2xl bg-[#659acd] px-4 py-4 [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] text-white hover:bg-[#659acd]/90"
-                >
-                  <span>Get Early Access</span>
-                  <img
-                    className="h-8 w-8"
-                    alt="Arrow up right"
-                    src="/figmaAssets/arrow-up-right-7.svg"
+              <form
+                onSubmit={handleSubmit}
+                className="flex w-full flex-col gap-3"
+                noValidate
+              >
+                <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-stretch">
+                  <label htmlFor="waitlist-email" className="sr-only">
+                    Email address
+                  </label>
+                  <Input
+                    id="waitlist-email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    placeholder="you@example.com"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (status !== "idle") {
+                        setStatus("idle");
+                        setMessage("");
+                      }
+                    }}
+                    disabled={status === "loading"}
+                    className="h-auto min-h-[54px] flex-1 rounded-2xl border border-white/15 bg-white/[0.06] px-5 text-base text-white placeholder:text-white/40 focus-visible:border-[#659acd] focus-visible:ring-2 focus-visible:ring-[#659acd]/40 focus-visible:ring-offset-0"
                   />
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="h-auto min-h-[54px] flex-1 rounded-2xl border border-solid border-white bg-[#061237] px-4 py-4 [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] text-white hover:bg-white/5 hover:text-white"
-                >
-                  See Hoe It Works
-                </Button>
-              </div>
+                  <Button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="h-auto min-h-[54px] rounded-2xl bg-[#659acd] px-6 py-4 [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] text-white hover:bg-[#5089bd] sm:w-[210px]"
+                  >
+                    {status === "loading" ? (
+                      <>
+                        <Loader2 className="h-5 w-5 animate-spin" />
+                        <span>Joining…</span>
+                      </>
+                    ) : status === "success" ? (
+                      <>
+                        <CheckCircle2 className="h-5 w-5" />
+                        <span>You're in</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Join Waitlist</span>
+                        <ArrowRight className="h-5 w-5" />
+                      </>
+                    )}
+                  </Button>
+                </div>
+                {message ? (
+                  <p
+                    role={status === "error" ? "alert" : "status"}
+                    aria-live="polite"
+                    className={`[font-family:'Poppins',Helvetica] text-sm ${
+                      status === "error"
+                        ? "text-[#ff8a9b]"
+                        : "text-[#9bcfa3]"
+                    }`}
+                  >
+                    {message}
+                  </p>
+                ) : (
+                  <p className="[font-family:'Poppins',Helvetica] text-sm text-white/50">
+                    No spam — we'll only email you when access is ready.
+                  </p>
+                )}
+              </form>
             </div>
           </div>
         </section>

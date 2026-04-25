@@ -200,6 +200,11 @@ export const TokenRolloutSection = (): JSX.Element => {
         <Button
           type="button"
           variant="outline"
+          onClick={() => {
+            document
+              .getElementById("waitlist")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
           className="h-auto w-full max-w-[400px] rounded-2xl border border-solid border-white bg-transparent p-4 text-white hover:bg-white/5 hover:text-white"
         >
           <span className="font-medium [font-family:'Poppins',Helvetica] text-base leading-[22px] tracking-[0]">
