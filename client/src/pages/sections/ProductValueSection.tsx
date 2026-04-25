@@ -61,9 +61,21 @@ export const ProductValueSection = (): JSX.Element => {
               <h2 className="self-stretch [font-family:'Poppins_Latin-SemiBold',Helvetica] text-base font-semibold leading-[normal] tracking-[0] text-[#1a3d6c]">
                 Smart defaults:
               </h2>
-              <p className="self-stretch [font-family:'Poppins_Latin-Regular',Helvetica] text-sm sm:text-base font-normal leading-[1.5] tracking-[0] text-[#00000099]">
-                Polygon for everyday · BSC for MENA/Asia · ETH for high-value · and more chains in next phases
-              </p>
+              <ul className="mt-1 flex w-full flex-col gap-1 self-stretch [font-family:'Poppins_Latin-Regular',Helvetica] text-sm font-normal leading-[1.5] tracking-[0] text-[#00000099] sm:text-base">
+                <li>
+                  <span className="font-semibold text-[#1a3d6c]">Polygon</span>{" "}
+                  for everyday use
+                </li>
+                <li>
+                  <span className="font-semibold text-[#1a3d6c]">BSC</span> for
+                  MENA/Asia
+                </li>
+                <li>
+                  <span className="font-semibold text-[#1a3d6c]">ETH</span> for
+                  high value
+                </li>
+                <li>More chains are added in upcoming phases</li>
+              </ul>
             </div>
           </div>
         </CardContent>
