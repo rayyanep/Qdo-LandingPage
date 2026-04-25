@@ -121,31 +121,31 @@ const rolloutPhases = [
 export const TokenRolloutSection = (): JSX.Element => {
   return (
     <section className="relative w-full px-4 py-8 sm:px-6 lg:px-0">
-      <div className="mx-auto flex w-full max-w-[1123px] flex-col items-center gap-10 rounded-3xl bg-[#061237] px-5 pb-[60px] pt-14 sm:px-8 lg:px-20 lg:pt-20">
-        <div className="flex w-full flex-col items-start gap-[54px]">
-          <header className="flex w-full flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+      <div className="mx-auto flex w-full max-w-[1123px] flex-col items-center gap-8 rounded-3xl bg-[#061237] px-5 pb-10 pt-10 sm:gap-10 sm:px-8 sm:pb-[60px] sm:pt-14 lg:px-20 lg:pt-20">
+        <div className="flex w-full flex-col items-start gap-8 sm:gap-[54px]">
+          <header className="flex w-full flex-col gap-4 sm:gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex flex-col items-start">
-              <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-[32px] font-bold leading-[normal] tracking-[0] text-white sm:text-[40px]">
+              <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-[28px] font-bold leading-[1.1] tracking-[-0.01em] text-white sm:text-[40px] sm:leading-[normal] sm:tracking-[0]">
                 Thoughtfully curated
               </h2>
-              <p className="-mt-1 sm:-mt-2 [font-family:'Poppins_Latin-Bold',Helvetica] text-[32px] font-bold leading-[normal] tracking-[0] text-[#659acd] sm:text-[40px]">
+              <p className="-mt-0.5 sm:-mt-2 [font-family:'Poppins_Latin-Bold',Helvetica] text-[28px] font-bold leading-[1.1] tracking-[-0.01em] text-[#659acd] sm:text-[40px] sm:leading-[normal] sm:tracking-[0]">
                 token rollout
               </p>
             </div>
-            <p className="max-w-[419px] [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[normal] tracking-[0] text-[#ffffffcc]">
+            <p className="max-w-[419px] [font-family:'Poppins_Latin-Regular',Helvetica] text-sm font-normal leading-[1.55] tracking-[0] text-[#ffffffcc] sm:text-base sm:leading-[normal]">
               Every token goes through strict listing governance — market cap
               thresholds, multi-chain availability, verified contracts, and scam
               filtering.
             </p>
           </header>
-          <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="grid w-full grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
             {rolloutPhases.map((phase, phaseIndex) => (
               <Card
                 key={phase.title}
                 className="rounded-3xl border-0 bg-[#ffffff14] shadow-none"
               >
-                <CardContent className="flex h-full min-h-[420px] flex-col overflow-hidden rounded-3xl p-6 lg:h-[520px]">
-                  <div className="mb-6">
+                <CardContent className="flex h-full flex-col overflow-hidden rounded-3xl p-5 sm:p-6 lg:h-[520px] lg:min-h-[420px]">
+                  <div className="mb-4 sm:mb-6">
                     <div
                       className={`inline-flex items-center justify-center rounded-3xl px-3 py-1 ${phase.badgeClassName}`}
                     >
@@ -154,7 +154,7 @@ export const TokenRolloutSection = (): JSX.Element => {
                       </span>
                     </div>
                   </div>
-                  <h3 className="mb-8 [font-family:'Poppins_Latin-Bold',Helvetica] text-base font-bold leading-[normal] tracking-[0] text-white">
+                  <h3 className="mb-5 sm:mb-8 [font-family:'Poppins_Latin-Bold',Helvetica] text-base font-bold leading-[normal] tracking-[0] text-white">
                     {phase.title}
                   </h3>
                   <ul className="flex w-full max-w-[257px] flex-col items-start justify-center gap-2">
