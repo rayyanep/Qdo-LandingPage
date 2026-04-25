@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
@@ -35,7 +36,14 @@ const resourceLinks = [
   "Token Listing",
   "Security Audit",
 ];
-const companyLinks = ["About", "Contact", "Terms", "Privacy"];
+type CompanyLink = { label: string; href?: string; target?: string };
+
+const companyLinks: CompanyLink[] = [
+  { label: "About" },
+  { label: "Contact", target: "waitlist" },
+  { label: "Terms", href: "/terms" },
+  { label: "Privacy" },
+];
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -232,16 +240,35 @@ export const FooterActionSection = (): JSX.Element => {
               ))}
             </ul>
             <ul className="flex flex-col items-start justify-center gap-5">
-              {companyLinks.map((item) => (
-                <li key={item}>
-                  <button
-                    type="button"
-                    className="h-auto w-fit [font-family:'Poppins',Helvetica] text-left text-base font-normal leading-[22px] tracking-[0] text-[#ffffffcc] transition-opacity hover:opacity-80"
-                  >
-                    {item}
-                  </button>
-                </li>
-              ))}
+              {companyLinks.map((item) => {
+                const linkClass =
+                  "h-auto w-fit [font-family:'Poppins',Helvetica] text-left text-base font-normal leading-[22px] tracking-[0] text-[#ffffffcc] transition-opacity hover:opacity-80";
+                return (
+                  <li key={item.label}>
+                    {item.href ? (
+                      <Link href={item.href} className={linkClass}>
+                        {item.label}
+                      </Link>
+                    ) : item.target ? (
+                      <button
+                        type="button"
+                        className={linkClass}
+                        onClick={() => {
+                          document
+                            .getElementById(item.target!)
+                            ?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                      >
+                        {item.label}
+                      </button>
+                    ) : (
+                      <button type="button" className={linkClass}>
+                        {item.label}
+                      </button>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </section>
