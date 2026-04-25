@@ -447,12 +447,12 @@ body * {
   .onboarding-section .container {
     min-height: auto;
   }
-  .onboarding-section .container { padding: 56px 20px 40px; }
+  .onboarding-section .container { padding: 56px 20px 12px; }
+  .onboarding-section .bottom-curve { display: none; }
   .onboarding-section .headline,
   .onboarding-section .step,
   .onboarding-section .marker,
-  .onboarding-section .road-svg,
-  .onboarding-section .bottom-curve {
+  .onboarding-section .road-svg {
     position: relative;
     left: auto; top: auto; right: auto; bottom: auto;
     transform: none;

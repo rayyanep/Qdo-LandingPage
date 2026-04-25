@@ -274,7 +274,7 @@ export const LandingPage = (): JSX.Element => {
 
         <section
           id="ai-pilot"
-          className="relative mx-auto w-full max-w-none scroll-mt-24 overflow-hidden bg-white px-4 pb-16 pt-12 sm:px-6 md:px-10 lg:px-16 xl:px-40 xl:pb-24 xl:pt-20"
+          className="relative mx-auto w-full max-w-none scroll-mt-24 overflow-hidden bg-white px-4 pb-16 pt-4 sm:px-6 sm:pt-12 md:px-10 lg:px-16 xl:px-40 xl:pb-24 xl:pt-20"
         >
           <MarketInsightsSection />
         </section>
