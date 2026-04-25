@@ -12,11 +12,13 @@ const actions = [
     label: "Get Early Access",
     variant: "primary" as const,
     hasIcon: true,
+    target: "waitlist",
   },
   {
-    label: "See Hoe It Works",
+    label: "See How It Works",
     variant: "secondary" as const,
     hasIcon: false,
+    target: "features",
   },
 ];
 
@@ -36,8 +38,8 @@ export const HeroMessagingSection = (): JSX.Element => {
             ))}
           </div>
           <p className="max-w-[360px] [font-family:'Poppins_Latin-Regular',Helvetica] text-base font-normal leading-[1.5] tracking-[0] text-[#00000099] sm:text-lg">
-            Sign in with a passkey, swap tokens, buy &amp; sell crypto, and
-            trade prediction markets. All in one place.
+            Your gateway to decentralised finance, even if it&#39;s your first
+            time hearing about crypto.
           </p>
         </header>
         <nav
@@ -53,7 +55,7 @@ export const HeroMessagingSection = (): JSX.Element => {
                 type="button"
                 onClick={() => {
                   document
-                    .getElementById("waitlist")
+                    .getElementById(action.target)
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className={`h-auto min-h-[54px] w-full rounded-2xl px-5 py-4 sm:w-[210px] [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] tracking-[0] ${
