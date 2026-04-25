@@ -44,6 +44,17 @@ const statCards = [
     labelClass:
       "whitespace-pre-line [font-family:'Poppins_Latin-Regular',Helvetica] text-xs sm:text-sm font-normal text-white",
   },
+  {
+    value: "$0",
+    label: "Gasless\nTransactions",
+    desktopPosition: "xl:absolute xl:right-[40px] xl:bottom-[60px]",
+    wrapperClass:
+      "aspect-square rounded-3xl border border-solid border-[#0000001f] bg-white",
+    valueClass:
+      "[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[32px] sm:text-[37px] font-semibold text-[#163d6c]",
+    labelClass:
+      "whitespace-pre-line [font-family:'Poppins_Latin-Regular',Helvetica] text-xs sm:text-sm font-normal text-[#00000099]",
+  },
 ];
 
 export const LandingPage = (): JSX.Element => {
@@ -127,16 +138,34 @@ export const LandingPage = (): JSX.Element => {
                     </div>
                   </CardContent>
                 </Card>
+                <Card
+                  className={`hero-card-float-4 hidden xl:flex absolute bottom-[60px] right-[40px] xl:w-[132px] xl:h-[132px] ${statCards[3].wrapperClass} shadow-none`}
+                >
+                  <CardContent className="flex h-full w-full min-w-[120px] flex-col items-center justify-center gap-2 px-3 py-2">
+                    <div
+                      className={`relative self-stretch text-center leading-none tracking-[0] ${statCards[3].valueClass}`}
+                    >
+                      {statCards[3].value}
+                    </div>
+                    <div
+                      className={`relative text-center leading-tight tracking-[0] ${statCards[3].labelClass}`}
+                    >
+                      {statCards[3].label}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
-              <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-4 xl:hidden">
+              <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-4 xl:hidden">
                 {statCards.map((card, idx) => {
                   const floatClass =
                     idx === 0
                       ? "hero-card-float-1"
                       : idx === 1
                       ? "hero-card-float-2"
-                      : "hero-card-float-3";
+                      : idx === 2
+                      ? "hero-card-float-3"
+                      : "hero-card-float-4";
                   return (
                     <Card
                       key={card.label}
