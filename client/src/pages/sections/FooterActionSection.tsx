@@ -42,7 +42,7 @@ const companyLinks: CompanyLink[] = [
   { label: "About" },
   { label: "Contact", target: "waitlist" },
   { label: "Terms", href: "/terms" },
-  { label: "Privacy" },
+  { label: "Privacy", href: "/privacy" },
 ];
 
 type Status = "idle" | "loading" | "success" | "error";
