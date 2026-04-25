@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -119,12 +121,31 @@ const rolloutPhases = [
 ];
 
 export const TokenRolloutSection = (): JSX.Element => {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      const cardWidth = el.scrollWidth / rolloutPhases.length;
+      const index = Math.round(el.scrollLeft / cardWidth);
+      setActiveIndex(Math.max(0, Math.min(rolloutPhases.length - 1, index)));
+      if (el.scrollLeft > 8) setHasScrolled(true);
+    };
+
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative w-full px-4 py-8 sm:px-6 lg:px-0">
       <div className="mx-auto flex w-full max-w-[1123px] flex-col items-center gap-8 rounded-3xl bg-[#061237] px-5 pb-10 pt-10 sm:gap-10 sm:px-8 sm:pb-[60px] sm:pt-14 lg:px-20 lg:pt-20">
-        <div className="flex w-full flex-col items-start gap-8 sm:gap-[54px]">
-          <header className="flex w-full flex-col gap-4 sm:gap-6 lg:flex-row lg:items-start lg:justify-between">
-            <div className="flex flex-col items-start">
+        <div className="flex w-full flex-col items-center gap-8 sm:gap-[54px] lg:items-start">
+          <header className="flex w-full flex-col items-center gap-4 text-center sm:gap-6 lg:flex-row lg:items-start lg:justify-between lg:text-left">
+            <div className="flex flex-col items-center lg:items-start">
               <h2 className="mt-[-1.00px] [font-family:'Poppins_Latin-Bold',Helvetica] text-[28px] font-bold leading-[1.1] tracking-[-0.01em] text-white sm:text-[40px] sm:leading-[normal] sm:tracking-[0]">
                 Thoughtfully curated
               </h2>
@@ -138,7 +159,10 @@ export const TokenRolloutSection = (): JSX.Element => {
               filtering.
             </p>
           </header>
-          <div className="-mx-5 w-[calc(100%+2.5rem)] overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-8 sm:w-[calc(100%+4rem)] lg:mx-0 lg:w-full lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+          <div
+            ref={scrollerRef}
+            className="-mx-5 w-[calc(100%+2.5rem)] overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-8 sm:w-[calc(100%+4rem)] lg:mx-0 lg:w-full lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden"
+          >
             <div className="flex w-max snap-x snap-mandatory gap-4 px-5 sm:gap-5 sm:px-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-6 lg:px-0">
             {rolloutPhases.map((phase, phaseIndex) => (
               <Card
@@ -205,6 +229,30 @@ export const TokenRolloutSection = (): JSX.Element => {
               </Card>
             ))}
             </div>
+          </div>
+          <div
+            aria-hidden="true"
+            className="flex items-center gap-3 lg:hidden"
+            data-testid="token-rollout-scroll-indicator"
+          >
+            <div className="flex items-center gap-1.5">
+              {rolloutPhases.map((phase, index) => (
+                <span
+                  key={phase.title}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    index === activeIndex
+                      ? "w-6 bg-[#659acd]"
+                      : "w-1.5 bg-white/30"
+                  }`}
+                />
+              ))}
+            </div>
+            {!hasScrolled && (
+              <span className="inline-flex items-center gap-1 [font-family:'Poppins',Helvetica] text-xs font-medium text-white/60 token-rollout-swipe-hint">
+                Swipe
+                <ChevronRight className="h-3.5 w-3.5" />
+              </span>
+            )}
           </div>
         </div>
         <Button

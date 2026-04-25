@@ -538,6 +538,14 @@ body * {
   .onboarding-section .steps-mobile { display: contents; }
 }
 
+@keyframes token-rollout-swipe {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(4px); opacity: 1; }
+}
+.token-rollout-swipe-hint {
+  animation: token-rollout-swipe 1.6s ease-in-out infinite;
+}
+
 @keyframes hero-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
