@@ -205,6 +205,10 @@ export const LandingPage = (): JSX.Element => {
         <section className="onboarding-section">
           <div className="container">
             <div className="headline">
+              <span className="headline-badge" aria-hidden="true">
+                <span className="headline-badge-dot" />
+                60-second onboarding
+              </span>
               <h1>
                 From zero to crypto
                 <span className="light">in under 60 seconds</span>

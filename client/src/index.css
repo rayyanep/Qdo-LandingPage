@@ -302,6 +302,10 @@ body * {
   max-width: 640px;
 }
 
+.onboarding-section .headline-badge {
+  display: none;
+}
+
 .onboarding-section .headline h1 {
   margin: 0;
   font-size: 58px;
@@ -443,7 +447,7 @@ body * {
   .onboarding-section .container {
     min-height: auto;
   }
-  .onboarding-section .container { padding: 60px 24px 40px; }
+  .onboarding-section .container { padding: 56px 20px 40px; }
   .onboarding-section .headline,
   .onboarding-section .step,
   .onboarding-section .marker,
@@ -453,13 +457,80 @@ body * {
     left: auto; top: auto; right: auto; bottom: auto;
     transform: none;
   }
-  .onboarding-section .headline { max-width: 100%; margin-bottom: 40px; }
-  .onboarding-section .headline h1 { font-size: 38px; }
-  .onboarding-section .headline p { font-size: 18px; max-width: 100%; }
+  .onboarding-section .headline {
+    max-width: 100%;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .onboarding-section .headline-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(91, 144, 200, 0.12);
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .onboarding-section .headline-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--blue);
+    box-shadow: 0 0 0 4px rgba(95, 147, 203, 0.18);
+  }
+  .onboarding-section .headline h1 {
+    margin: 0;
+    font-size: 36px;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
+  .onboarding-section .headline h1 .light {
+    margin-top: 4px;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .onboarding-section .headline p {
+    margin: 4px 0 0;
+    font-size: 16px;
+    line-height: 1.55;
+    color: #5b5e66;
+    max-width: 100%;
+  }
   .onboarding-section .road-svg { display: none; }
   .onboarding-section .marker { margin: 0 0 14px; box-shadow: none; transform: none; }
-  .onboarding-section .steps-mobile { display: grid; gap: 28px; }
-  .onboarding-section .step { width: 100%; max-width: 100%; padding: 24px; background: rgba(255,255,255,0.45); border-radius: 24px; }
+  .onboarding-section .steps-mobile { display: grid; gap: 20px; }
+  .onboarding-section .step {
+    width: 100%;
+    max-width: 100%;
+    padding: 22px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(22, 61, 108, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px -16px rgba(22, 61, 108, 0.25);
+  }
+  .onboarding-section .step h3 { font-size: 20px; margin-bottom: 8px; }
+  .onboarding-section .step p { font-size: 15px; line-height: 1.5; }
+  .onboarding-section .marker {
+    width: 44px;
+    height: 44px;
+    margin: 0 0 -12px;
+    align-self: flex-start;
+    margin-left: 14px;
+  }
+  .onboarding-section .marker::before {
+    width: 32px;
+    height: 32px;
+    background: radial-gradient(circle at center, var(--white) 0 5px, var(--ring-navy) 6px 14px, var(--ring-blue) 15px 100%);
+  }
   .onboarding-section .step-3 { text-align: left; }
 }
 
