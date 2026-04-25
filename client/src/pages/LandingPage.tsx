@@ -35,8 +35,8 @@ const statCards = [
       "[font-family:'Poppins_Latin-Regular',Helvetica] text-xs sm:text-sm font-normal text-[#00000099]",
   },
   {
-    value: "5 min",
-    label: "Prediction\nMarkets",
+    value: "AI",
+    label: "Powered\nWallet",
     desktopPosition: "xl:absolute xl:left-[170px] xl:top-[517px]",
     wrapperClass: "aspect-square rounded-3xl bg-[#659acd]",
     valueClass:
@@ -72,13 +72,13 @@ export const LandingPage = (): JSX.Element => {
                   className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[45%] max-w-[260px] rounded-full border-[50px] border-solid border-white/70 bg-transparent xl:w-[260px]"
                 />
                 <img
-                  className="relative mx-auto block h-auto w-full max-w-[746px] xl:absolute xl:left-1/2 xl:top-1/2 xl:h-[900px] xl:w-[746px] xl:-translate-x-1/2 xl:-translate-y-1/2 object-contain"
+                  className="hero-phone-anim relative mx-auto block h-auto w-full max-w-[746px] xl:absolute xl:left-1/2 xl:top-1/2 xl:h-[900px] xl:w-[746px] xl:-translate-x-1/2 xl:-translate-y-1/2 object-contain"
                   alt="Qdo wallet on iPhone"
                   src={heroPhoneImage}
                 />
 
                 <Card
-                  className={`hidden xl:flex absolute top-[30px] xl:right-[calc(50%+258px)] xl:w-[132px] xl:h-[132px] ${statCards[0].wrapperClass} shadow-none`}
+                  className={`hero-card-float-1 hidden xl:flex absolute top-[30px] xl:right-[calc(50%+258px)] xl:w-[132px] xl:h-[132px] ${statCards[0].wrapperClass} shadow-none`}
                 >
                   <CardContent className="flex h-full w-full min-w-[120px] flex-col items-center justify-center gap-2 px-3 py-2">
                     <div
@@ -94,7 +94,7 @@ export const LandingPage = (): JSX.Element => {
                   </CardContent>
                 </Card>
                 <Card
-                  className={`hidden xl:flex absolute right-[30px] top-[140px] xl:w-[132px] xl:h-[132px] ${statCards[1].wrapperClass} shadow-none`}
+                  className={`hero-card-float-2 hidden xl:flex absolute right-[30px] top-[140px] xl:w-[132px] xl:h-[132px] ${statCards[1].wrapperClass} shadow-none`}
                 >
                   <CardContent className="flex h-full w-full min-w-[120px] flex-col items-center justify-center gap-2 px-3 py-2">
                     <div
@@ -110,16 +110,15 @@ export const LandingPage = (): JSX.Element => {
                   </CardContent>
                 </Card>
                 <Card
-                  className={`hidden xl:flex absolute bottom-[10px] left-[70px] xl:w-[132px] xl:h-[132px] ${statCards[2].wrapperClass} shadow-none`}
+                  className={`hero-card-float-3 hidden xl:flex absolute bottom-[10px] left-[70px] xl:w-[132px] xl:h-[132px] ${statCards[2].wrapperClass} shadow-none`}
                 >
                   <CardContent className="flex h-full w-full min-w-[120px] flex-col items-center justify-center gap-2 px-3 py-2">
                     <div
                       className={`relative self-stretch text-center leading-none tracking-[0] ${statCards[2].valueClass}`}
                     >
-                      <span className="[font-family:'Poppins_Latin-SemiBold',Helvetica] text-[40px] font-semibold tracking-[0] text-white">
-                        5{" "}
+                      <span className="hero-ai-shimmer [font-family:'Poppins_Latin-SemiBold',Helvetica] text-[40px] font-semibold tracking-[0]">
+                        AI
                       </span>
-                      <span className="text-2xl">min</span>
                     </div>
                     <div
                       className={`relative text-center leading-tight tracking-[0] ${statCards[2].labelClass}`}
@@ -131,32 +130,37 @@ export const LandingPage = (): JSX.Element => {
               </div>
 
               <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-4 xl:hidden">
-                {statCards.map((card) => (
-                  <Card
-                    key={card.label}
-                    className={`${card.wrapperClass} shadow-none`}
-                  >
-                    <CardContent className="flex h-full min-h-[96px] flex-col items-center justify-center gap-1 px-2 py-3 sm:min-h-[120px] sm:px-4 sm:py-4">
-                      <div
-                        className={`relative self-stretch text-center text-[22px] sm:text-[28px] leading-none tracking-[0] ${card.valueClass}`}
-                      >
-                        {card.value === "5 min" ? (
-                          <>
-                            <span className="text-[22px] sm:text-[28px]">5 </span>
-                            <span className="text-base sm:text-xl">min</span>
-                          </>
-                        ) : (
-                          card.value
-                        )}
-                      </div>
-                      <div
-                        className={`relative text-[10px] sm:text-xs text-center leading-tight tracking-[0] ${card.labelClass}`}
-                      >
-                        {card.label}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                {statCards.map((card, idx) => {
+                  const floatClass =
+                    idx === 0
+                      ? "hero-card-float-1"
+                      : idx === 1
+                      ? "hero-card-float-2"
+                      : "hero-card-float-3";
+                  return (
+                    <Card
+                      key={card.label}
+                      className={`${floatClass} ${card.wrapperClass} shadow-none`}
+                    >
+                      <CardContent className="flex h-full min-h-[96px] flex-col items-center justify-center gap-1 px-2 py-3 sm:min-h-[120px] sm:px-4 sm:py-4">
+                        <div
+                          className={`relative self-stretch text-center text-[22px] sm:text-[28px] leading-none tracking-[0] ${card.valueClass}`}
+                        >
+                          {card.value === "AI" ? (
+                            <span className="hero-ai-shimmer">{card.value}</span>
+                          ) : (
+                            card.value
+                          )}
+                        </div>
+                        <div
+                          className={`relative text-[10px] sm:text-xs text-center leading-tight tracking-[0] ${card.labelClass}`}
+                        >
+                          {card.label}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             </div>
 
