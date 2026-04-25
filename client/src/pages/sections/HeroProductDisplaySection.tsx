@@ -3,21 +3,15 @@ import { MenuIcon, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navigationItems = [
-  {
-    label: "Features",
-    href: "https://qdo.xyz/#features",
-  },
-  {
-    label: "AI Pilot",
-    href: "https://qdo.xyz/#ai-pilot",
-  },
-  {
-    label: "Tokens",
-  },
-  {
-    label: "Contact us",
-  },
+  { label: "Features", target: "features" },
+  { label: "AI Pilot", target: "ai-pilot" },
+  { label: "Tokens", target: "tokens" },
+  { label: "Contact us", target: "waitlist" },
 ];
+
+const scrollToTarget = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+};
 
 export const HeroProductDisplaySection = (): JSX.Element => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -52,23 +46,16 @@ export const HeroProductDisplaySection = (): JSX.Element => {
           <ul className="flex items-center gap-[3px]">
             {navigationItems.map((item) => (
               <li key={item.label} className="flex">
-                {item.href ? (
-                  <a
-                    className="inline-flex h-[72px] items-center justify-center whitespace-nowrap rounded-sm px-4 py-2.5 [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] text-[#000000cc] transition-colors hover:text-[#1a3d6c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3d6c] focus-visible:ring-offset-2"
-                    href={item.href}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <button
-                    type="button"
-                    className="inline-flex h-[72px] items-center justify-center whitespace-nowrap rounded-sm px-4 py-2.5 [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] text-[#000000cc] transition-colors hover:text-[#1a3d6c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3d6c] focus-visible:ring-offset-2"
-                  >
-                    {item.label}
-                  </button>
-                )}
+                <a
+                  href={`#${item.target}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToTarget(item.target);
+                  }}
+                  className="inline-flex h-[72px] items-center justify-center whitespace-nowrap rounded-sm px-4 py-2.5 [font-family:'Poppins',Helvetica] text-base font-medium leading-[22px] text-[#000000cc] transition-colors hover:text-[#1a3d6c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a3d6c] focus-visible:ring-offset-2"
+                >
+                  {item.label}
+                </a>
               </li>
             ))}
           </ul>
@@ -108,25 +95,17 @@ export const HeroProductDisplaySection = (): JSX.Element => {
           <ul className="flex flex-col px-4 py-4 sm:px-6">
             {navigationItems.map((item) => (
               <li key={item.label}>
-                {item.href ? (
-                  <a
-                    className="block w-full rounded-lg px-3 py-3 [font-family:'Poppins',Helvetica] text-base font-medium text-[#000000cc] hover:bg-[#f5f7fb] hover:text-[#1a3d6c]"
-                    href={item.href}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => setMobileOpen(false)}
-                    className="block w-full rounded-lg px-3 py-3 text-left [font-family:'Poppins',Helvetica] text-base font-medium text-[#000000cc] hover:bg-[#f5f7fb] hover:text-[#1a3d6c]"
-                  >
-                    {item.label}
-                  </button>
-                )}
+                <a
+                  href={`#${item.target}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMobileOpen(false);
+                    setTimeout(() => scrollToTarget(item.target), 50);
+                  }}
+                  className="block w-full rounded-lg px-3 py-3 [font-family:'Poppins',Helvetica] text-base font-medium text-[#000000cc] hover:bg-[#f5f7fb] hover:text-[#1a3d6c]"
+                >
+                  {item.label}
+                </a>
               </li>
             ))}
             <li className="mt-2">

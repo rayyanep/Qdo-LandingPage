@@ -12,6 +12,7 @@ import {
   ArrowRight,
   CheckCircle2,
   Loader2,
+  Mail,
 } from "lucide-react";
 
 const socialLinks = [
@@ -176,6 +177,13 @@ export const FooterActionSection = (): JSX.Element => {
               <br />
               Built for everyone.
             </p>
+            <a
+              href="mailto:info@qdo.xyz"
+              className="inline-flex items-center gap-2 [font-family:'Poppins',Helvetica] text-base font-medium text-white transition-colors hover:text-[#659acd]"
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              info@qdo.xyz
+            </a>
             <div className="flex items-center gap-3">
               {socialLinks.map(({ label, href, icon: Icon }) => (
                 <a

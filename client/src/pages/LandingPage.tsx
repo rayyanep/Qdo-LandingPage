@@ -166,7 +166,9 @@ export const LandingPage = (): JSX.Element => {
           </div>
         </div>
         <ProductValueSection />
-        <PasskeySecuritySection />
+        <div id="features" className="scroll-mt-24">
+          <PasskeySecuritySection />
+        </div>
         <section className="onboarding-section">
           <div className="container">
             <div className="headline">
@@ -233,10 +235,16 @@ export const LandingPage = (): JSX.Element => {
           </div>
         </section>
 
-        <section className="relative mx-auto w-full max-w-none overflow-hidden bg-white px-4 pb-16 pt-12 sm:px-6 md:px-10 lg:px-16 xl:px-40 xl:pb-24 xl:pt-20">
+        <section
+          id="ai-pilot"
+          className="relative mx-auto w-full max-w-none scroll-mt-24 overflow-hidden bg-white px-4 pb-16 pt-12 sm:px-6 md:px-10 lg:px-16 xl:px-40 xl:pb-24 xl:pt-20"
+        >
           <MarketInsightsSection />
         </section>
-        <section className="mx-auto w-full max-w-none px-4 pb-14 pt-8 sm:px-6 md:px-8">
+        <section
+          id="tokens"
+          className="mx-auto w-full max-w-none scroll-mt-24 px-4 pb-14 pt-8 sm:px-6 md:px-8"
+        >
           <TokenRolloutSection />
         </section>
         <section className="mx-auto flex w-full max-w-none flex-col gap-10 px-4 pb-16 pt-2 sm:px-6 md:px-8">
