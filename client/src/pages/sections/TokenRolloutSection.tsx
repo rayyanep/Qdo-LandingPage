@@ -138,11 +138,12 @@ export const TokenRolloutSection = (): JSX.Element => {
               filtering.
             </p>
           </header>
-          <div className="grid w-full grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
+          <div className="-mx-5 w-[calc(100%+2.5rem)] overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-8 sm:w-[calc(100%+4rem)] lg:mx-0 lg:w-full lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+            <div className="flex w-max snap-x snap-mandatory gap-4 px-5 sm:gap-5 sm:px-8 lg:grid lg:w-full lg:grid-cols-3 lg:gap-6 lg:px-0">
             {rolloutPhases.map((phase, phaseIndex) => (
               <Card
                 key={phase.title}
-                className="rounded-3xl border-0 bg-[#ffffff14] shadow-none"
+                className="w-[78vw] max-w-[320px] shrink-0 snap-start rounded-3xl border-0 bg-[#ffffff14] shadow-none lg:w-auto lg:max-w-none lg:shrink"
               >
                 <CardContent className="flex h-full flex-col overflow-hidden rounded-3xl p-5 sm:p-6 lg:h-[520px] lg:min-h-[420px]">
                   <div className="mb-4 sm:mb-6">
@@ -203,6 +204,7 @@ export const TokenRolloutSection = (): JSX.Element => {
                 </CardContent>
               </Card>
             ))}
+            </div>
           </div>
         </div>
         <Button
