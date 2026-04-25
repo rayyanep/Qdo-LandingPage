@@ -182,7 +182,7 @@ export const LandingPage = (): JSX.Element => {
               </h1>
               <p>
                 No downloads, no recovery phrases, no crypto knowledge required.
-                Just your fingerprint and you&#39;re in.
+                Just your passkey and you&#39;re in.
               </p>
             </div>
 
