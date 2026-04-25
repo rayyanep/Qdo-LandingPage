@@ -33,7 +33,7 @@ export const ProductValueSection = (): JSX.Element => {
     <section className="w-full px-4 py-[18px] sm:px-8 md:px-12 lg:px-24 xl:px-40 xl:py-[54px]">
       <Card className="border-0 bg-transparent shadow-none">
         <CardContent className="p-0">
-          <div className="flex w-full flex-col gap-6 md:flex-row md:items-center md:gap-[59px]">
+          <div className="mx-auto flex w-full max-w-fit flex-col gap-6 md:flex-row md:items-center md:gap-[59px]">
             <ul
               className="flex flex-wrap items-center gap-x-5 gap-y-3 sm:flex-nowrap sm:gap-7 sm:whitespace-nowrap"
               aria-label="Supported blockchains"
