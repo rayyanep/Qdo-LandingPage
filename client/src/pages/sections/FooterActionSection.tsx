@@ -16,12 +16,16 @@ import {
 } from "lucide-react";
 
 const socialLinks = [
-  { label: "X (Twitter)", href: "#", icon: Twitter },
-  { label: "Telegram", href: "#", icon: Send },
-  { label: "Discord", href: "#", icon: MessageCircle },
+  { label: "X (Twitter)", href: "https://x.com/QdoXyz", icon: Twitter },
+  { label: "Telegram", href: "https://t.me/qdo_official", icon: Send },
+  { label: "Discord", href: "https://discord.gg/Ty5qGPcYZ", icon: MessageCircle },
   { label: "GitHub", href: "#", icon: Github },
-  { label: "LinkedIn", href: "#", icon: Linkedin },
-  { label: "YouTube", href: "#", icon: Youtube },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/qdowallet/",
+    icon: Linkedin,
+  },
+  { label: "YouTube", href: "https://www.youtube.com/@QdoWallet", icon: Youtube },
 ];
 
 const productLinks = ["Wallet", "Swap", "Buy/Sell", "Predictions"];
@@ -190,6 +194,8 @@ export const FooterActionSection = (): JSX.Element => {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all hover:border-[#659acd] hover:bg-[#659acd]/20 hover:text-white"
                 >
                   <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
