@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import iPhoneSwapImage from "@assets/Simulator_Screenshot_-_iPhone_17_-_2026-04-24_at_09.45.18_(1)_1777017222711.png";
+import iPhoneSwapImage from "@assets/iPhone_13_Pro_1776824127185.png";
 import multiChainImage from "@assets/Layer_1_1776824309628.png";
 import earnYieldArrow from "@assets/Vector_112_1776824503736.png";
 import iconUSDT from "@assets/image_4_1776824613430.png";
