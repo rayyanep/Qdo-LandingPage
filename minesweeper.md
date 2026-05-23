@@ -27,7 +27,7 @@ cd minesweeper98
 
 # Install deps
 npx expo install expo-font expo-haptics @react-native-async-storage/async-storage
-npx expo install expo-status-bar react-native-safe-area-context
+npx expo install expo-status-bar react-native-safe-area-context expo-av
 
 # Run
 npx expo start            # press 'a' for Android, 'i' for iOS
@@ -75,6 +75,7 @@ minesweeper98/
 │   ├── theme.ts
 │   ├── game/
 │   │   ├── types.ts
+│   │   ├── rng.ts            ← seedable RNG (daily challenge)
 │   │   ├── engine.ts
 │   │   └── useGame.ts
 │   ├── components/
@@ -84,11 +85,21 @@ minesweeper98/
 │   │   ├── LcdCounter.tsx
 │   │   ├── SmileyButton.tsx
 │   │   ├── TitleBar.tsx
-│   │   └── DifficultyMenu.tsx
+│   │   ├── DifficultyMenu.tsx
+│   │   └── SettingsModal.tsx ← settings UI
+│   ├── audio/
+│   │   └── sfx.ts            ← sound FX
+│   ├── settings/
+│   │   └── useSettings.ts    ← persisted user prefs
 │   └── storage/
 │       └── highscore.ts
 └── assets/
-    └── fonts/PressStart2P-Regular.ttf
+    ├── fonts/PressStart2P-Regular.ttf
+    └── sfx/
+        ├── click.wav
+        ├── flag.wav
+        ├── boom.wav
+        └── win.wav
 ```
 
 Download the font from Google Fonts ("Press Start 2P") and drop the `.ttf`
@@ -164,10 +175,46 @@ export const PRESETS: Record<Difficulty, { rows: number; cols: number; mines: nu
 export type GameStatus = 'idle' | 'playing' | 'won' | 'lost';
 ```
 
+**`src/game/rng.ts`** — tiny seedable PRNG (mulberry32) for the daily challenge.
+
+```ts
+export type RNG = () => number;
+
+export function mulberry32(seed: number): RNG {
+  let s = seed >>> 0;
+  return () => {
+    s = (s + 0x6d2b79f5) >>> 0;
+    let t = s;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Hash a string (e.g. "2026-05-23:beginner") into a 32-bit seed. */
+export function hashSeed(input: string): number {
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < input.length; i++) {
+    h ^= input.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+export function todayKey(): string {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+```
+
 **`src/game/engine.ts`**
 
 ```ts
 import { CellState } from './types';
+import { RNG } from './rng';
 
 export function makeEmptyBoard(rows: number, cols: number): CellState[][] {
   return Array.from({ length: rows }, () =>
@@ -183,13 +230,15 @@ export function makeEmptyBoard(rows: number, cols: number): CellState[][] {
 
 /**
  * Place mines AFTER the first tap so the first cell is never a mine
- * (matches classic Minesweeper behaviour).
+ * (matches classic Minesweeper behaviour). Pass a seeded `rng` for
+ * reproducible boards (daily challenge); omit for Math.random.
  */
 export function placeMines(
   board: CellState[][],
   mines: number,
   safeR: number,
   safeC: number,
+  rng: RNG = Math.random,
 ): CellState[][] {
   const rows = board.length;
   const cols = board[0].length;
@@ -207,7 +256,7 @@ export function placeMines(
 
   let placed = 0;
   while (placed < mines) {
-    const idx = Math.floor(Math.random() * rows * cols);
+    const idx = Math.floor(rng() * rows * cols);
     if (forbidden.has(idx)) continue;
     const r = Math.floor(idx / cols);
     const c = idx % cols;
@@ -281,14 +330,63 @@ export function openCell(
   return { board: next, hitMine: false };
 }
 
-export function toggleFlag(board: CellState[][], r: number, c: number): CellState[][] {
+export function toggleFlag(
+  board: CellState[][],
+  r: number,
+  c: number,
+  allowQuestion = true,
+): CellState[][] {
   const next = board.map(row => row.map(x => ({ ...x })));
   const cell = next[r][c];
   if (cell.isOpen) return next;
   if (!cell.isFlagged && !cell.isQuestion) cell.isFlagged = true;
-  else if (cell.isFlagged) { cell.isFlagged = false; cell.isQuestion = true; }
-  else { cell.isQuestion = false; }
+  else if (cell.isFlagged) {
+    cell.isFlagged = false;
+    if (allowQuestion) cell.isQuestion = true;
+  } else { cell.isQuestion = false; }
   return next;
+}
+
+/**
+ * "Chord" — when an opened number cell has exactly N flags around it
+ * (N = its adjacent count), open all unflagged neighbours. If any of
+ * those neighbours is a mine, the game is lost.
+ */
+export function chord(
+  board: CellState[][],
+  r: number,
+  c: number,
+): { board: CellState[][]; hitMine: boolean; changed: boolean } {
+  const rows = board.length;
+  const cols = board[0].length;
+  const cell = board[r][c];
+  if (!cell.isOpen || cell.adjacent === 0) {
+    return { board, hitMine: false, changed: false };
+  }
+
+  let flags = 0;
+  const neighbours: [number, number][] = [];
+  for (let dr = -1; dr <= 1; dr++) {
+    for (let dc = -1; dc <= 1; dc++) {
+      if (dr === 0 && dc === 0) continue;
+      const nr = r + dr, nc = c + dc;
+      if (nr < 0 || nr >= rows || nc < 0 || nc >= cols) continue;
+      if (board[nr][nc].isFlagged) flags++;
+      else if (!board[nr][nc].isOpen) neighbours.push([nr, nc]);
+    }
+  }
+  if (flags !== cell.adjacent || neighbours.length === 0) {
+    return { board, hitMine: false, changed: false };
+  }
+
+  let cur = board;
+  let hitMine = false;
+  for (const [nr, nc] of neighbours) {
+    const r1 = openCell(cur, nr, nc);
+    cur = r1.board;
+    if (r1.hitMine) hitMine = true;
+  }
+  return { board: cur, hitMine, changed: true };
 }
 
 export function checkWin(board: CellState[][]): boolean {
@@ -315,10 +413,28 @@ import {
   CellState, Difficulty, GameStatus, PRESETS,
 } from './types';
 import {
-  makeEmptyBoard, placeMines, openCell, toggleFlag, checkWin, countFlags,
+  makeEmptyBoard, placeMines, openCell, toggleFlag, chord as chordFn,
+  checkWin, countFlags,
 } from './engine';
+import { mulberry32, hashSeed, todayKey } from './rng';
 
-export function useGame(initial: Difficulty = 'beginner') {
+export type GameMode = 'normal' | 'daily';
+
+export type GameOpts = {
+  initial?: Difficulty;
+  allowQuestion?: boolean;   // settings: question marks on/off
+  mode?: GameMode;           // 'daily' → seeded RNG
+  onEvent?: (e: 'open' | 'flag' | 'win' | 'lose') => void; // sound/haptics hook
+};
+
+export function useGame(opts: GameOpts = {}) {
+  const {
+    initial = 'beginner',
+    allowQuestion = true,
+    mode = 'normal',
+    onEvent,
+  } = opts;
+
   const [difficulty, setDifficulty] = useState<Difficulty>(initial);
   const cfg = PRESETS[difficulty];
 
@@ -346,25 +462,47 @@ export function useGame(initial: Difficulty = 'beginner') {
     return () => { if (tickRef.current) clearInterval(tickRef.current); };
   }, [status]);
 
+  const finish = (s: 'won' | 'lost') => {
+    setStatus(s);
+    onEvent?.(s === 'won' ? 'win' : 'lose');
+  };
+
   const open = useCallback((r: number, c: number) => {
     if (status === 'won' || status === 'lost') return;
     setBoard(prev => {
       let working = prev;
       if (status === 'idle') {
-        working = placeMines(prev, cfg.mines, r, c);
+        const rng = mode === 'daily'
+          ? mulberry32(hashSeed(`${todayKey()}:${difficulty}`))
+          : Math.random;
+        working = placeMines(prev, cfg.mines, r, c, rng);
         setStatus('playing');
       }
       const { board: next, hitMine } = openCell(working, r, c);
-      if (hitMine) setStatus('lost');
-      else if (checkWin(next)) setStatus('won');
+      if (hitMine) finish('lost');
+      else if (checkWin(next)) finish('won');
+      else onEvent?.('open');
       return next;
     });
-  }, [status, cfg.mines]);
+  }, [status, cfg.mines, mode, difficulty, onEvent]);
 
   const flag = useCallback((r: number, c: number) => {
     if (status === 'won' || status === 'lost') return;
-    setBoard(prev => toggleFlag(prev, r, c));
-  }, [status]);
+    setBoard(prev => toggleFlag(prev, r, c, allowQuestion));
+    onEvent?.('flag');
+  }, [status, allowQuestion, onEvent]);
+
+  const chord = useCallback((r: number, c: number) => {
+    if (status !== 'playing') return;
+    setBoard(prev => {
+      const res = chordFn(prev, r, c);
+      if (!res.changed) return prev;
+      if (res.hitMine) finish('lost');
+      else if (checkWin(res.board)) finish('won');
+      else onEvent?.('open');
+      return res.board;
+    });
+  }, [status, onEvent]);
 
   const minesLeft = cfg.mines - countFlags(board);
 
@@ -372,7 +510,7 @@ export function useGame(initial: Difficulty = 'beginner') {
     board, status, elapsed, minesLeft,
     rows: cfg.rows, cols: cfg.cols, totalMines: cfg.mines,
     difficulty, setDifficulty: reset,
-    open, flag, reset: () => reset(difficulty),
+    open, flag, chord, reset: () => reset(difficulty),
   };
 }
 ```
@@ -470,10 +608,10 @@ export const SmileyButton: React.FC<{ status: GameStatus; onPress: () => void }>
 };
 ```
 
-**`src/components/Cell.tsx`** — a single board cell with long-press flagging.
+**`src/components/Cell.tsx`** — long-press to flag, double-tap on an opened number to **chord**.
 
 ```tsx
-import React, { memo } from 'react';
+import React, { memo, useRef } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Bevel } from './Bevel';
@@ -481,45 +619,65 @@ import { W98, FONT } from '../theme';
 import { CellState } from '../game/types';
 
 export const CELL_SIZE = 28;
+const DOUBLE_TAP_MS = 260;
 
 type Props = {
   cell: CellState;
   row: number;
   col: number;
   exploded?: boolean;
+  hapticsOn?: boolean;
   onOpen: (r: number, c: number) => void;
   onFlag: (r: number, c: number) => void;
+  onChord: (r: number, c: number) => void;
 };
 
-function CellInner({ cell, row, col, exploded, onOpen, onFlag }: Props) {
+function CellInner({ cell, row, col, exploded, hapticsOn, onOpen, onFlag, onChord }: Props) {
+  const lastTap = useRef(0);
+
   const handleLong = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
+    if (hapticsOn) Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
     onFlag(row, col);
   };
 
   if (cell.isOpen) {
     const bg = exploded && cell.isMine ? W98.bombBg : W98.cellOpen;
+    const isChordable = cell.adjacent > 0;
+
+    const onTapOpened = () => {
+      if (!isChordable) return;
+      const now = Date.now();
+      if (now - lastTap.current < DOUBLE_TAP_MS) {
+        lastTap.current = 0;
+        onChord(row, col);
+      } else {
+        lastTap.current = now;
+      }
+    };
+
     return (
-      <View
-        style={{
-          width: CELL_SIZE, height: CELL_SIZE,
-          backgroundColor: bg,
-          borderWidth: 1, borderColor: W98.faceDark,
-          alignItems: 'center', justifyContent: 'center',
-        }}
-      >
-        {cell.isMine ? (
-          <Text style={{ fontSize: 16 }}>💣</Text>
-        ) : cell.adjacent > 0 ? (
-          <Text style={{
-            fontFamily: FONT,
-            fontSize: 14,
-            color: W98.numbers[cell.adjacent] ?? '#000',
-          }}>
-            {cell.adjacent}
-          </Text>
-        ) : null}
-      </View>
+      <Pressable onPress={isChordable ? onTapOpened : undefined}>
+        <View
+          style={{
+            width: CELL_SIZE, height: CELL_SIZE,
+            backgroundColor: bg,
+            borderWidth: 1, borderColor: W98.faceDark,
+            alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          {cell.isMine ? (
+            <Text style={{ fontSize: 16 }}>💣</Text>
+          ) : cell.adjacent > 0 ? (
+            <Text style={{
+              fontFamily: FONT,
+              fontSize: 14,
+              color: W98.numbers[cell.adjacent] ?? '#000',
+            }}>
+              {cell.adjacent}
+            </Text>
+          ) : null}
+        </View>
+      </Pressable>
     );
   }
 
@@ -551,11 +709,13 @@ import { CellState } from '../game/types';
 type Props = {
   board: CellState[][];
   exploded: boolean;
+  hapticsOn?: boolean;
   onOpen: (r: number, c: number) => void;
   onFlag: (r: number, c: number) => void;
+  onChord: (r: number, c: number) => void;
 };
 
-export const Board: React.FC<Props> = ({ board, exploded, onOpen, onFlag }) => {
+export const Board: React.FC<Props> = ({ board, exploded, hapticsOn, onOpen, onFlag, onChord }) => {
   const rows = board.length;
   const cols = board[0]?.length ?? 0;
   const boardW = cols * CELL_SIZE;
@@ -575,8 +735,10 @@ export const Board: React.FC<Props> = ({ board, exploded, onOpen, onFlag }) => {
                     row={r}
                     col={c}
                     exploded={exploded}
+                    hapticsOn={hapticsOn}
                     onOpen={onOpen}
                     onFlag={onFlag}
+                    onChord={onChord}
                   />
                 ))}
               </View>
@@ -826,14 +988,405 @@ eas update --branch production
 
 ---
 
-## 11. Nice-to-haves (Not Included Above)
+## 11. Settings (Persisted User Prefs)
 
-- **Chord click** (open all neighbours when number == flags) — add a
-  double-tap handler on opened number cells calling a `chord(r, c)` helper.
-- **Sound FX** via `expo-av` — click, boom, win jingle.
-- **Settings screen** — toggle question marks, haptics, theme.
-- **Daily challenge** — seed RNG by `YYYY-MM-DD` so everyone gets the same
-  board.
+**`src/settings/useSettings.ts`**
+
+```ts
+import { useCallback, useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+export type ThemeName = 'classic' | 'dark';
+
+export type Settings = {
+  sound: boolean;
+  haptics: boolean;
+  questionMarks: boolean;
+  theme: ThemeName;
+};
+
+const DEFAULTS: Settings = {
+  sound: true,
+  haptics: true,
+  questionMarks: true,
+  theme: 'classic',
+};
+
+const KEY = 'ms98:settings';
+
+export function useSettings() {
+  const [settings, setSettings] = useState<Settings>(DEFAULTS);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    AsyncStorage.getItem(KEY).then(raw => {
+      if (raw) {
+        try { setSettings({ ...DEFAULTS, ...JSON.parse(raw) }); } catch {}
+      }
+      setLoaded(true);
+    });
+  }, []);
+
+  const update = useCallback(<K extends keyof Settings>(k: K, v: Settings[K]) => {
+    setSettings(prev => {
+      const next = { ...prev, [k]: v };
+      AsyncStorage.setItem(KEY, JSON.stringify(next)).catch(() => {});
+      return next;
+    });
+  }, []);
+
+  return { settings, update, loaded };
+}
+```
+
+### Themes — extend `src/theme.ts`
+
+```ts
+import { ThemeName } from './settings/useSettings';
+
+const CLASSIC = {
+  face: '#c0c0c0', faceDark: '#808080', highlight: '#ffffff',
+  cellClosed: '#bdbdbd', cellOpen: '#bdbdbd',
+  titleBg: '#000080', titleText: '#ffffff',
+  desktop: '#008080',
+  numbers: { 1:'#0000ff',2:'#008000',3:'#ff0000',4:'#000080',
+             5:'#800000',6:'#008080',7:'#000000',8:'#808080' } as Record<number,string>,
+  lcdBg: '#000000', lcdOn: '#ff0000',
+  bombBg: '#ff0000', flagRed: '#ff0000',
+};
+
+const DARK: typeof CLASSIC = {
+  ...CLASSIC,
+  face: '#2a2a2a', faceDark: '#000000', highlight: '#555555',
+  cellClosed: '#2a2a2a', cellOpen: '#1a1a1a',
+  titleBg: '#1f1f3f', titleText: '#eaeaea',
+  desktop: '#101010',
+  numbers: { 1:'#5aa9ff',2:'#5fcf6b',3:'#ff6b6b',4:'#b08bff',
+             5:'#ff9b6b',6:'#7fe6e6',7:'#eaeaea',8:'#9a9a9a' } as Record<number,string>,
+};
+
+export function themeFor(name: ThemeName) {
+  return name === 'dark' ? DARK : CLASSIC;
+}
+
+// Backward-compat singleton used by components — overwritten at runtime by App.
+export let W98 = CLASSIC;
+export function applyTheme(name: ThemeName) { W98 = themeFor(name); }
+
+export const FONT = 'PressStart2P';
+```
+
+> The simplest integration: call `applyTheme(settings.theme)` once during
+> startup (before render). For instant live theme switching, lift `W98` into
+> a React context — same shape, no API changes elsewhere.
+
+### Settings Modal — `src/components/SettingsModal.tsx`
+
+```tsx
+import React from 'react';
+import { Modal, Pressable, Text, View } from 'react-native';
+import { Bevel } from './Bevel';
+import { TitleBar } from './TitleBar';
+import { W98, FONT } from '../theme';
+import { Settings, ThemeName } from '../settings/useSettings';
+
+type Props = {
+  visible: boolean;
+  settings: Settings;
+  onChange: <K extends keyof Settings>(k: K, v: Settings[K]) => void;
+  onClose: () => void;
+};
+
+const Checkbox: React.FC<{ checked: boolean; onToggle: () => void; label: string }> =
+  ({ checked, onToggle, label }) => (
+  <Pressable onPress={onToggle} style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 6 }}>
+    <Bevel raised={false} style={{ width: 18, height: 18, alignItems: 'center', justifyContent: 'center' }}>
+      {checked && <Text style={{ fontFamily: FONT, fontSize: 10 }}>X</Text>}
+    </Bevel>
+    <Text style={{ fontFamily: FONT, fontSize: 9, marginLeft: 8 }}>{label}</Text>
+  </Pressable>
+);
+
+const ThemePick: React.FC<{ value: ThemeName; onPick: (t: ThemeName) => void }> = ({ value, onPick }) => (
+  <View style={{ flexDirection: 'row', gap: 6, paddingVertical: 6 }}>
+    {(['classic','dark'] as ThemeName[]).map(t => (
+      <Pressable key={t} onPress={() => onPick(t)}>
+        <Bevel raised={value !== t} style={{ paddingHorizontal: 8, paddingVertical: 6 }}>
+          <Text style={{ fontFamily: FONT, fontSize: 9 }}>{t.toUpperCase()}</Text>
+        </Bevel>
+      </Pressable>
+    ))}
+  </View>
+);
+
+export const SettingsModal: React.FC<Props> = ({ visible, settings, onChange, onClose }) => (
+  <Modal transparent animationType="fade" visible={visible} onRequestClose={onClose}>
+    <View style={{ flex: 1, backgroundColor: '#0008', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
+      <Bevel thick style={{ minWidth: 260 }}>
+        <TitleBar title="Settings" />
+        <View style={{ padding: 12 }}>
+          <Checkbox label="Sound"          checked={settings.sound}         onToggle={() => onChange('sound', !settings.sound)} />
+          <Checkbox label="Haptics"        checked={settings.haptics}       onToggle={() => onChange('haptics', !settings.haptics)} />
+          <Checkbox label="Question marks" checked={settings.questionMarks} onToggle={() => onChange('questionMarks', !settings.questionMarks)} />
+          <Text style={{ fontFamily: FONT, fontSize: 9, marginTop: 8 }}>Theme</Text>
+          <ThemePick value={settings.theme} onPick={t => onChange('theme', t)} />
+          <Pressable onPress={onClose} style={{ alignSelf: 'flex-end', marginTop: 10 }}>
+            <Bevel style={{ paddingHorizontal: 14, paddingVertical: 6 }}>
+              <Text style={{ fontFamily: FONT, fontSize: 9 }}>OK</Text>
+            </Bevel>
+          </Pressable>
+        </View>
+      </Bevel>
+    </View>
+  </Modal>
+);
+```
+
+---
+
+## 12. Sound FX
+
+Drop four short WAVs into `assets/sfx/`. Free options: open-game-art,
+freesound.org. Keep them under ~50 KB each.
+
+**`src/audio/sfx.ts`**
+
+```ts
+import { Audio } from 'expo-av';
+
+type SfxName = 'click' | 'flag' | 'boom' | 'win';
+
+const FILES: Record<SfxName, number> = {
+  click: require('../../assets/sfx/click.wav'),
+  flag:  require('../../assets/sfx/flag.wav'),
+  boom:  require('../../assets/sfx/boom.wav'),
+  win:   require('../../assets/sfx/win.wav'),
+};
+
+const cache: Partial<Record<SfxName, Audio.Sound>> = {};
+let enabled = true;
+let ready = false;
+
+export async function initSfx() {
+  if (ready) return;
+  await Audio.setAudioModeAsync({
+    playsInSilentModeIOS: true,
+    staysActiveInBackground: false,
+    shouldDuckAndroid: true,
+  });
+  for (const name of Object.keys(FILES) as SfxName[]) {
+    const { sound } = await Audio.Sound.createAsync(FILES[name], { volume: 0.7 });
+    cache[name] = sound;
+  }
+  ready = true;
+}
+
+export function setSfxEnabled(on: boolean) { enabled = on; }
+
+export async function play(name: SfxName) {
+  if (!enabled || !ready) return;
+  const s = cache[name];
+  if (!s) return;
+  try { await s.setPositionAsync(0); await s.playAsync(); } catch {}
+}
+
+export async function unloadSfx() {
+  for (const s of Object.values(cache)) await s?.unloadAsync().catch(() => {});
+}
+```
+
+---
+
+## 13. Daily Challenge
+
+Already wired: pass `mode: 'daily'` to `useGame`. The board is generated
+from `mulberry32(hashSeed("YYYY-MM-DD:<difficulty>"))`, so every player
+gets the same layout on the same calendar day.
+
+UI toggle goes next to the difficulty picker (see `App.tsx` below). To
+track daily streaks, extend `src/storage/highscore.ts`:
+
+```ts
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { todayKey } from '../game/rng';
+import { Difficulty } from '../game/types';
+
+const DAILY_KEY = (d: Difficulty) => `ms98:daily:${d}`;
+
+export async function recordDailyWin(d: Difficulty, seconds: number) {
+  const k = DAILY_KEY(d);
+  const raw = await AsyncStorage.getItem(k);
+  const data = raw ? JSON.parse(raw) : { lastDate: '', streak: 0, best: null as number | null };
+  const today = todayKey();
+  if (data.lastDate === today) {
+    if (data.best === null || seconds < data.best) data.best = seconds;
+  } else {
+    // Streak = +1 only if yesterday's date was the previous lastDate.
+    const yest = new Date(); yest.setDate(yest.getDate() - 1);
+    const y = yest.toISOString().slice(0, 10);
+    data.streak = data.lastDate === y ? data.streak + 1 : 1;
+    data.lastDate = today;
+    data.best = seconds;
+  }
+  await AsyncStorage.setItem(k, JSON.stringify(data));
+  return data as { lastDate: string; streak: number; best: number | null };
+}
+```
+
+---
+
+## 14. Final `App.tsx` (Everything Wired)
+
+```tsx
+import React, { useEffect, useMemo, useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Pressable, Text, View } from 'react-native';
+import * as Font from 'expo-font';
+
+import { themeFor, applyTheme, FONT } from './src/theme';
+import { Bevel } from './src/components/Bevel';
+import { Board } from './src/components/Board';
+import { LcdCounter } from './src/components/LcdCounter';
+import { SmileyButton } from './src/components/SmileyButton';
+import { TitleBar } from './src/components/TitleBar';
+import { DifficultyMenu } from './src/components/DifficultyMenu';
+import { SettingsModal } from './src/components/SettingsModal';
+import { useGame, GameMode } from './src/game/useGame';
+import { setBestIfBetter, getBest } from './src/storage/highscore';
+import { recordDailyWin } from './src/storage/highscore';
+import { useSettings } from './src/settings/useSettings';
+import { initSfx, play, setSfxEnabled, unloadSfx } from './src/audio/sfx';
+
+export default function App() {
+  const [fontReady, setFontReady] = useState(false);
+  const [best, setBest] = useState<number | null>(null);
+  const [mode, setMode] = useState<GameMode>('normal');
+  const [showSettings, setShowSettings] = useState(false);
+  const [streak, setStreak] = useState<number | null>(null);
+
+  const { settings, update, loaded } = useSettings();
+  const theme = useMemo(() => themeFor(settings.theme), [settings.theme]);
+
+  // Sync globals from settings
+  useEffect(() => { applyTheme(settings.theme); }, [settings.theme]);
+  useEffect(() => { setSfxEnabled(settings.sound); }, [settings.sound]);
+
+  const g = useGame({
+    initial: 'beginner',
+    allowQuestion: settings.questionMarks,
+    mode,
+    onEvent: e => {
+      if (e === 'open') play('click');
+      if (e === 'flag') play('flag');
+      if (e === 'lose') play('boom');
+      if (e === 'win')  play('win');
+    },
+  });
+
+  useEffect(() => {
+    Promise.all([
+      Font.loadAsync({ [FONT]: require('./assets/fonts/PressStart2P-Regular.ttf') }),
+      initSfx().catch(() => {}),
+    ]).then(() => setFontReady(true));
+    return () => { unloadSfx(); };
+  }, []);
+
+  useEffect(() => { getBest(g.difficulty).then(setBest); }, [g.difficulty]);
+
+  useEffect(() => {
+    if (g.status === 'won') {
+      setBestIfBetter(g.difficulty, g.elapsed).then(updated => {
+        if (updated) setBest(g.elapsed);
+      });
+      if (mode === 'daily') {
+        recordDailyWin(g.difficulty, g.elapsed).then(d => setStreak(d.streak));
+      }
+    }
+  }, [g.status, g.elapsed, g.difficulty, mode]);
+
+  if (!fontReady || !loaded) return null;
+
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1, backgroundColor: theme.desktop }}>
+        <StatusBar style="light" />
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 12 }}>
+          <Bevel thick style={{ padding: 0 }}>
+            <TitleBar title={mode === 'daily' ? 'Minesweeper — Daily' : 'Minesweeper'} />
+
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <DifficultyMenu current={g.difficulty} onChange={d => { setMode('normal'); g.setDifficulty(d); }} />
+              <View style={{ flexDirection: 'row', gap: 4, paddingRight: 6 }}>
+                <Pressable onPress={() => { setMode(m => m === 'daily' ? 'normal' : 'daily'); g.reset(); }}>
+                  <Bevel raised={mode !== 'daily'} style={{ paddingHorizontal: 8, paddingVertical: 6 }}>
+                    <Text style={{ fontFamily: FONT, fontSize: 9 }}>DAILY</Text>
+                  </Bevel>
+                </Pressable>
+                <Pressable onPress={() => setShowSettings(true)}>
+                  <Bevel style={{ paddingHorizontal: 8, paddingVertical: 6 }}>
+                    <Text style={{ fontFamily: FONT, fontSize: 9 }}>⚙</Text>
+                  </Bevel>
+                </Pressable>
+              </View>
+            </View>
+
+            <View style={{ paddingHorizontal: 8, paddingTop: 4 }}>
+              <Bevel raised={false} thick style={{ padding: 6 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <LcdCounter value={g.minesLeft} />
+                  <SmileyButton status={g.status} onPress={g.reset} />
+                  <LcdCounter value={g.elapsed} />
+                </View>
+              </Bevel>
+
+              <View style={{ marginTop: 6, marginBottom: 8 }}>
+                <Board
+                  board={g.board}
+                  exploded={g.status === 'lost'}
+                  hapticsOn={settings.haptics}
+                  onOpen={g.open}
+                  onFlag={g.flag}
+                  onChord={g.chord}
+                />
+              </View>
+
+              <View style={{ alignItems: 'center', paddingBottom: 6 }}>
+                <Text style={{ fontFamily: FONT, fontSize: 9, color: '#000' }}>
+                  {g.status === 'won'  && (mode === 'daily' && streak ? `YOU WIN! Streak ${streak}` : 'YOU WIN!')}
+                  {g.status === 'lost' && 'GAME OVER'}
+                  {(g.status === 'idle' || g.status === 'playing') &&
+                    `Tap · Long-press flag · Double-tap to chord${best !== null ? ` · Best ${best}s` : ''}`}
+                </Text>
+              </View>
+            </View>
+          </Bevel>
+        </View>
+
+        <SettingsModal
+          visible={showSettings}
+          settings={settings}
+          onChange={update}
+          onClose={() => setShowSettings(false)}
+        />
+      </SafeAreaView>
+    </SafeAreaProvider>
+  );
+}
+```
+
+---
+
+## 15. Options Recap
+
+| Option | Where it lives | How to toggle |
+|--------|----------------|---------------|
+| **Chord click** | `engine.chord`, double-tap in `Cell` | Always on |
+| **Sound FX** | `src/audio/sfx.ts`, fired from `useGame.onEvent` | Settings → Sound |
+| **Haptics** | `Cell` long-press | Settings → Haptics |
+| **Question marks** | `engine.toggleFlag(..., allowQuestion)` | Settings → Question marks |
+| **Theme (classic/dark)** | `themeFor()` + `applyTheme()` | Settings → Theme |
+| **Daily challenge** | `useGame({ mode: 'daily' })` + seeded RNG | Top-right **DAILY** button |
 
 ---
 
